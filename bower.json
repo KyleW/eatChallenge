@@ -1,0 +1,22 @@
+{
+  "name": "eatChallenge",
+  "description": "an entry for the devpost USA EAT challenge",
+  "main": "index.js",
+  "authors": [
+    "Kyle Warneck"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "usda"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
