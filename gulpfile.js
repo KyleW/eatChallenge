@@ -3,30 +3,34 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var del = require('del');
 var jshint = require('gulp-jshint');
+var mainBowerFiles = require('main-bower-files');
 var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
 var stylus = require('gulp-stylus');
 var uglify = require('gulp-uglify');
 
+
 var paths = {
-  entrypoint: './server/index.js',
-  styles: ['./styles/*.styl'],
+  entrypoint: './server/server.js',
+  styles: ['./styles/base.styl'],
   js: ['./scripts/**/*.js'],
-  vendor: ['./bower_components/*.js'],
+  vendor: ['./bower_components/angular/angular.js'],
   dist: './build'
 };
 
 // Cleanup
 gulp.task('clean',function(){
-  return del(paths.dist)
+  // Make sure to delete the contents of the directory
+  // Not the directory itself
+  return del(paths.dist + '/**')
 });
 
 // Linting
-gulp.task('jshint', function(){
-  return gulp.src(paths.js)
-    .pipe(jshint('./jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
+// gulp.task('jshint', function(){
+//   return gulp.src(paths.js)
+//     .pipe(jshint('./.jshintrc'))
+//     .pipe(jshint.reporter('jshint-stylish'));
+// });
 
 // Builders
 gulp.task('buildApp',function (){
@@ -64,7 +68,7 @@ gulp.task('start', function () {
 })
 
 gulp.task('watch', function() {
-  gulp.watch(paths.js, ['jshint']);
+  // gulp.watch(paths.js, ['jshint']);
   gulp.watch(paths.styles, ['buildCss']);
   gulp.watch(paths.vendor, ['buildVendor']);
   gulp.watch(paths.js, ['buildApp']);
