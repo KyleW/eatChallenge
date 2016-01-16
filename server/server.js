@@ -8,6 +8,7 @@ var app = express();
 
 // Middleware
 app.use('/public', express.static('./build'));
+app.use('/views', express.static('./views'));
 
 // Routes
 app.get('/', function (req, res) {

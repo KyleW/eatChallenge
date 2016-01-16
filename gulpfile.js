@@ -14,7 +14,10 @@ var paths = {
   entrypoint: './server/server.js',
   styles: ['./styles/base.styl'],
   js: ['./scripts/**/*.js'],
-  vendor: ['./bower_components/angular/angular.js'],
+  vendor: [
+    './bower_components/angular/angular.js',
+    './bower_components/angular-ui-router/release/angular-ui-router.min.js'
+  ],
   dist: './build'
 };
 
