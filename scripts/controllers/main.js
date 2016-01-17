@@ -4,8 +4,63 @@ angular
     .module('eatChallengeApp')
     .controller('mainController', mainController);
 
-    function mainController () {
-      var main = this;
+    mainController.$inject = ['$scope'];
+
+    function mainController ($scope) {            
+      
+      // Classes
+      var Person = {
+        init: function() {
+          this.incomeSourceCount= 0;
+          this.incomeSources= [];
+        },
+
+        incrementIncomeSources: function(){
+          this.incomeSourceCount++;
+          while(this.incomeSourceCount > this.incomeSources.length) {
+            this.incomeSources.push({});
+          }
+        }
+      };
+
+
+      var Household = {
+        init: function () {
+          this.children = [];
+          this.childCount = 0;
+          this.incrementChildCount();
+
+          this.otherMembers = [];
+          this.otherMembersCount = 0;
+          this.incrementOtherMembersCount();
+        },
+
+        incrementChildCount: function(){
+          this.childCount++;
+          while (this.childCount > this.children.length) {
+            var newChild = Object.create(Person)
+            newChild.init();
+            this.children.push(newChild);
+          }
+        },
+
+        incrementOtherMembersCount: function() {
+          this.otherMembersCount++;
+          while (this.otherMembersCount > this.otherMembers.length) {
+            var newMember = Object.create(Person);
+            newMember.init();
+            this.otherMembers.push(newMember);
+          }
+        }
+
+      }
+
+
+      var household = Object.create(Household)
+      household.init();
+      // TODO: replace scope with vm
+      $scope.household = household
+
     };
 
 })();
