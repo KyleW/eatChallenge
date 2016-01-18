@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/styleguide', function (req, res) {
-  // res.sendFile(url.resolve(__dirname, './views/styleguide.html'));
+  res.sendFile(url.resolve(__dirname, './views/styleguide.html'));
 });
 
 

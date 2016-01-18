@@ -1,2 +1,12 @@
+body {
+  display: flex;
+}
+.centerCol {
+  flex: 14;
+}
+.leftCol,
+.rightCol {
+  flex: 5;
+}
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJiYXNlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9sYXlvdXQuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFNBQVMsS0FBVDs7QUFHRjtFQUNFLE1BQU0sR0FBTjs7QUFHRjtBQUFVO0VBQ1IsTUFBTSxFQUFOIiwiZmlsZSI6ImJhc2UuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5jZW50ZXJDb2wge1xuICBmbGV4OiAxNFxufVxuXG4ubGVmdENvbCwgLnJpZ2h0Q29sIHtcbiAgZmxleDogNVxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */

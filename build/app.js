@@ -19,9 +19,29 @@
         url: '/',
         templateUrl: '../views/start.html'
       })
-      .state('question', {
-        url: '/question',
-        templateUrl: '../views/question.html',
+      .state('overview', {
+        url: '/overview',
+        templateUrl: '../views/overview.html',
+        controller: 'mainController'
+      })
+      .state('children', {
+        url: '/children',
+        templateUrl: '../views/children.html',
+        controller: 'mainController'
+      })
+      .state('household', {
+        url: '/household',
+        templateUrl: '../views/household.html',
+        controller: 'mainController'
+      })
+      .state('income', {
+        url: '/income',
+        templateUrl: '../views/income.html',
+        controller: 'mainController'
+      })
+      .state('signature', {
+        url: '/signature',
+        templateUrl: '../views/signature.html',
         controller: 'mainController'
       });
     };

@@ -1,0 +1,40 @@
+<!-- Fields for each child -->
+<section>
+  <h2>Children</h2>
+  <div>
+      <h3>Number of Children {{household.childCount}}</h3>
+      <button ng-click="household.incrementChildCount()">+</button>
+  </div>
+  <div ng-repeat="child in household.children | limitTo: household.childCount">
+    <!-- child names -->
+    <div>
+      <span>Child Name</span>
+      <input placeholder="First" type="text" ng-model="child.firstName">
+      <input placeholder="Middle" type="text" ng-model="child.middleName">
+      <input placeholder="Last" type="text" ng-model="child.lastName">
+    </div>
+    
+    <!-- Student Status -->
+    <!-- TODO: Figure out what status means -->
+    <input placeholder="Status" type="text" ng-model="child.studentStatus">
+
+    <!-- Status as qualifying category -->
+    <div>
+      <span>Check all that apply</span>
+      <label>Foster Child<input type="checkbox" ng-model="child.specialStatus.fosterChild"></label>
+      <label>Homeless<input type="checkbox" ng-model="child.specialStatus.homeless"></label>
+      <label>Migrant<input type="checkbox" ng-model="child.specialStatus.migrant"></label>
+      <label>Runaway<input type="checkbox" ng-model="child.specialStatus.runaway"></label>
+      <label>Head Start Participant<input type="checkbox" ng-model="child.specialStatus.headStartParticipant"></label>
+    </div>
+
+    <div>
+      <label>Assistance Program Participant(SNAP, TANF, FDPIR) 
+        <input type="checkbox" ng-model="child.assistanceProgram.Participant">
+      </label>
+      <label ng-show="child.assistanceProgram.Participant">Case Number
+        <input placeholder="" type="text" ng-model="child.assistanceProgram.caseNumber"></input>
+      </label>
+    </div>
+  </div>
+</section>

@@ -5,8 +5,18 @@
 </head>
 <body>
   <!-- <header>The header will go here</header> -->
-
-  <section ui-view class='.main-container'></section>
+  <div class="leftCol">
+    <ul>
+      <li><a ui-sref="start">Start Here</a></li>
+      <li><a ui-sref="overview">Overview</a></li>
+      <li><a ui-sref="children">Children</a></li>
+      <li><a ui-sref="household">Household</a></li>
+      <li><a ui-sref="income">Income</a></li>
+      <li><a ui-sref="signature">Signature</a></li>
+    </ul> 
+  </div>
+  <div ui-view class='centerCol'></div>
+  <div class="rightCol">Here's where additional instructions will go.</div>
 
   <!-- <footer>The footer will go here</footer> -->
   <script type="text/javascript" src="/public/vendor.js"></script>

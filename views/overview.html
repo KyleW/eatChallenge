@@ -1,0 +1,9 @@
+<form novalidate>  
+  <div>
+    <h2>Overview</h2>
+      Number of Children {{household.childCount}}
+      <button ng-click="household.incrementChildCount()">+</button>
+      Number of Other People in the Household {{household.otherMembersCount}}
+      <button ng-click="household.incrementOtherMembersCount()">+</button>
+  </div>
+</form>

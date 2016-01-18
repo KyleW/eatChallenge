@@ -1,0 +1,19 @@
+<!-- Fields Per Household -->
+<section>
+  <h2>Other Household Members</h2>
+<!--       <label>How many people live in the household other than the children indicated in section 1?
+      <input type="number" min="1" step="1" value="1" ng-model="household.otherMembersCount">
+    </label> -->
+  <div ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount"class="">
+    <span>Member of Household</span>
+    <label>Name
+      <input placeholder="First" type="text" ng-model="member.firstName">
+      <input placeholder="Last" type="text" ng-model="member.lastName">
+    </label>
+    <label>
+      Las four digits of ssn
+      <input type="number" placeholder="ssn">
+    </label>
+  </div>
+  <span>Confirm total number of household members here</span>
+</section>
