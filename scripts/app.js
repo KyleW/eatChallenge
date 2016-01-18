@@ -15,9 +15,14 @@
       $urlRouterProvider.otherwise('/');
       
       $stateProvider
-      .state('/', {
+      .state('main', {
         url: '/',
         templateUrl: '../views/main.html',
+        controller: 'mainController'
+      })
+      .state('styleguide', {
+        url: '/styleguide',
+        templateUrl: '../views/styleguide.html',
         controller: 'mainController'
       });
     }

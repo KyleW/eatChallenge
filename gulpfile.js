@@ -7,6 +7,7 @@ var mainBowerFiles = require('main-bower-files');
 var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
 var stylus = require('gulp-stylus');
+var nib = require('nib');
 var uglify = require('gulp-uglify');
 
 
@@ -50,7 +51,12 @@ gulp.task('buildApp',function (){
 gulp.task('buildCss',function(){
   return gulp.src(paths.styles)
   .pipe(sourcemaps.init())
-    .pipe(stylus())
+  .pipe(
+    stylus({
+       compress: true,
+       use: nib()
+    })
+  )
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.dist));
 });
