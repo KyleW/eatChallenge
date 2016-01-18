@@ -1,0 +1,140 @@
+<form novalidate>  
+  <!-- intro -->
+  <section id="start">
+    <a name="start"><h2>Getting Started</h2></a>
+    <span>This is where a greeting will go</span>  
+  </section>
+  
+  <!-- overview -->
+  <section id="overview">
+    <h2>Overview</h2>
+      Number of Other People in the Household {{household.otherMembersCount}}
+      <button ng-click="household.incrementOtherMembersCount()">+</button>
+  </section>
+
+
+<!-- children -->
+<section id="children">
+  <a name="children"></a>
+  <h2>Children</h2>
+  <div>
+      <h3>Number of Children {{household.childCount}}</h3>
+      <button ng-click="household.incrementChildCount()">+</button>
+  </div>
+  <div ng-repeat="child in household.children | limitTo: household.childCount">
+    <!-- child names -->
+    <div>
+      <span>Child Name</span>
+      <input placeholder="First" type="text" ng-model="child.firstName">
+      <input placeholder="Middle" type="text" ng-model="child.middleName">
+      <input placeholder="Last" type="text" ng-model="child.lastName">
+    </div>
+    
+    <!-- Student Status -->
+    <!-- TODO: Figure out what status means -->
+    <input placeholder="Status" type="text" ng-model="child.studentStatus">
+
+    <!-- Status as qualifying category -->
+    <div>
+      <span>Check all that apply</span>
+      <label>Foster Child<input type="checkbox" ng-model="child.specialStatus.fosterChild"></label>
+      <label>Homeless<input type="checkbox" ng-model="child.specialStatus.homeless"></label>
+      <label>Migrant<input type="checkbox" ng-model="child.specialStatus.migrant"></label>
+      <label>Runaway<input type="checkbox" ng-model="child.specialStatus.runaway"></label>
+      <label>Head Start Participant<input type="checkbox" ng-model="child.specialStatus.headStartParticipant"></label>
+    </div>
+
+    <div>
+      <label>Assistance Program Participant(SNAP, TANF, FDPIR) 
+        <input type="checkbox" ng-model="child.assistanceProgram.Participant">
+      </label>
+      <label ng-show="child.assistanceProgram.Participant">Case Number
+        <input placeholder="" type="text" ng-model="child.assistanceProgram.caseNumber"></input>
+      </label>
+    </div>
+  </div>
+</section>
+
+
+<!--Household -->
+<section id="household">
+  <a name="household"><h2>Other Household Members</h2></a>
+<!--       <label>How many people live in the household other than the children indicated in section 1?
+      <input type="number" min="1" step="1" value="1" ng-model="household.otherMembersCount">
+    </label> -->
+  <div ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount"class="">
+    <span>Member of Household</span>
+    <label>Name
+      <input placeholder="First" type="text" ng-model="member.firstName">
+      <input placeholder="Last" type="text" ng-model="member.lastName">
+    </label>
+    <label>
+      Las four digits of ssn
+      <input type="number" placeholder="ssn">
+    </label>
+  </div>
+  <span>Confirm total number of household members here</span>
+</section>
+
+<!-- Income -->
+<section id="income">
+  <h2>Income</h2>
+  <div ng-repeat="child in household.children | limitTo: household.childCount">
+      <span>{{child.firstName}} {{child.lastName}}</span>
+      
+      <!-- TODO: Move to directive?? -->        
+      <label>
+        Number of Sources of Income
+        <button ng-click="child.incrementIncomeSources()">+</button>
+      </label>
+      <!-- Todo make this correspond to income sources for child -->
+      <div ng-repeat="incomeSource in child.incomeSources">
+        <label>Source of Income<input type="text"></label>
+        <label>Amount<input type="number" minimum="0"></label>
+        <label>per <select>
+          <option>Week</option>
+          <option>every 2 weeks</option>
+          <option>Monthly</option>
+        </select></label>
+      </div>
+  </div>
+
+  <div ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount"class="">
+    <span>{{member.firstName}} {{member.lastName}}</span>
+    <!-- TODO: Move to directive??         -->
+    <label>
+        Number of Sources of Income
+        <button ng-click="member.incrementIncomeSources()">+</button>
+    </label>
+
+      <div ng-repeat="incomeSource in member.incomeSources">
+        <label>Source of Income<input type="text"></label>
+        <label>Amount<input type="number" minimum="0"></label>
+        <label>per <select>
+          <option>Week</option>
+          <option>every 2 weeks</option>
+          <option>Monthly</option>
+        </select></label>
+
+  </div>
+</section>
+
+<!-- Signature -->
+<section id="signature">
+  <h2>Signature & Contact Information</h2>
+  <div>
+    <label>Electronic Signature<input type="text"></label>
+    <!-- TODO: Autofill? -->
+    <label>Today's Date<input type="date"></label>
+    <label>Street Address<input type="text"></label>
+    <label>City<input type="text"></label>
+    <label>State<input type="text"></label>
+    <label>Zipcode<input type="text"></label>
+    <label>Phone Number [optional] <input type="phone"></label>
+    <label>Email [optional] <input type="email"></label>
+  </div>
+</section>
+
+
+
+</form>
