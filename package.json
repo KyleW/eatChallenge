@@ -29,7 +29,8 @@
     "nib": "~1.1.0"
   },
   "dependencies": {
-    "express": "~4.13.3"
+    "express": "~4.13.3",
+    "npmlog": "~2.0.1"
   }
   
 }
