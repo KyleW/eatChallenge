@@ -13,7 +13,9 @@ var uglify = require('gulp-uglify');
 
 var paths = {
   entrypoint: './server/server.js',
-  styles: ['./styles/base.styl'],
+  styles: [
+    './styles/base.styl',
+  ],
   js: ['./scripts/**/*.js'],
   vendor: [
     './bower_components/angular/angular.js',
@@ -63,10 +65,10 @@ gulp.task('buildCss',function(){
 
 gulp.task('buildVendor', function(){
   return gulp.src(paths.vendor)
-  // .pipe(sourcemaps.init())
+  .pipe(sourcemaps.init())
     .pipe(concat('vendor.js'))
-    // .pipe(uglify())
-  // .pipe(sourcemaps.write())
+    .pipe(uglify())
+  .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.dist));
 });
 
@@ -80,7 +82,7 @@ gulp.task('start', function () {
 
 gulp.task('watch', function() {
   // gulp.watch(paths.js, ['jshint']);
-  gulp.watch(paths.styles, ['buildCss']);
+  gulp.watch(['./styles/*.styl'], ['buildCss']);
   gulp.watch(paths.vendor, ['buildVendor']);
   gulp.watch(paths.js, ['buildApp']);
 });

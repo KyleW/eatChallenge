@@ -1,0 +1,39 @@
+// @import url(https://fonts.googleapis.com/css?family=Lato);
+// @import url(//fonts.googleapis.com/css?family=Open+Sans);
+headingFontFamily = "helvetica neue",'lato',  sans-serif;
+bodyFontFamily = "Georgia", "Times New Roman"
+
+headingBase()
+  color $headingFontColor
+  font-family headingFontFamily
+  font-weight 600
+
+
+bodyBase()
+  color $bodyFontColor
+  font-family bodyFontFamily
+  font-size 16px
+  line-height 20px
+  font-weight 400
+
+
+h1, h2, h3, h4, h5, h6
+  headingBase()
+
+h1
+  font-size 32px
+  line-height 40px
+
+h2
+  font-size 24px
+  line-height 32px
+
+label
+  headingBase()
+  color $bodyFontColor
+  font-size 14px
+  line-height 18px
+  font-weight 400px
+
+*
+  bodyBase()

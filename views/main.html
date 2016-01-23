@@ -5,30 +5,22 @@
     <span>This is where a greeting will go</span>  
   </section>
   
-  <!-- overview -->
-  <section id="overview">
-    <h2>Overview</h2>
-      Number of Other People in the Household {{household.otherMembersCount}}
-      <button ng-click="household.incrementOtherMembersCount()">+</button>
-  </section>
-
-
 <!-- children -->
 <section id="children">
   <a name="children"></a>
   <h2>Children</h2>
   <div>
-      <h3>Number of Children {{household.childCount}}</h3>
-      <button ng-click="household.incrementChildCount()">+</button>
+      <h3><button ng-click="household.incrementChildCount()">+</button> Number of Children {{household.childCount}} </h3>
+      
   </div>
   <div ng-repeat="child in household.children | limitTo: household.childCount">
     <!-- child names -->
-    <div>
-      <span>Child Name</span>
+    <label>
+      <div>Child Name</div>
       <input placeholder="First" type="text" ng-model="child.firstName">
       <input placeholder="Middle" type="text" ng-model="child.middleName">
       <input placeholder="Last" type="text" ng-model="child.lastName">
-    </div>
+    </label>
     
     <!-- Student Status -->
     <!-- TODO: Figure out what status means -->
@@ -37,11 +29,26 @@
     <!-- Status as qualifying category -->
     <div>
       <span>Check all that apply</span>
-      <label>Foster Child<input type="checkbox" ng-model="child.specialStatus.fosterChild"></label>
-      <label>Homeless<input type="checkbox" ng-model="child.specialStatus.homeless"></label>
-      <label>Migrant<input type="checkbox" ng-model="child.specialStatus.migrant"></label>
-      <label>Runaway<input type="checkbox" ng-model="child.specialStatus.runaway"></label>
-      <label>Head Start Participant<input type="checkbox" ng-model="child.specialStatus.headStartParticipant"></label>
+      <label >
+         <input type="checkbox" ng-model="child.specialStatus.fosterChild">
+          Foster Child
+      </label>
+      <label >
+         <input type="checkbox" ng-model="child.specialStatus.homeless">
+          Homeless
+      </label>
+      <label >
+         <input type="checkbox" ng-model="child.specialStatus.migrant">
+          Migrant
+      </label>
+      <label >
+         <input type="checkbox" ng-model="child.specialStatus.runaway">
+          Runaway
+      </label>
+      <label >
+         <input type="checkbox" ng-model="child.specialStatus.headStartParticipant">
+          Head Start Participant
+      </label>
     </div>
 
     <div>
@@ -59,14 +66,14 @@
 <!--Household -->
 <section id="household">
   <a name="household"><h2>Other Household Members</h2></a>
-<!--       <label>How many people live in the household other than the children indicated in section 1?
-      <input type="number" min="1" step="1" value="1" ng-model="household.otherMembersCount">
-    </label> -->
+  Number of Other People in the Household {{household.otherMembersCount}}
+  <button ng-click="household.incrementOtherMembersCount()">+</button>
   <div ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount"class="">
-    <span>Member of Household</span>
-    <label>Name
-      <input placeholder="First" type="text" ng-model="member.firstName">
-      <input placeholder="Last" type="text" ng-model="member.lastName">
+    
+    <label>
+      <div>Member of Household</div>
+      <input placeholder="First Name" type="text" ng-model="member.firstName">
+      <input placeholder="Last Name" type="text" ng-model="member.lastName">
     </label>
     <label>
       Las four digits of ssn
