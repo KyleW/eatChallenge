@@ -1,7 +1,7 @@
 (function(){
   
   angular
-  .module("eatChallengeApp",['ui.router'])
+  .module("eatChallengeApp",['ngMaterial','ui.router'])
   .config(configure);
 
   configure.$inject = ['$stateProvider', '$urlRouterProvider'];

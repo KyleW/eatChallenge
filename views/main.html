@@ -1,38 +1,132 @@
-<form novalidate>  
-  <!-- intro -->
+<form novalidate>
+  
+  <!-- Start -->
   <section id="start">
-    <a name="start"><h2>Getting Started</h2></a>
-    <span>This is where a greeting will go</span>  
+    <md-toolbar class="md-theme-light">
+      <h2 class="md-toolbar-tools">
+        <span>Getting Started</span>
+      </h2>
+    </md-toolbar>
+    <p>This is the application for Free and Reduced Price lunch. This form is an attempt to bring a modern, flat design to a federal form. It's organized around people instead of qualification classes. Let's get started</p>  
   </section>
   
 <!-- children -->
 <section id="children">
-  <a name="children"></a>
-  <h2>Children</h2>
-  <div>
-      <h3><button ng-click="household.incrementChildCount()">+</button> Number of Children {{household.childCount}} </h3>
-      
-  </div>
-  <div ng-repeat="child in household.children | limitTo: household.childCount">
-    <!-- child names -->
-    <label>
-      <div>Child Name</div>
-      <input placeholder="First" type="text" ng-model="child.firstName">
-      <input placeholder="Middle" type="text" ng-model="child.middleName">
-      <input placeholder="Last" type="text" ng-model="child.lastName">
-    </label>
+  <md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools">
+      <span>Children</span>
+    </h2>
+  </md-toolbar>
+  <!-- <h2>Children</h2> -->
+  <md-button  md-no-ink class="md-primary" ng-click="household.incrementChildCount()">Add</md-button>
     
+  <!--   <div>
+      <h3> Number of Children {{household.childCount}} </h3>
+  </div> -->
+  <md-card ng-repeat="child in household.children | limitTo: household.childCount">
+    <!-- <img src="card-image.png" class="md-card-image" alt="image caption"> -->
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline" ng-hide="child.firstName">Child {{$index +1}}</span>
+        <span class="md-headline" ng-show="child.firstName">{{child.firstName}}</span>
+        <!-- <span class="md-subhead">Subheading text here</span> -->
+      </md-card-title-text>
+      <!-- <md-card-title-media>
+        <div class="md-media-sm card-media"></div>
+      </md-card-title-media> -->
+    </md-card-title>
+    
+    <md-card-content>
+    <div>
+      <md-input-container>
+        <label>First Name</label>
+        <input ng-model="child.firstName">
+      </md-input-container>
+      <md-input-container>
+        <label>Middle Name</label>
+        <input ng-model="child.middleName">
+      </md-input-container>
+      <md-input-container>
+        <label>Last Name</label>
+        <input ng-model="child.lastName">
+      </md-input-container>      
+    </div>
+    <div>
+      <md-input-container>
+        <label>Student Status</label>
+        <md-select ng-model="child.studentStatus">
+          <md-option ng-repeat="status in studentStatuses" value="{{status}">
+            {{status}}
+          </md-option>
+        </md-select>
+      </md-input-container>      
+    </div>
+    <div>
+      <p>Check all thtat apply</p>
+      <md-input-container>
+        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+            Foster Child
+        </md-checkbox>
+        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+            Foster Child
+        </md-checkbox>
+        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+            Foster Child
+        </md-checkbox>
+        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+            Foster Child
+        </md-checkbox>
+        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+            Foster Child
+        </md-checkbox>    
+      </md-input-container>  
+    </div>
+    <div>
+      <md-input-container>
+        <md-checkbox md-no-ink aria-label="Assistance Program Participant(SNAP, TANF, FDPIR)" ng-model="child.assistanceProgram.participant" class="md-primary">
+            Assistance Program Participant(SNAP, TANF, FDPIR) 
+        </md-checkbox>
+        <md-input-container ng-show="child.assistanceProgram.participant">
+          <label>Case Number</label>
+          <input ng-model="child.assistanceProgram.caseNumber">
+        </md-input-container>
+    </div>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="showConfirm($event)">Delete</md-button>
+    </md-card-actions>
+  </md-card>
+
+  <!-- <div ng-repeat="child in household.children | limitTo: household.childCount"> -->
+    <!-- child names -->
+      <!-- Child {{$index +1}}: -->
+<!--       <div>Child Name</div>
+      <md-input-container>
+        <label>First Name</label>
+        <input ng-model="child.firstName">
+      </md-input-container>
+      
+      <md-input-container>
+        <label>Middle Name</label>
+        <input ng-model="child.middleName">
+      </md-input-container>
+      <md-input-container>
+        <label>Last Name</label>
+        <input ng-model="child.lastName">
+      </md-input-container> -->
+      <!-- <input placeholder="First" type="text" ng-model="child.firstName">
+      <!-- <input placeholder="Middle" type="text" ng-model="child.middleName"> -->
+      <!-- <input placeholder="Last" type="text" ng-model="child.lastName"> -->
+    <!-- </label> -->
+
     <!-- Student Status -->
     <!-- TODO: Figure out what status means -->
-    <input placeholder="Status" type="text" ng-model="child.studentStatus">
+    <!-- <input placeholder="Status" type="text" ng-model="child.studentStatus"> -->
 
     <!-- Status as qualifying category -->
-    <div>
-      <span>Check all that apply</span>
-      <label >
-         <input type="checkbox" ng-model="child.specialStatus.fosterChild">
-          Foster Child
-      </label>
+<!--     <div>
+      <p>Check all that apply</p>
+      <label>Foster Child: <md-checkbox ng-model="child.specialStatus.fosterChild" aria-label="Foster Child"></md-checkbox></label>
       <label >
          <input type="checkbox" ng-model="child.specialStatus.homeless">
           Homeless
@@ -49,8 +143,8 @@
          <input type="checkbox" ng-model="child.specialStatus.headStartParticipant">
           Head Start Participant
       </label>
-    </div>
-
+    </div> -->
+<!-- 
     <div>
       <label>Assistance Program Participant(SNAP, TANF, FDPIR) 
         <input type="checkbox" ng-model="child.assistanceProgram.Participant">
@@ -58,8 +152,8 @@
       <label ng-show="child.assistanceProgram.Participant">Case Number
         <input placeholder="" type="text" ng-model="child.assistanceProgram.caseNumber"></input>
       </label>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 </section>
 
 
@@ -67,7 +161,7 @@
 <section id="household">
   <a name="household"><h2>Other Household Members</h2></a>
   Number of Other People in the Household {{household.otherMembersCount}}
-  <button ng-click="household.incrementOtherMembersCount()">+</button>
+  <md-button ng-click="household.incrementOtherMembersCount()">+</md-button>
   <div ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount"class="">
     
     <label>
@@ -92,7 +186,7 @@
       <!-- TODO: Move to directive?? -->        
       <label>
         Number of Sources of Income
-        <button ng-click="child.incrementIncomeSources()">+</button>
+        <md-button class="md-primary" ng-click="child.incrementIncomeSources()">+</md-button>
       </label>
       <!-- Todo make this correspond to income sources for child -->
       <div ng-repeat="incomeSource in child.incomeSources">
@@ -111,7 +205,7 @@
     <!-- TODO: Move to directive??         -->
     <label>
         Number of Sources of Income
-        <button ng-click="member.incrementIncomeSources()">+</button>
+        <md-button ng-click="member.incrementIncomeSources()">+</md-button>
     </label>
 
       <div ng-repeat="incomeSource in member.incomeSources">

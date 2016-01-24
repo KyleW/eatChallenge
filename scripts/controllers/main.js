@@ -4,10 +4,10 @@ angular
     .module('eatChallengeApp')
     .controller('mainController', mainController);
 
-    mainController.$inject = ['$scope'];
+    mainController.$inject = ['$mdDialog', '$mdMedia', '$scope'];
 
-    function mainController ($scope) {            
-      
+    function mainController ($mdDialog, $mdMedia, $scope) {            
+      $scope.studentStatuses = ['in school', 'home schooled', 'some other status'];
       // Classes
       var Person = {
         init: function() {
@@ -60,6 +60,22 @@ angular
       household.init();
       // TODO: replace scope with vm
       $scope.household = household
+
+      $scope.showConfirm = function(ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.confirm()
+          .title('Would you like to delete this entry?')
+          .textContent('The data you have entered about this child will be removed')
+          .ariaLabel('delete child')
+          .targetEvent(ev)
+          .ok('Yes')
+          .cancel('No');
+      $mdDialog.show(confirm).then(function() {
+      $scope.status = 'You decided to get rid of your debt.';
+    }, function() {
+      $scope.status = 'You decided to keep your debt.';
+    });
+  };
 
     };
 

@@ -14,13 +14,18 @@ var uglify = require('gulp-uglify');
 var paths = {
   entrypoint: './server/server.js',
   styles: [
+    './bower_components/angular-material/angular-material.css',
     './styles/base.styl',
   ],
   js: ['./scripts/**/*.js'],
   vendor: [
-    './bower_components/angular/angular.js',
+    './bower_components/angular/angular.min.js',
     './bower_components/angular-ui-router/release/angular-ui-router.min.js',
-    './bower_components/underscore/underscore.js'
+    './bower_components/angular-animate/angular-animate.min.js',
+    './bower_components/angular-aria/angular-aria.min.js',
+    './bower_components/angular-messages/angular-messages.min.js',
+    './bower_components/angular-material/angular-material.min.js',
+    './bower_components/underscore/underscore-min.js'
   ],
   dist: './build'
 };
@@ -42,11 +47,11 @@ gulp.task('clean',function(){
 // Builders
 gulp.task('buildApp',function (){
   return gulp.src(paths.js)
-  // .pipe(sourcemaps.init())
+  .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
-    //TODO: turn on for prod
-    // .pipe(uglify())
-  // .pipe(sourcemaps.write())
+    // TODO: turn on for prod
+    .pipe(uglify())
+  .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.dist));
 });
 
@@ -56,7 +61,8 @@ gulp.task('buildCss',function(){
   .pipe(
     stylus({
        compress: true,
-       use: nib()
+       'include css': true,
+       use: nib(),
     })
   )
   .pipe(sourcemaps.write())
@@ -67,7 +73,7 @@ gulp.task('buildVendor', function(){
   return gulp.src(paths.vendor)
   .pipe(sourcemaps.init())
     .pipe(concat('vendor.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.dist));
 });
