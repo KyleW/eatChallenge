@@ -12,90 +12,87 @@
   
 <!-- children -->
 <section id="children">
-  <md-toolbar class="md-theme-light">
-    <h2 class="md-toolbar-tools">
-      <span>Children</span>
-    </h2>
-  </md-toolbar>
-  <!-- <h2>Children</h2> -->
+  <md-toolbar class="md-theme-light"><h2 class="md-toolbar-tools"><span>Children</span></h2></md-toolbar>
   <md-button  md-no-ink class="md-primary" ng-click="household.incrementChildCount()">Add</md-button>
+  <div layout="column" flex="70" offset="15" ng-repeat="child in household.children | limitTo: household.childCount">  
     
-  <!--   <div>
-      <h3> Number of Children {{household.childCount}} </h3>
-  </div> -->
-  <md-card ng-repeat="child in household.children | limitTo: household.childCount">
-    <!-- <img src="card-image.png" class="md-card-image" alt="image caption"> -->
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline" ng-hide="child.firstName">Child {{$index +1}}</span>
-        <span class="md-headline" ng-show="child.firstName">{{child.firstName}}</span>
-        <!-- <span class="md-subhead">Subheading text here</span> -->
-      </md-card-title-text>
-      <!-- <md-card-title-media>
-        <div class="md-media-sm card-media"></div>
-      </md-card-title-media> -->
-    </md-card-title>
-    
-    <md-card-content>
-    <div>
-      <md-input-container>
-        <label>First Name</label>
-        <input ng-model="child.firstName">
-      </md-input-container>
-      <md-input-container>
-        <label>Middle Name</label>
-        <input ng-model="child.middleName">
-      </md-input-container>
-      <md-input-container>
-        <label>Last Name</label>
-        <input ng-model="child.lastName">
-      </md-input-container>      
-    </div>
-    <div>
-      <md-input-container>
-        <label>Student Status</label>
-        <md-select ng-model="child.studentStatus">
-          <md-option ng-repeat="status in studentStatuses" value="{{status}">
-            {{status}}
-          </md-option>
-        </md-select>
-      </md-input-container>      
-    </div>
-    <div>
-      <p>Check all thtat apply</p>
-      <md-input-container>
-        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
-            Foster Child
-        </md-checkbox>
-        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
-            Foster Child
-        </md-checkbox>
-        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
-            Foster Child
-        </md-checkbox>
-        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
-            Foster Child
-        </md-checkbox>
-        <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
-            Foster Child
-        </md-checkbox>    
-      </md-input-container>  
-    </div>
-    <div>
-      <md-input-container>
-        <md-checkbox md-no-ink aria-label="Assistance Program Participant(SNAP, TANF, FDPIR)" ng-model="child.assistanceProgram.participant" class="md-primary">
-            Assistance Program Participant(SNAP, TANF, FDPIR) 
-        </md-checkbox>
-        <md-input-container ng-show="child.assistanceProgram.participant">
-          <label>Case Number</label>
-          <input ng-model="child.assistanceProgram.caseNumber">
+  <!--   <div><h3> Number of Children {{household.childCount}} </h3></div> -->
+  
+  <!--   <md-card flex="70" ng-repeat="child in household.children | limitTo: household.childCount">
+      <!-- <img src="card-image.png" class="md-card-image" alt="image caption">
+      <!-- <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline" ng-hide="child.firstName">Child {{$index +1}}</span>
+          <span class="md-headline" ng-show="child.firstName">{{child.firstName}}</span> -->
+          <!-- <span class="md-subhead">Subheading text here</span> -->
+        <!-- </md-card-title-text> -->
+        <!-- <md-card-title-media>
+          <div class="md-media-sm card-media"></div>
+        </md-card-title-media> -->
+      <!-- </md-card-title> -->
+      
+    <!-- <md-card-content> -->
+      <div layout="row">
+        <md-input-container>
+          <label>First Name</label>
+          <input ng-model="child.firstName">
         </md-input-container>
+        <md-input-container>
+          <label>Middle Name</label>
+          <input ng-model="child.middleName">
+        </md-input-container>
+        <md-input-container>
+          <label>Last Name</label>
+          <input ng-model="child.lastName">
+        </md-input-container>      
+      </div>
+      <div layout="row">
+        <md-input-container>
+          <label>Student Status</label>
+          <md-select ng-model="child.studentStatus">
+            <md-option ng-repeat="status in studentStatuses" value="{{status}}">
+              {{status}}
+            </md-option>
+          </md-select>
+        </md-input-container>      
+      </div>
+      <div layout="row">
+        <p>Check all thtat apply</p>
+        <md-input-container>
+          <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+              Foster Child
+          </md-checkbox>
+          <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+              Foster Child
+          </md-checkbox>
+          <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+              Foster Child
+          </md-checkbox>
+          <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+              Foster Child
+          </md-checkbox>
+          <md-checkbox md-no-ink aria-label="Foster Child" ng-model="child.specialStatus.fosterChild" class="md-primary">
+              Foster Child
+          </md-checkbox>    
+        </md-input-container>  
+      </div>
+      <div>
+        <md-input-container>
+          <md-checkbox md-no-ink aria-label="Assistance Program Participant(SNAP, TANF, FDPIR)" ng-model="child.assistanceProgram.participant" class="md-primary">
+              Assistance Program Participant(SNAP, TANF, FDPIR) 
+          </md-checkbox>
+          <md-input-container ng-show="child.assistanceProgram.participant">
+            <label>Case Number</label>
+            <input ng-model="child.assistanceProgram.caseNumber">
+          </md-input-container>
+      </div>
+      <!-- </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="showConfirm($event)">Delete</md-button>
+      </md-card-actions> -->
+    <!-- </md-card> -->
     </div>
-    </md-card-content>
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="showConfirm($event)">Delete</md-button>
-    </md-card-actions>
-  </md-card>
+  </div>
 
   <!-- <div ng-repeat="child in household.children | limitTo: household.childCount"> -->
     <!-- child names -->

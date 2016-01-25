@@ -2,11 +2,29 @@
   
   angular
   .module("eatChallengeApp",['ngMaterial','ui.router'])
-  .config(configure);
+  .config(routerConfig)
+  .config(materialDesignConfig);
 
-  configure.$inject = ['$stateProvider', '$urlRouterProvider'];
+  materialDesignConfig.$inject = ['$mdThemingProvider'];
 
-  function configure ($stateProvider, $urlRouterProvider){
+  function materialDesignConfig($mdThemingProvider) {
+       $mdThemingProvider.theme('default')
+              .primaryPalette('brown')
+              .accentPalette('red');
+    // $mdThemingProvider.theme('default')
+
+    // .backgroundPalette('blue-grey');
+    // .dark();
+      // .primaryPalette('pink')
+      // .accentPalette('orange');
+      // theme.warnPalette
+      // .backgroundPalette
+  }
+
+  
+  routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+  
+  function routerConfig ($stateProvider, $urlRouterProvider){
 
     router($stateProvider, $urlRouterProvider);
 
