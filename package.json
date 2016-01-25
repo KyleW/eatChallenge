@@ -2,9 +2,10 @@
   "name": "eatChallenge",
   "version": "0.0.0",
   "description": "an entry for the devpost USA EAT challenge",
-  "main": "index.js",
+  "main": "./server/server.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "node ./server/server.js"
   },
   "keywords": [
     "usda"
@@ -30,4 +31,5 @@
   "dependencies": {
     "express": "~4.13.3"
   }
+  
 }
