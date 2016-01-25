@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="eatChallengeApp" ng-cloak>
+<html ng-app="eatChallengeApp">
 
 <head>
   <title> EAT Lunch Challenge</title>
@@ -10,60 +10,23 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
-  <!-- Container #1 (see wireframe) -->
-  <md-toolbar layout="row" >
-    <header>
-      <h1>Federal Application for Free and Reduced Price Lunch</h1>
-    </header>
-  </md-toolbar>
-  
-   <!-- Container #2 -->
-  <div layout="row">
-      <!-- Container #3 -->
-      <md-sidenav flex="10" md-is-locked-open="true" class="md-whiteframe-z2">
-        <md-list>
-          <md-list-item class="md-2-line">
-            <div class="md-list-item-text">
-              
-            </div>
-          </md-list-item>
-          <md-list-item class="md-2-line">
-            <div class="md-list-item-text">
-              
-            </div>
-          </md-list-item>
-          <md-list-item class="md-2-line">
-            <div class="md-list-item-text">
-              
-            </div>
-          </md-list-item>
-          <md-list-item class="md-2-line">
-            <div class="md-list-item-text">
-              
-            </div>
-          </md-list-item>
-          <md-list-item class="md-2-line">
-            <div class="md-list-item-text">
-              
-            </div>
-          </md-list-item>
-        </md-list>
-        <!-- <ul>
-          <li><a href="#start">Start Here</a></li>
-          <li><a href="#children">Children</a></li>
-          <li><a href="#household">Household</a></li>
-          <li><a href="#income">Income</a></li>
-          <li><a href="#signature">Signature</a></li>
-          <li><a ui-sref="styleguide">Styleguide</a></li>
-        </ul>  -->
-      </md-sidenav>
-
-      <!-- Container #4 -->
-      <md-content flex="90" id="content" ui-view class='centerCol'></md-content>
-
+  <header>
+    <h1>Federal Application for Free and Reduced Price Lunch</h1>
+  </header>
+  <div class="mainContainer">
+    <div class="leftCol">
+      <ul>
+        <li><a href="#start">Start Here</a></li>
+        <li><a href="#children">Children</a></li>
+        <li><a href="#household">Household</a></li>
+        <li><a href="#income">Income</a></li>
+        <li><a href="#signature">Signature</a></li>
+        <li><a ui-sref="styleguide">Styleguide</a></li>
+      </ul> 
+    </div>
+    <div ui-view class='centerCol'></div>
+    <div class="rightCol">Here's where additional instructions will go.</div>
   </div>
-
   <footer>The footer will go here</footer>
   
   <!-- JS -->
@@ -73,8 +36,6 @@
   
   <!-- Styles -->
   <!-- <link href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.css' rel='stylesheet' type='text/css'> -->
-  <link href='/public/base.css' rel='stylesheet' type='text/css'>3
-  <!-- TODO: Concat these! -->
-  <link href='/public/angular-material.css' rel='stylesheet' type='text/css'>
+  <link href='/public/base.css' rel='stylesheet' type='text/css'>
 </body>
 </html>
