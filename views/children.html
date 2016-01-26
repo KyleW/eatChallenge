@@ -1,0 +1,58 @@
+
+<!-- children -->
+<section id="children">
+  <a name="children"></a>
+  <h2>Children</h2>
+  <div>
+      <h3>
+
+        <md-button ng-click="household.incrementChildCount()">+</md-button> 
+        Number of Children {{household.childCount}} </h3>
+      
+  </div>
+<!--   <md-list layout="row">
+      <md-list-item class="md-2-line" flex="20" ng-repeat="child in household.children" layout="row" layout-wrap>
+        <div  class="md-item-text md-whiteframe-z1" flex>
+          <h3>Child {{$index + 1}}</h3>
+          <p>{{child.firstName}}</p>
+        </div>
+      </md-list-item>
+    </md-list> -->
+  <div ng-repeat="child in household.children | limitTo: household.childCount">
+    <!-- child names -->
+    <md-input-container>
+      <label>First Name</label>
+      <input ng-model="child.firstName">
+    </md-input-container>
+    <md-input-container>
+      <label>Midle Name</label>
+      <input ng-model="child.middleName">
+    </md-input-container>
+    <md-input-container>
+      <label>Last Name</label>
+      <input ng-model="child.lastName">
+    </md-input-container>
+    
+    <!-- Student Status -->
+    <!-- <input placeholder="Status" type="text" ng-model="child.studentStatus"> -->
+
+    <!-- Status as qualifying category -->
+    <div layout="column">
+       <!-- TODO: add aria-label  -->
+      <md-checkbox ng-model="child.specialStatus.fosterChild">Foster Child</md-checkbox>
+      <md-checkbox ng-model="child.specialStatus.homeless">Homeless</md-checkbox>
+      <md-checkbox ng-model="child.specialStatus.migrant">Migrant</md-checkbox>
+      <md-checkbox ng-model="child.specialStatus.runaway">Runaway</md-checkbox>
+      <md-checkbox ng-model="child.specialStatus.headStartParticipant">Head Start Participant</md-checkbox>
+    </div>
+
+    <div layout="row">
+      <md-checkbox ng-model="child.assistanceProgram.Participant">Assistance Program Participant(SNAP, TANF, FDPIR)</md-checkbox>
+      <md-input-container ng-show="child.assistanceProgram.Participant">
+        <label>Case Number</label>
+        <input ng-model="child.assistanceProgram.caseNumber">
+      </md-input-container>
+    </div>
+    <div member="member" income-questions></div>
+  </div>
+</section>

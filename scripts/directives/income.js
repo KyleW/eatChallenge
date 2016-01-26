@@ -9,7 +9,7 @@
       function incomeDirective () {            
         return {
           scope: {
-            member: "&"
+            member: "="
           },
           restrict: 'A',
           replace: true,

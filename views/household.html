@@ -1,0 +1,26 @@
+<!--Household -->
+<section id="household">
+  <a name="household"><h2>Other Household Members</h2></a>
+  Number of Other People in the Household {{household.otherMembersCount}}
+  <md-button ng-click="household.incrementOtherMembersCount()">+</md-button>
+  <div ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount"class="">
+      <div layout="row">
+        <md-input-container>
+          <label>First Name</label>
+          <input ng-model="member.firstName">
+        </md-input-container>
+        <md-input-container>
+          <label>Last Name</label>
+          <input ng-model="member.lastName">
+        </md-input-container>
+        <md-input-container>
+          <label>Last four digits of SSN</label>
+          <input ng-model="member.last4ssn">
+        </md-input-container>
+      </div>
+      <div member="member" income-questions></div>
+      
+
+  </div>
+
+</section>
