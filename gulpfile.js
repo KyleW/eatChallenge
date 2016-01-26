@@ -14,7 +14,6 @@ var uglify = require('gulp-uglify');
 var paths = {
   entrypoint: './server/server.js',
   styles: [
-    './bower_components/angular-material/angular-material.css',
     './styles/base.styl',
   ],
   js: ['./scripts/**/*.js'],

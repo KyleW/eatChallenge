@@ -5,7 +5,7 @@ a, a:hover, a:visited,  a:active
   color inherit
   text-decoration none
 
-body
+body, header, footer, .mainContainer
   background $backgroundColor
 
 header, footer
@@ -17,6 +17,7 @@ header, footer
 
 .centerCol
   flex 14
+  clearfix()
   // border-left $lineThickness solid $lineColor
   // border-right $lineThickness solid $lineColor
 
@@ -33,5 +34,5 @@ header, footer
   
 section
   padding 20px
-  border-top $lineThickness solid $lineColor
+  // border-top $lineThickness solid $lineColor
   

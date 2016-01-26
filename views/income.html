@@ -1,0 +1,21 @@
+<div>
+  <button ng-click="member.incrementIncomeSources()">+</button>
+  <div ng-repeat="incomeSource in member.incomeSources">
+    <md-input-container>
+      <label>Source of Income</label>
+      <input ng-model="incomeSource.name">
+    </md-input-container>
+    <md-input-container>
+      <label>Amount</label>
+      <input ng-model="incomeSource.amount" type="number">
+    </md-input-container>
+    <md-input-container>
+      <label>How often?</label>
+      <md-select ng-model="incomeSource.frequency">
+        <md-option value="weekly">Every Week</md-option>
+        <md-option value="biweekly">Every 2 Weeks</md-option>
+        <md-option value="monthly">Every Month</md-option>
+      </md-select>
+    </md-input-container>     
+  </div>
+</div>
