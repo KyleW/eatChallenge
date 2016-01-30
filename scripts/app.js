@@ -43,8 +43,13 @@
         templateUrl: '../views/children.html',
         controller: 'mainController'
       })
+      .state('childIncome', {
+        url: '/childIncome',
+        templateUrl: '../views/childIncome.html',
+        controller: 'mainController'
+      })
       .state('household', {
-        url: '/',
+        url: '/household',
         templateUrl: '../views/household.html',
         controller: 'mainController'
       })
@@ -56,6 +61,11 @@
       .state('confirmation', {
         url: '/confirmation',
         templateUrl: '../views/confirmation.html',
+        controller: 'mainController'
+      })
+      .state('export', {
+        url: '/export',
+        templateUrl: '../views/export.html',
         controller: 'mainController'
       })
       .state('styleguide', {
