@@ -63,6 +63,11 @@
         templateUrl: '../views/confirmation.html',
         controller: 'mainController'
       })
+      .state('export', {
+        url: '/export',
+        templateUrl: '../views/export.html',
+        controller: 'mainController'
+      })
       .state('styleguide', {
         url: '/styleguide',
         templateUrl: '../views/styleguide.html',
