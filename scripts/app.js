@@ -43,8 +43,13 @@
         templateUrl: '../views/children.html',
         controller: 'mainController'
       })
+      .state('childIncome', {
+        url: '/childIncome',
+        templateUrl: '../views/childIncome.html',
+        controller: 'mainController'
+      })
       .state('household', {
-        url: '/',
+        url: '/household',
         templateUrl: '../views/household.html',
         controller: 'mainController'
       })
