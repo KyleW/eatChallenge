@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "express": "~4.13.3",
-    "npmlog": "~2.0.1"
+    "npmlog": "~2.0.1",
+    "compression": "~1.6.1"
   }
-  
 }

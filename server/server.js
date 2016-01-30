@@ -4,9 +4,10 @@ var config = require('../config/config');
 
 var express = require('express');
 var app = express();
-
+var compress = require('compression');
 
 // Middleware
+app.use(compress());  
 app.use('/public', express.static('./build'));
 app.use('/views', express.static('./views'));
 
