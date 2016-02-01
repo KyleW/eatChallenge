@@ -2,16 +2,16 @@
 
   angular
       .module('eatChallengeApp')
-      .directive('incomeQuestions', incomeDirective);
+      .directive('yesNoInput', yesNoInput);
 
-      function incomeDirective () {            
+      function yesNoInput () {            
         return {
           scope: {
-            member: "="
+            model: "="
           },
           restrict: 'A',
           replace: true,
-          templateUrl: '../views/income.html',
+          templateUrl: '../views/yesno.html',
         };
       }
 

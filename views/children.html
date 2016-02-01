@@ -26,6 +26,7 @@
       </ul>
     </div>
   </div>
+
 <!--   <md-list layout="row">
       <md-list-item class="md-2-line" flex="20" ng-repeat="child in household.children" layout="row" layout-wrap>
         <div  class="md-item-text md-whiteframe-z1" flex>
@@ -35,6 +36,22 @@
       </md-list-item>
     </md-list> -->
   <div ng-repeat="child in household.children | limitTo: household.childCount">
+    <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Card with image</span>
+            <span class="md-subhead">Small</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+    <div>
     <!-- child names -->
     <label>Child's Name</label>
     <div layout="row">
@@ -55,10 +72,7 @@
     <!-- Student Status -->
     <div>
       <label>Is this child a student enrolled in the {{schoolDistrict}}?
-        <div>
-          <md-button ng-click="child.enrolled=true">Yes</md-button>
-          <md-button ng-click="child.enrolled=false">No</md-button>
-        </div>
+        <div yes-no-input model="child.enrolled"></div>
       </label>
     <div>
 

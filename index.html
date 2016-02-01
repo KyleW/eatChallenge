@@ -10,10 +10,10 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="eatChallengeApp" ng-cloak>
-  <header>
+  <header layout="row">
     <h1>Prototype Application for Free and Reduced Price School Meals</h1>
   </header>
-  <div class="mainContainer">
+  <div class="mainContainer" layout="row">
     <div class="leftCol" flex="1">
       <ul>
         <li><a ui-sref="start">Start Here</a></li>
@@ -28,7 +28,7 @@
     </div>
     <div ui-view class='centerCol' flex="4"></div>
   </div>
-  <footer>The footer will go here</footer>
+  <footer layout="row">The footer will go here</footer>
   
   <!-- JS -->
   <script type="text/javascript" src="/public/vendor.js"></script>
