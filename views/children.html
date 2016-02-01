@@ -35,8 +35,8 @@
         </div>
       </md-list-item>
     </md-list> -->
-  <div ng-repeat="child in household.children | limitTo: household.childCount">
-    <md-card>
+  <div layout="row" flex="80">
+    <md-card flex="20" ng-repeat="child in household.children | limitTo: household.childCount" ng-click="scope.selectedChild = child" >
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Card with image</span>
@@ -51,28 +51,28 @@
           <md-button>Action 2</md-button>
         </md-card-actions>
       </md-card>
-    <div>
+    </div>
     <!-- child names -->
     <label>Child's Name</label>
     <div layout="row">
       <md-input-container>
         <label>First Name</label>
-        <input ng-model="child.firstName">
+        <input ng-model="selectedChild.firstName">
       </md-input-container>
       <md-input-container>
         <label>Middle Initial</label>
-        <input ng-model="child.middleInitial">
+        <input ng-model="selectedChild.middleInitial">
       </md-input-container>
       <md-input-container>
         <label>Last Name</label>
-        <input ng-model="child.lastName">
+        <input ng-model="selectedChild.lastName">
       </md-input-container>
     </div>
     
     <!-- Student Status -->
     <div>
       <label>Is this child a student enrolled in the {{schoolDistrict}}?
-        <div yes-no-input model="child.enrolled"></div>
+        <div yes-no-input model="selectedChild.enrolled"></div>
       </label>
     <div>
 
@@ -80,19 +80,19 @@
     <div layout="column">
       <label>Check all that apply for this child:</label>
        <!-- TODO: add aria-label  -->
-      <md-checkbox ng-model="child.specialStatus.fosterChild">Foster Child</md-checkbox>
-      <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway">Homeless, Migrant, Runaway</md-checkbox>
-      <!-- <md-checkbox ng-model="child.specialStatus.migrant">Migrant</md-checkbox>
-      <md-checkbox ng-model="child.specialStatus.runaway">Runaway</md-checkbox> -->
-      <md-checkbox ng-model="child.specialStatus.headStartParticipant">Head Start Participant</md-checkbox>
+      <md-checkbox ng-model="selectedChild.specialStatus.fosterChild">Foster Child</md-checkbox>
+      <md-checkbox ng-model="selectedChild.specialStatus.homelessMigrantRunaway">Homeless, Migrant, Runaway</md-checkbox>
+      <!-- <md-checkbox ng-model="selectedChild.specialStatus.migrant">Migrant</md-checkbox>
+      <md-checkbox ng-model="selectedChild.specialStatus.runaway">Runaway</md-checkbox> -->
+      <md-checkbox ng-model="selectedChild.specialStatus.headStartParticipant">Head Start Participant</md-checkbox>
 
     </div>
 
     <div layout="row">
-      <md-checkbox ng-model="child.assistanceProgram.Participant">Assistance Program Participant(SNAP, TANF, FDPIR)</md-checkbox>
-      <md-input-container ng-show="child.assistanceProgram.Participant">
+      <md-checkbox ng-model="selectedChild.assistanceProgram.Participant">Assistance Program Participant(SNAP, TANF, FDPIR)</md-checkbox>
+      <md-input-container ng-show="selectedChild.assistanceProgram.Participant">
         <label>Case Number</label>
-        <input ng-model="child.assistanceProgram.caseNumber">
+        <input ng-model="selectedChild.assistanceProgram.caseNumber">
       </md-input-container>
     </div>
   </div>
