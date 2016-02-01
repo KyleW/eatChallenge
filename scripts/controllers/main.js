@@ -7,6 +7,7 @@ angular
     mainController.$inject = ['$mdDialog', '$mdMedia', '$scope'];
 
     function mainController ($mdDialog, $mdMedia, $scope) {            
+      $scope.schoolDistrict = "Oakland Unified School District";
       $scope.studentStatuses = ['in school', 'home schooled', 'some other status'];
       // Classes
       var Person = {

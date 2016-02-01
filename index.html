@@ -11,10 +11,10 @@
 </head>
 <body ng-app="eatChallengeApp" ng-cloak>
   <header>
-    <h1>Federal Application for Free and Reduced Price Lunch</h1>
+    <h1>Prototype Application for Free and Reduced Price School Meals</h1>
   </header>
   <div class="mainContainer">
-    <div class="leftCol">
+    <div class="leftCol" flex="1">
       <ul>
         <li><a ui-sref="start">Start Here</a></li>
         <li><a ui-sref="children">Children</a></li>
@@ -26,8 +26,7 @@
         <li><a ui-sref="styleguide">Styleguide</a></li>
       </ul> 
     </div>
-    <div ui-view class='centerCol'></div>
-    <div class="rightCol">Here's where additional instructions will go.</div>
+    <div ui-view class='centerCol' flex="4"></div>
   </div>
   <footer>The footer will go here</footer>
   

@@ -3,12 +3,28 @@
 <section id="children">
   <a name="children"></a>
   <h2>Children</h2>
-  <div>
-      <h3>
+  <div layout="row">
+    <div flex="80">
+        
+        <p>
+          Tell us how many infants, children, and school students live in your household.
+        </p>
 
-        <md-button ng-click="household.incrementChildCount()">+</md-button> 
-        Number of Children {{household.childCount}} </h3>
-      
+        <!-- Todo Move to right ??-->
+
+
+        <p>
+        <h3>
+          <md-button ng-click="household.incrementChildCount()">+</md-button> 
+          Number of Children {{household.childCount}}
+        </h3>
+    </div>
+    <div flex="20">
+      <ul>
+        <li>Include children who are supported with the household's income even if they are not related to you.</li>
+        <li>School students include anyone attending school through grade 12 regardless of their age.</li>
+      </ul>
+    </div>
   </div>
 <!--   <md-list layout="row">
       <md-list-item class="md-2-line" flex="20" ng-repeat="child in household.children" layout="row" layout-wrap>
@@ -20,30 +36,42 @@
     </md-list> -->
   <div ng-repeat="child in household.children | limitTo: household.childCount">
     <!-- child names -->
-    <md-input-container>
-      <label>First Name</label>
-      <input ng-model="child.firstName">
-    </md-input-container>
-    <md-input-container>
-      <label>Midle Name</label>
-      <input ng-model="child.middleName">
-    </md-input-container>
-    <md-input-container>
-      <label>Last Name</label>
-      <input ng-model="child.lastName">
-    </md-input-container>
+    <label>Child's Name</label>
+    <div layout="row">
+      <md-input-container>
+        <label>First Name</label>
+        <input ng-model="child.firstName">
+      </md-input-container>
+      <md-input-container>
+        <label>Middle Initial</label>
+        <input ng-model="child.middleInitial">
+      </md-input-container>
+      <md-input-container>
+        <label>Last Name</label>
+        <input ng-model="child.lastName">
+      </md-input-container>
+    </div>
     
     <!-- Student Status -->
-    <!-- <input placeholder="Status" type="text" ng-model="child.studentStatus"> -->
+    <div>
+      <label>Is this child a student enrolled in the {{schoolDistrict}}?
+        <div>
+          <md-button ng-click="child.enrolled=true">Yes</md-button>
+          <md-button ng-click="child.enrolled=false">No</md-button>
+        </div>
+      </label>
+    <div>
 
     <!-- Status as qualifying category -->
     <div layout="column">
+      <label>Check all that apply for this child:</label>
        <!-- TODO: add aria-label  -->
       <md-checkbox ng-model="child.specialStatus.fosterChild">Foster Child</md-checkbox>
-      <md-checkbox ng-model="child.specialStatus.homeless">Homeless</md-checkbox>
-      <md-checkbox ng-model="child.specialStatus.migrant">Migrant</md-checkbox>
-      <md-checkbox ng-model="child.specialStatus.runaway">Runaway</md-checkbox>
+      <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway">Homeless, Migrant, Runaway</md-checkbox>
+      <!-- <md-checkbox ng-model="child.specialStatus.migrant">Migrant</md-checkbox>
+      <md-checkbox ng-model="child.specialStatus.runaway">Runaway</md-checkbox> -->
       <md-checkbox ng-model="child.specialStatus.headStartParticipant">Head Start Participant</md-checkbox>
+
     </div>
 
     <div layout="row">
