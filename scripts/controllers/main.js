@@ -62,6 +62,13 @@ angular
       // TODO: replace scope with vm
       $scope.household = household
 
+      $scope.$watch('household.childCount', function(newVal){
+        debugger;
+        while(newVal > $scope.household.children.length) {
+          $scope.household.incrementChildCount();
+        }
+      })
+
       $scope.showConfirm = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()

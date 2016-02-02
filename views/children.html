@@ -1,99 +1,79 @@
 
 <!-- children -->
-<section id="children">
-  <a name="children"></a>
-  <h2>Children</h2>
-  <div layout="row">
-    <div flex="80">
-        
-        <p>
-          Tell us how many infants, children, and school students live in your household.
-        </p>
-
-        <!-- Todo Move to right ??-->
-
-
-        <p>
-        <h3>
-          <md-button ng-click="household.incrementChildCount()">+</md-button> 
-          Number of Children {{household.childCount}}
-        </h3>
-    </div>
-    <div flex="20">
-      <ul>
-        <li>Include children who are supported with the household's income even if they are not related to you.</li>
-        <li>School students include anyone attending school through grade 12 regardless of their age.</li>
-      </ul>
-    </div>
-  </div>
-
-<!--   <md-list layout="row">
-      <md-list-item class="md-2-line" flex="20" ng-repeat="child in household.children" layout="row" layout-wrap>
-        <div  class="md-item-text md-whiteframe-z1" flex>
-          <h3>Child {{$index + 1}}</h3>
-          <p>{{child.firstName}}</p>
+<section id="children" layout='row' layout-margin="0 30px">
+  <div class="questionMain" flex="60" layout="column">
+    <a name="children"></a>
+    <h2>Children</h2>
+    <div layout="row">
+        <div flex="55" layout-margin="0 18px" >
+          <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
         </div>
-      </md-list-item>
-    </md-list> -->
-  <div layout="row" flex="80">
-    <md-card flex="20" ng-repeat="child in household.children | limitTo: household.childCount" ng-click="scope.selectedChild = child" >
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Small</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
+        <md-input-container flex-offset="5" flex="40">
+            <label>number of children</label>
+            <md-select ng-model="household.childCount">
+              <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{number}}">
+                {{number}} <span ng-if="number === 1">child</span> <span ng-if="number > 1">children</span>
+              </md-option>
+            </md-select>
+        </md-input-container>
     </div>
-    <!-- child names -->
-    <label>Child's Name</label>
-    <div layout="row">
-      <md-input-container>
-        <label>First Name</label>
-        <input ng-model="selectedChild.firstName">
-      </md-input-container>
-      <md-input-container>
-        <label>Middle Initial</label>
-        <input ng-model="selectedChild.middleInitial">
-      </md-input-container>
-      <md-input-container>
-        <label>Last Name</label>
-        <input ng-model="selectedChild.lastName">
-      </md-input-container>
-    </div>
-    
-    <!-- Student Status -->
-    <div>
-      <label>Is this child a student enrolled in the {{schoolDistrict}}?
-        <div yes-no-input model="selectedChild.enrolled"></div>
-      </label>
-    <div>
+    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Child #{{$index + 1}}<span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span></span>
+          <!-- <span class="md-subhead">Large</span> -->
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
 
-    <!-- Status as qualifying category -->
-    <div layout="column">
-      <label>Check all that apply for this child:</label>
-       <!-- TODO: add aria-label  -->
-      <md-checkbox ng-model="selectedChild.specialStatus.fosterChild">Foster Child</md-checkbox>
-      <md-checkbox ng-model="selectedChild.specialStatus.homelessMigrantRunaway">Homeless, Migrant, Runaway</md-checkbox>
-      <!-- <md-checkbox ng-model="selectedChild.specialStatus.migrant">Migrant</md-checkbox>
-      <md-checkbox ng-model="selectedChild.specialStatus.runaway">Runaway</md-checkbox> -->
-      <md-checkbox ng-model="selectedChild.specialStatus.headStartParticipant">Head Start Participant</md-checkbox>
+        <!-- child names -->
+        <div layout="row">
+          <md-input-container flex="3">
+            <label>First Name</label>
+            <input ng-model="child.firstName">
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="1">
+            <label>Middle Initial</label>
+            <input ng-model="child.middleInitial">
+          </md-input-container>
+          <md-input-container flex-offset="5" flex="3">
+            <label>Last Name</label>
+            <input ng-model="child.lastName">
+          </md-input-container>
+        </div>
+      
+        <!-- Student Status -->
+        <div layout="row">
+          <div flex="55"><label>Is this child a student enrolled in the {{schoolDistrict}}?</label></div>
+          <div yes-no-input model="child.enrolled" flex-offset="5" flex="40"></div>
+        </div>
 
-    </div>
+        <!-- Special Status -->
+        <div layout="column">
+          <div><label>Check all that apply for this child:</label></div>
+          <div layout="column" flex-offset="60" class="child_checkbox_container">
+            <md-checkbox ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
+            <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
+            <md-checkbox ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
+            <md-checkbox ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
+            <md-input-container ng-show="child.assistanceProgram.Participant" flex-offset="0">
+              <label>Case Number</label>
+              <input ng-model="child.assistanceProgram.caseNumber">
+            </md-input-container>
+          </div>
+        </div>
 
-    <div layout="row">
-      <md-checkbox ng-model="selectedChild.assistanceProgram.Participant">Assistance Program Participant(SNAP, TANF, FDPIR)</md-checkbox>
-      <md-input-container ng-show="selectedChild.assistanceProgram.Participant">
-        <label>Case Number</label>
-        <input ng-model="selectedChild.assistanceProgram.caseNumber">
-      </md-input-container>
-    </div>
+      </md-card-content>
+    </md-card>
   </div>
+  <div class="secondary-instructions" flex="40" layout="column">
+    <p>
+      If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals. Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. 
+    </p>
+    <ul>
+      <li>Include children who are supported with the household's income even if they are not related to you.</li>
+      <li>School students include anyone attending school through grade 12 regardless of their age.</li>
+    </ul>
+  </div>
+
 </section>
