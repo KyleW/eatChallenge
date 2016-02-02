@@ -1,5 +1,8 @@
-var householdSchema = mongoose.Schema({
-  numberOfChildren: string
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var householdSchema = new Schema({
+  numberOfChildren: Number
 })
 
-var household = mongoose.model("household", householdSchema);
+module.exports = mongoose.model("household", householdSchema);

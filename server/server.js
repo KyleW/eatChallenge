@@ -13,6 +13,8 @@ var household = require('./controllers/household')
 
 // Middleware
 app.use(compress());  
+
+// Static files
 app.use('/public', express.static('./build'));
 app.use('/views', express.static('./views'));
 
@@ -25,10 +27,8 @@ app.get('/styleguide', function (req, res) {
   res.sendFile(url.resolve(__dirname, './views/styleguide.html'));
 });
 
-app.post('/househol')
-
-
-
+app.get('/household', household.find);
+app.post('/household', household.save);
 
 
 //Start server
@@ -40,7 +40,6 @@ var server = app.listen(port, ipAddress, function () {
   var port = server.address().port;
   console.log('Buzzing along at http://%s:%s', host, port);
 });
-
 
 
 //Start DB
