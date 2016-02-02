@@ -17,7 +17,7 @@
             </md-select>
         </md-input-container>
     </div>
-    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60">
+    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60" layout-padding="5">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">Child #{{$index + 1}}<span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span></span>
