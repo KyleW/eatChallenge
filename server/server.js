@@ -14,6 +14,19 @@ var app = express();
 // Middleware
 app.use(compress());  
 
+// grabbed from http://stackoverflow.com/questions/15813677/https-redirection-for-all-routes-node-js-express-security-concerns
+function requireHTTPS(req, res, next) {
+    if (!req.secure) {
+        return res.redirect('https://' + req.get('host') + req.url);
+    }
+    next();
+}
+
+// only force https in prod
+if(process.env.OPENSHIFT_APP_NAME){
+  app.use(requireHTTPS);
+}
+
 // Static files
 app.use('/public', express.static('./build'));
 app.use('/views', express.static('./views'));
