@@ -72,6 +72,16 @@
         url: '/styleguide',
         templateUrl: '../views/styleguide.html',
         controller: 'mainController'
+      })
+      .state('signup', {
+        url: '/signup',
+        templateUrl: '../views/signup.html',
+        // controller: 'mainController'
+      })
+      .state('signin', {
+        url: '/signin',
+        templateUrl: '../views/signin.html',
+        // controller: 'mainController'
       });
     }
   }
