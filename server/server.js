@@ -1,15 +1,15 @@
 var url = require('url');
 var path = require('path');
 var config = require('../config/config');
-
 var express = require('express');
-var app = express();
 var compress = require('compression');
-
 var mongoose = require('mongoose');
 
 // Controllers
 var household = require('./controllers/household')
+
+// Creates the app
+var app = express();
 
 // Middleware
 app.use(compress());  
@@ -23,11 +23,11 @@ app.get('/', function (req, res) {
   res.sendFile(url.resolve(__dirname, './index.html'));
 });
 
-app.get('/styleguide', function (req, res) {
-  res.sendFile(url.resolve(__dirname, './views/styleguide.html'));
-});
+// app.get('/styleguide', function (req, res) {
+//   res.sendFile(url.resolve(__dirname, './views/styleguide.html'));
+// });
 
-app.get('/household', household.find);
+app.get('/household', household.findAll);
 app.post('/household', household.save);
 
 
@@ -59,3 +59,6 @@ db.once('open', function() {
   console.log('we are connected to the db!')
   // we're connected!
 });
+
+
+module.exports = app;

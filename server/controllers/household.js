@@ -12,8 +12,34 @@ module.exports = {
     });
   },
 
-  find: function(req, res) {
+  findById: function(req, res) {
+    Household.findById(req.user.id, function(err, data){
+      if (err) {
+          return next(err);
+      }
+      return res.send(data);
+    })
 
+  },
+
+  findForUser: function(req, res) {
+    Household.findOne({userId: req.body.userId}).exec(function(err, data){
+      if (err) {
+          return next(err);
+      }
+      return res.send(data);
+    })
+
+
+  },
+
+  findAll: function(req, res) {
+    Household.find().exec(function(err, data){
+      if (err) {
+          return next(err);
+      }
+      res.send(data);
+    });
   }
 
 };
