@@ -32,7 +32,7 @@ var paths = {
 gulp.task('clean',function() {
     // Make sure to delete the contents of the directory
     // Not the directory itself
-    return del(paths.dist + '/**')
+    return del(paths.dist + '/**');
 });
 
 // Linting
@@ -47,7 +47,6 @@ gulp.task('buildApp',function () {
     return gulp.src(paths.js)
     .pipe(sourcemaps.init())
       .pipe(concat('app.js'))
-      // TODO: turn on for prod
       .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
@@ -71,7 +70,6 @@ gulp.task('buildVendor', function() {
     return gulp.src(paths.vendor)
     .pipe(sourcemaps.init())
       .pipe(concat('vendor.js'))
-      // .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
 });
@@ -81,8 +79,8 @@ gulp.task('start', function () {
         script: paths.entrypoint,
         ext: 'js html',
         env: {'NODE_ENV': 'development'}
-    })
-})
+    });
+});
 
 gulp.task('watch', function() {
     // gulp.watch(paths.js, ['jshint']);
@@ -92,6 +90,6 @@ gulp.task('watch', function() {
 });
 
 // Call these
-gulp.task('build', ['buildCss','buildVendor','buildApp'])
-gulp.task('dev',['clean','build','watch','start'])
+gulp.task('build', ['buildCss','buildVendor','buildApp']);
+gulp.task('dev',['clean','build','watch','start']);
 gulp.task('default', ['clean','build']);

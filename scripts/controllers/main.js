@@ -38,7 +38,7 @@ function mainController ($mdDialog, $mdMedia, $scope) {
         incrementChildCount: function() {
             this.childCount++;
             while (this.childCount > this.children.length) {
-                var newChild = Object.create(Person)
+                var newChild = Object.create(Person);
                 newChild.init();
                 this.children.push(newChild);
             }
@@ -53,19 +53,18 @@ function mainController ($mdDialog, $mdMedia, $scope) {
             }
         }
 
-    }
+    };
 
-    var household = Object.create(Household)
+    var household = Object.create(Household);
     household.init();
     // TODO: replace scope with vm
-    $scope.household = household
+    $scope.household = household;
 
     $scope.$watch('household.childCount', function(newVal) {
-        debugger;
         while (newVal > $scope.household.children.length) {
             $scope.household.incrementChildCount();
         }
-    })
+    });
 
     $scope.showConfirm = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
@@ -83,6 +82,6 @@ function mainController ($mdDialog, $mdMedia, $scope) {
         });
     };
 
-};
+}
 
 })();

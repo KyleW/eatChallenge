@@ -6,13 +6,13 @@ var compress = require('compression');
 var mongoose = require('mongoose');
 
 // Controllers
-var household = require('./controllers/household')
+var household = require('./controllers/household');
 
 // Creates the app
 var app = express();
 
 function redirectSec(req, res, next) {
-    if (req.headers['x-forwarded-proto'] == 'http') {
+    if (req.headers['x-forwarded-proto'] === 'http') {
         res.redirect('https://' + req.headers.host + req.path);
     } else {
         return next();
@@ -53,21 +53,21 @@ var server = app.listen(port, ipAddress, function () {
 });
 
 //Start DB
-var db_name = 'eatChallenge';
+var DB_NAME = 'eatChallenge';
 //provide a sensible default for local development
-var mongodb_connection_string = 'mongodb://127.0.0.1:27017/' + db_name;
+var MONGODB_CONNECTION_STRING = 'mongodb://127.0.0.1:27017/' + DB_NAME;
 //take advantage of openshift env vars when available:
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-    var mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+    var MONGODB_CONNECTION_STRING = process.env.OPENSHIFT_MONGODB_DB_URL + DB_NAME;
 }
 
-mongoose.connect(mongodb_connection_string);
+mongoose.connect(MONGODB_CONNECTION_STRING);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-    console.log('we are connected to the db!')
     // we're connected!
+    console.log('we are connected to the db!');
 });
 
 module.exports = app;
