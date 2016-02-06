@@ -1,75 +1,73 @@
-(function(){
+(function() {
 
 angular
     .module('eatChallengeApp')
     .controller('mainController', mainController);
 
-    mainController.$inject = ['$mdDialog', '$mdMedia', '$scope'];
+mainController.$inject = ['$mdDialog', '$mdMedia', '$scope'];
 
-    function mainController ($mdDialog, $mdMedia, $scope) {            
-      $scope.schoolDistrict = "Oakland Unified School District";
-      $scope.studentStatuses = ['in school', 'home schooled', 'some other status'];
-      // Classes
-      var Person = {
+function mainController ($mdDialog, $mdMedia, $scope) {
+    $scope.schoolDistrict = 'Oakland Unified School District';
+    $scope.studentStatuses = ['in school', 'home schooled', 'some other status'];
+    // Classes
+    var Person = {
         init: function() {
-          this.incomeSourceCount= 0;
-          this.incomeSources= [];
+            this.incomeSourceCount = 0;
+            this.incomeSources = [];
         },
 
-        incrementIncomeSources: function(){
-          this.incomeSourceCount++;
-          while(this.incomeSourceCount > this.incomeSources.length) {
-            this.incomeSources.push({});
-          }
+        incrementIncomeSources: function() {
+            this.incomeSourceCount++;
+            while (this.incomeSourceCount > this.incomeSources.length) {
+                this.incomeSources.push({});
+            }
         }
-      };
+    };
 
-
-      var Household = {
+    var Household = {
         init: function () {
-          this.children = [];
-          this.childCount = 0;
-          this.incrementChildCount();
+            this.children = [];
+            this.childCount = 0;
+            this.incrementChildCount();
 
-          this.otherMembers = [];
-          this.otherMembersCount = 0;
-          this.incrementOtherMembersCount();
+            this.otherMembers = [];
+            this.otherMembersCount = 0;
+            this.incrementOtherMembersCount();
         },
 
-        incrementChildCount: function(){
-          this.childCount++;
-          while (this.childCount > this.children.length) {
-            var newChild = Object.create(Person)
-            newChild.init();
-            this.children.push(newChild);
-          }
+        incrementChildCount: function() {
+            this.childCount++;
+            while (this.childCount > this.children.length) {
+                var newChild = Object.create(Person)
+                newChild.init();
+                this.children.push(newChild);
+            }
         },
 
         incrementOtherMembersCount: function() {
-          this.otherMembersCount++;
-          while (this.otherMembersCount > this.otherMembers.length) {
-            var newMember = Object.create(Person);
-            newMember.init();
-            this.otherMembers.push(newMember);
-          }
+            this.otherMembersCount++;
+            while (this.otherMembersCount > this.otherMembers.length) {
+                var newMember = Object.create(Person);
+                newMember.init();
+                this.otherMembers.push(newMember);
+            }
         }
 
-      }
+    }
 
+    var household = Object.create(Household)
+    household.init();
+    // TODO: replace scope with vm
+    $scope.household = household
 
-      var household = Object.create(Household)
-      household.init();
-      // TODO: replace scope with vm
-      $scope.household = household
-
-      $scope.$watch('household.childCount', function(newVal){
+    $scope.$watch('household.childCount', function(newVal) {
         debugger;
-        while(newVal > $scope.household.children.length) {
-          $scope.household.incrementChildCount();
+        while (newVal > $scope.household.children.length) {
+            $scope.household.incrementChildCount();
         }
-      })
+    })
 
-      $scope.showConfirm = function(ev) {
+    $scope.showConfirm = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()
           .title('Would you like to delete this entry?')
@@ -78,13 +76,13 @@ angular
           .targetEvent(ev)
           .ok('Yes')
           .cancel('No');
-      $mdDialog.show(confirm).then(function() {
-      $scope.status = 'You decided to get rid of your debt.';
-    }, function() {
-      $scope.status = 'You decided to keep your debt.';
-    });
-  };
-
+        $mdDialog.show(confirm).then(function() {
+            $scope.status = 'You decided to get rid of your debt.';
+        }, function() {
+            $scope.status = 'You decided to keep your debt.';
+        });
     };
+
+};
 
 })();

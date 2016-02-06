@@ -10,30 +10,29 @@ var stylus = require('gulp-stylus');
 var nib = require('nib');
 var uglify = require('gulp-uglify');
 
-
 var paths = {
-  entrypoint: './server/server.js',
-  styles: [
-    './styles/base.styl',
-  ],
-  js: ['./scripts/**/*.js'],
-  vendor: [
-    './bower_components/angular/angular.min.js',
-    './bower_components/angular-ui-router/release/angular-ui-router.min.js',
-    './bower_components/angular-animate/angular-animate.min.js',
-    './bower_components/angular-aria/angular-aria.min.js',
-    './bower_components/angular-messages/angular-messages.min.js',
-    './bower_components/angular-material/angular-material.min.js',
-    './bower_components/underscore/underscore-min.js'
-  ],
-  dist: './build'
+    entrypoint: './server/server.js',
+    styles: [
+      './styles/base.styl',
+    ],
+    js: ['./scripts/**/*.js'],
+    vendor: [
+      './bower_components/angular/angular.min.js',
+      './bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      './bower_components/angular-animate/angular-animate.min.js',
+      './bower_components/angular-aria/angular-aria.min.js',
+      './bower_components/angular-messages/angular-messages.min.js',
+      './bower_components/angular-material/angular-material.min.js',
+      './bower_components/underscore/underscore-min.js'
+    ],
+    dist: './build'
 };
 
 // Cleanup
-gulp.task('clean',function(){
-  // Make sure to delete the contents of the directory
-  // Not the directory itself
-  return del(paths.dist + '/**')
+gulp.task('clean',function() {
+    // Make sure to delete the contents of the directory
+    // Not the directory itself
+    return del(paths.dist + '/**')
 });
 
 // Linting
@@ -44,52 +43,52 @@ gulp.task('clean',function(){
 // });
 
 // Builders
-gulp.task('buildApp',function (){
-  return gulp.src(paths.js)
-  .pipe(sourcemaps.init())
-    .pipe(concat('app.js'))
-    // TODO: turn on for prod
-    .pipe(uglify())
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest(paths.dist));
+gulp.task('buildApp',function () {
+    return gulp.src(paths.js)
+    .pipe(sourcemaps.init())
+      .pipe(concat('app.js'))
+      // TODO: turn on for prod
+      .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('buildCss',function(){
-  return gulp.src(paths.styles)
-  .pipe(sourcemaps.init())
-  .pipe(
+gulp.task('buildCss',function() {
+    return gulp.src(paths.styles)
+    .pipe(sourcemaps.init())
+    .pipe(
     stylus({
-       compress: true,
-       'include css': true,
-       use: nib(),
+        compress: true,
+        'include css': true,
+        use: nib(),
     })
   )
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('buildVendor', function(){
-  return gulp.src(paths.vendor)
-  .pipe(sourcemaps.init())
-    .pipe(concat('vendor.js'))
-    // .pipe(uglify())
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest(paths.dist));
+gulp.task('buildVendor', function() {
+    return gulp.src(paths.vendor)
+    .pipe(sourcemaps.init())
+      .pipe(concat('vendor.js'))
+      // .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('start', function () {
-  nodemon({
-    script: paths.entrypoint,
-    ext: 'js html',
-    env: { 'NODE_ENV': 'development' }
-  })
+    nodemon({
+        script: paths.entrypoint,
+        ext: 'js html',
+        env: {'NODE_ENV': 'development'}
+    })
 })
 
 gulp.task('watch', function() {
-  // gulp.watch(paths.js, ['jshint']);
-  gulp.watch(['./styles/*.styl'], ['buildCss']);
-  gulp.watch(paths.vendor, ['buildVendor']);
-  gulp.watch(paths.js, ['buildApp']);
+    // gulp.watch(paths.js, ['jshint']);
+    gulp.watch(['./styles/*.styl'], ['buildCss']);
+    gulp.watch(paths.vendor, ['buildVendor']);
+    gulp.watch(paths.js, ['buildApp']);
 });
 
 // Call these

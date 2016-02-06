@@ -1,18 +1,18 @@
-(function(){
+(function() {
 
-  angular
-      .module('eatChallengeApp')
-      .directive('yesNoInput', yesNoInput);
+    angular
+        .module('eatChallengeApp')
+        .directive('yesNoInput', yesNoInput);
 
-      function yesNoInput () {            
+    function yesNoInput () {
         return {
-          scope: {
-            model: "="
-          },
-          restrict: 'A',
-          replace: true,
-          templateUrl: '../views/yesno.html',
+            scope: {
+                model: '='
+            },
+            restrict: 'A',
+            replace: true,
+            templateUrl: '../views/yesno.html',
         };
-      }
+    }
 
 })();
