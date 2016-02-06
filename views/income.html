@@ -1,8 +1,8 @@
 <div>
   <label>
-  <md-switch ng-model="member.earnsIncome" aria-label="earns income?">
+<!--   <md-switch ng-model="member.earnsIncome" aria-label="earns income?">
     Does this person have any sources of income?
-  </md-switch>
+  </md-switch> -->
   <div ng-show="member.earnsIncome">
     <md-button ng-click="member.incrementIncomeSources()">+</md-button>
     <div ng-repeat="incomeSource in member.incomeSources">
