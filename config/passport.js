@@ -39,15 +39,10 @@ module.exports = function(passport) {
             }
 
             if (user) {
-                // user already exists
-                return done(null, false);
-                // req.flash('signupMessage', 'That email is already taken.'));
+                return done(null, false, {message: 'That email is already taken.'});
             }
 
-            // create a new user
             newUser = new User();
-
-            // set the user's local credentials
             newUser.email    = email;
             newUser.password = newUser.generateHash(password);
 
@@ -73,7 +68,6 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) {
         User.findOne({'email' :  email}, function(err, user) {
-            // if there are any errors, return the error before anything else
             if (err) {
                 return done(err);
             }
