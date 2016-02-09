@@ -3,7 +3,7 @@
 
 <!-- LOGIN FORM -->
 <div flex="60" layout-padding>
-    <form action="/signup" method="post">
+    <form action="/login" method="post">
         <div>
             <md-input-container>
                 <label>Email Address</label>
@@ -16,9 +16,9 @@
                 <input ng-model="user.password" name='password' type='password' required>
             </md-input-container>            
         </div>
-        <md-button type="submit">Login</md-button>
+        <md-button type="submit">Login</button>
     </form>
 
-    <p>Already have an account?<a ui-sref="login">Login</a></p>
+    <p>Need an account? <a ui-sref="#/signup">Signup</a></p>
     <p>Or go <a ui-sref="start">start</a>.</p>        
 </div>

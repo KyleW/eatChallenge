@@ -1,9 +1,13 @@
 var express = require('express');
+var app = express();
+
 var compress = require('compression');
 var redirectToHttps = require('./middleware/forceHttps');
 var flash    = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
+var expressValidator = require('express-validator');
+
 var session      = require('express-session');
 var passport = require('passport');
 
@@ -28,19 +32,21 @@ db.once('open', function() {
     console.log('we are connected to the db!');
 });
 
-// Creates the app
-var app = express();
-
 // Middleware
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+// app.use(expressValidator());
+
+// app.use(cookieParser);
 app.use(redirectToHttps); //force https
 app.use(compress()); // gzip
 
 // Passport
 require('../config/passport')(passport); // pass passport for configuration
-app.use(session({secret: 'LunchLunchLunch'})); // session secret
+// app.use(session({secret: 'LunchLunchLunch'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+// app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes.js')(app, passport);
 

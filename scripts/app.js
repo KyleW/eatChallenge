@@ -77,9 +77,9 @@
           templateUrl: '../views/signup.html',
           // controller: 'mainController'
       })
-      .state('signin', {
-          url: '/signin',
-          templateUrl: '../views/signin.html',
+      .state('login', {
+          url: '/login',
+          templateUrl: '../views/login.html',
           // controller: 'mainController'
       });
         }
