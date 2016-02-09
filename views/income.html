@@ -1,27 +1,21 @@
 <div>
-  <label>
-<!--   <md-switch ng-model="member.earnsIncome" aria-label="earns income?">
-    Does this person have any sources of income?
-  </md-switch> -->
-  <div ng-show="member.earnsIncome">
-    <md-button ng-click="member.incrementIncomeSources()">+</md-button>
-    <div ng-repeat="incomeSource in member.incomeSources">
-      <md-input-container>
-        <label>Source of Income</label>
-        <input ng-model="incomeSource.name">
-      </md-input-container>
-      <md-input-container>
+  <div ng-repeat="incomeSource in incomeSources" layout="row" ng-show="member.earnsIncome" layout-padding>
+    <div flex="30">
+      <label>{{incomeSource.label}}</label>
+    </div>
+    <div flex="65" offset="5">
+      <md-input-container flex="45">
         <label>Amount</label>
-        <input ng-model="incomeSource.amount" type="number">
+        <!-- TODO: store this in the right place on member -->
+        <input ng-model="member[incomeSource.value].amount" type="number">
       </md-input-container>
-      <md-input-container>
+      <md-input-container flex="45" offset="5">
         <label>How often?</label>
-        <md-select ng-model="incomeSource.frequency">
-          <md-option value="weekly">Every Week</md-option>
-          <md-option value="biweekly">Every 2 Weeks</md-option>
-          <md-option value="monthly">Every Month</md-option>
+        <!-- TODO: store this in the right place on member -->
+        <md-select ng-model="member[incomeSource.value].frequency">
+          <md-option ng-repeat="time in incomeSource.frequency" value="{{time}}">{{time}}</md-option>
         </md-select>
       </md-input-container>     
     </div>
-  </div>
 </div>
+

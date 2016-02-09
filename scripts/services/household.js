@@ -6,8 +6,9 @@
     householdService.$inject = ['$http'];
 
     function householdService($http) {
-        this.getHousehold = getHousehold;
-        this.clearHousehold = clearHousehold;
+        this.get = get;
+        this.save = save;
+        this.clear = clear;
 
 
         //////////////////////////////////
@@ -63,16 +64,16 @@
             }
         
             //TODO: if there's a userid, return the household associated with it
-            if (userid) {
-                // TODO: add error handling
-                $http.get('/household').then(function(data) {
-                    return household = data;
-                });
-            } else {
-                // create a new household if one doesn't exist
+            // if (userid) {
+            //     // TODO: add error handling
+            //     $http.get('/household').then(function(data) {
+            //         return household = data;
+            //     });
+            // } else {
+            //     // create a new household if one doesn't exist
                 household = Object.create(Household);
                 household.init();
-            }
+            // }
 
             return household;
         }
