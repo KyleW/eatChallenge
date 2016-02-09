@@ -55,8 +55,7 @@ gulp.task('buildApp',function () {
 gulp.task('buildCss',function() {
     return gulp.src(paths.styles)
     .pipe(sourcemaps.init())
-    .pipe(
-    stylus({
+    .pipe(stylus({
         compress: true,
         'include css': true,
         use: nib(),

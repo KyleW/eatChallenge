@@ -7,7 +7,7 @@
 
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
-        $mdThemingProvider.theme('light-blue');
+        // $mdThemingProvider.theme('light-blue');
         // .primaryPalette('pink', {
         //   'default': '400', // by default use shade 400 from the pink palette for primary intentions
         //   'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
@@ -37,23 +37,32 @@
           templateUrl: '../views/start.html',
           controller: 'mainController'
       })
+      // .state('application',{
+      //     resolve: {
+      //         household: {};
+      //     }
+      // })
       .state('children', {
           url: '/children',
+          // parent: 'application',
           templateUrl: '../views/children.html',
           controller: 'mainController'
       })
       .state('childIncome', {
           url: '/childIncome',
+          // parent: 'application',
           templateUrl: '../views/childIncome.html',
           controller: 'mainController'
       })
       .state('household', {
           url: '/household',
+          // parent: 'application',
           templateUrl: '../views/household.html',
           controller: 'mainController'
       })
       .state('signature', {
           url: '/signature',
+          // parent: 'application',
           templateUrl: '../views/signature.html',
           controller: 'mainController'
       })
