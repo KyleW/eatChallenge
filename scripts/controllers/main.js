@@ -16,6 +16,11 @@ function mainController ($mdDialog, $mdMedia, $scope, Household) {
             $scope.household.incrementChildCount();
         }
     });
+    $scope.$watch('household.otherMembersCount', function(newVal) {
+        while (newVal > $scope.household.otherMembers.length) {
+            $scope.household.incrementOtherMembersCount();
+        }
+    });
 }
 
 })();
