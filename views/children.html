@@ -1,9 +1,12 @@
 
 <!-- children -->
-<section id="children" layout='row' layout-margin="0 30px">
-  <div class="questionMain" layout="column">
+<section id="children questionMain" layout='column'>
     <h2>Children</h2>
     <div layout="row">
+        <ul class="annotation">
+          <li>School students include anyone attending school through grade 12 regardless of their age.</li>
+          <li>Include children who are supported with the household's income even if they are not related to you.</li>
+        </ul>
         <div flex="55" layout-margin="0 18px" >
           <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
         </div>
@@ -16,10 +19,14 @@
             </md-select>
         </md-input-container>
     </div>
+
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5">
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline">Child #{{$index + 1}}<span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span></span>
+          <span class="md-headline">
+            Child #{{$index + 1}}
+            <span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span>
+          </span>
           <!-- <span class="md-subhead">Large</span> -->
         </md-card-title-text>
       </md-card-title>
@@ -58,21 +65,20 @@
             <md-input-container ng-show="child.assistanceProgram.Participant" flex-offset="0">
               <label>Case Number</label>
               <input ng-model="child.assistanceProgram.caseNumber">
+              <div class="annotation inset">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals. Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. </div>
             </md-input-container>
           </div>
         </div>
 
       </md-card-content>
     </md-card>
-  </div>
-  <div class="secondary-instructions" layout="column">
+  <!-- <div class="secondary-instructions" layout="column">
     <p>
-      If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals. Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. 
+
     </p>
     <ul>
-      <li>Include children who are supported with the household's income even if they are not related to you.</li>
-      <li>School students include anyone attending school through grade 12 regardless of their age.</li>
+      
     </ul>
-  </div>
+  </div> -->
 
 </section>

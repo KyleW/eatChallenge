@@ -1,57 +1,53 @@
 <!--Household -->
-<section id="household" layout="row" layout-margin="0 30px">
-    <div class="questionMain" layout="column">
-        <h2>Other Household Members</h2>
-        <div layout="row">
-            <div flex="55" layout-margin="0 18px" >
-                <div><label>Tell us how many people live in your household in addition to the students you told us about before</label></div>
-            </div>
-            <md-input-container flex-offset="5" flex="40">
-                <label>Other Household Members</label>
-                <md-select ng-model="household.otherMembersCount">
-                    <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{number}}">
-                        {{number}} <span ng-if="number === 1">Other Household Member</span> <span ng-if="number > 1">Other Household Members</span>
-                    </md-option>
-                </md-select>
-            </md-input-container>
+<section id="household questionMain" layout="column">
+    <h2>Other Household Members</h2>
+    <div layout="row">
+        <div flex="55" layout-margin="0 18px" >
+            <div><label>Tell us how many people live in your household in addition to the students you told us about before</label></div>
         </div>
-        <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Household Member #{{$index + 1}}<span class="md-headline" ng-if="member.firstName">: {{member.firstName}} {{member.lastName}}</span></span>
-                    <!-- <span class="md-subhead">Large</span> -->
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-
-            <!-- child names -->
-                <div layout="row">
-                    <md-input-container flex="3">
-                        <label>First Name</label>
-                        <input ng-model="member.firstName">
-                    </md-input-container>
-                    <md-input-container flex-offset="5" flex="3">
-                        <label>Last Name</label>
-                        <input ng-model="member.lastName">
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Last four digits of SSN</label>
-                        <input ng-model="member.last4ssn">
-                    </md-input-container>
-                </div>
-                <div layout="row">
-                    <div flex="55"><label>Does 
-                    <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
-                    <span ng-if="!member.firstName">this person</span>
-                    have his or her own source of income?</label></div>
-                    <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
-                </div>
-                <div layout="colunm" ng-show="member.earnsIncome">
-                    <div member="member" income-questions> </div>
-                </div>
-            </md-card-content>
-        </md-card>
+        <md-input-container flex-offset="5" flex="40">
+            <label>Other Household Members</label>
+            <md-select ng-model="household.otherMembersCount">
+                <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{number}}">
+                    {{number}} <span ng-if="number === 1">Other Household Member</span> <span ng-if="number > 1">Other Household Members</span>
+                </md-option>
+            </md-select>
+        </md-input-container>
     </div>
-    <div class="secondary-instructions" layout="column">Secondary instructions here</div>
+    <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Household Member #{{$index + 1}}<span class="md-headline" ng-if="member.firstName">: {{member.firstName}} {{member.lastName}}</span></span>
+                <!-- <span class="md-subhead">Large</span> -->
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
 
+        <!-- child names -->
+            <div layout="row">
+                <md-input-container flex="3">
+                    <label>First Name</label>
+                    <input ng-model="member.firstName">
+                </md-input-container>
+                <md-input-container flex-offset="5" flex="3">
+                    <label>Last Name</label>
+                    <input ng-model="member.lastName">
+                </md-input-container>
+                <md-input-container>
+                    <label>Last four digits of SSN</label>
+                    <input ng-model="member.last4ssn">
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <div flex="55"><label>Does 
+                <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
+                <span ng-if="!member.firstName">this person</span>
+                have his or her own source of income?</label></div>
+                <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
+            </div>
+            <div layout="colunm" ng-show="member.earnsIncome">
+                <div member="member" income-questions> </div>
+            </div>
+        </md-card-content>
+    </md-card>
 </section>

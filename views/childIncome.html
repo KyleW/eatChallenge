@@ -1,37 +1,35 @@
-<section id="children" layout='row' layout-margin="0 30px">
-  <div class="questionMain" flex="60" layout="column">
-    <h2>Children's Income</h2>
-    <div layout="row">
-      <div flex="55" layout-margin="0 18px" >
-        <div>
-          Sometimes children in the household have their own income. If a child in your household receives money directly, please fill out their income card. 
-        </div>
+<section id="children qustionMain" layout='column'>
+  <h2>Children's Income</h2>
+  <div layout="row">
+    <div flex="55" layout-margin="0 18px" >
+      <div>
+        Sometimes children in the household have their own income. If a child in your household receives money directly, please fill out their income card. 
       </div>
     </div>
-    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60" layout-padding="5">
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">Child #{{$index + 1}}<span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span></span>
-          <!-- <span class="md-subhead">Large</span> -->
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-      
-        <!-- Student Status -->
-        <div layout="row">
-          <div flex="55"><label>Does {{child.firstName}} {{child.middleInitial}} {{child.lastName}} have his or her own source of income?</label></div>
-          <div yes-no-input model="child.earnsIncome" flex-offset="5" flex="40"></div>
-        </div>
-        <div layout="colunm" ng-show="child.earnsIncome">
-          <div member="child" income-questions> </div>
-        </div>
+  </div>
+  <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60" layout-padding="5">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Child #{{$index + 1}}<span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span></span>
+        <!-- <span class="md-subhead">Large</span> -->
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+    
+      <!-- Student Status -->
+      <div layout="row">
+        <div flex="55"><label>Does {{child.firstName}} {{child.middleInitial}} {{child.lastName}} have his or her own source of income?</label></div>
+        <div yes-no-input model="child.earnsIncome" flex-offset="5" flex="40"></div>
+      </div>
+      <div layout="colunm" ng-show="child.earnsIncome">
+        <div member="child" income-questions> </div>
+      </div>
 
-      </md-card-content>
-    </md-card>
-  </div>
-  <div class="secondary-instructions" flex="40" layout="column">
+    </md-card-content>
+  </md-card>
+  <!-- <div class="secondary-instructions" flex="40" layout="column">
     <p>Secondary Instructions will go here</p>
-  </div>
+  </div> -->
 </section>
 
 <!--   <div ng-repeat="child in household.children | limitTo: household.childCount">

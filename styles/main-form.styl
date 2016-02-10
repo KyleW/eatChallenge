@@ -1,7 +1,65 @@
-.secondary-instructions
-  border-left 2px solid $hintFontColor
-  padding 0 10px
-  secondaryFont()
+$annotationWidth = 300px
+$centerColMargin = 30px
+
 
 .child_checkbox_container md-checkbox:last-of-type
   margin-left 0
+  
+
+$lineThickness = 2px
+
+// reset
+a, a:hover, a:visited,  a:active
+  color inherit
+  text-decoration none
+
+// body, header, footer, .mainContainer, md-content
+//   background $backgroundColor
+
+header, footer
+  text-align center
+  padding 20px
+
+.centerCol
+  flex 14
+  min-width 560px
+  margin 0 $centerColMargin
+  position relative
+  overflow visible
+  clearfix()
+
+.rightCol, .leftCol
+  padding 20px
+
+.rightCol, .secondary-instructions
+  width $annotationWidth
+  
+.secondary-instructions
+  // border-left 2px solid $hintFontColor
+  padding 0 $centerColMargin
+  secondaryFont()
+
+.annotation
+    position absolute
+    width $annotationWidth
+    right (-1 * $annotationWidth)
+
+.annotation.inset
+    right (-1 * $annotationWidth) - (2 * $centerColMargin)
+
+.leftCol
+  flex 2
+  // color $hintFontColor
+  headingBase()
+  
+section
+  padding 20px
+  // border-top $lineThickness solid $lineColor
+
+.stdCard
+  max-width 860px
+  // background $cardColor !important;
+  background rgba(52,152,219,0.2) !important;
+
+// .questionMain
+  
