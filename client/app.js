@@ -32,35 +32,83 @@
             $urlRouterProvider.otherwise('/');
 
             $stateProvider
-              .state('start', {
-                  url: '/',
-                  templateUrl: '../views/start.html',
-                  controller: 'mainController'
-              })
+            .state('start', {
+                url: '/',
+                views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/start.html',
+                        controller: 'mainController'
+                    }
+                }
+            })
               .state('children', {
                   url: '/children',
-                  templateUrl: '../views/children.html',
-                  controller: 'mainController'
+                  views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/children.html',
+                        controller: 'mainController'
+                    }
+                }
               })
               .state('childIncome', {
                   url: '/childIncome',
-                  templateUrl: '../views/childIncome.html',
-                  controller: 'mainController'
+                  views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/childIncome.html',
+                        controller: 'mainController'
+                    }
+                  }
               })
               .state('household', {
                   url: '/household',
-                  templateUrl: '../views/household.html',
-                  controller: 'mainController'
+                  views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/household.html',
+                        controller: 'mainController'
+                    }
+                  }
               })
               .state('signature', {
                   url: '/signature',
-                  templateUrl: '../views/signature.html',
-                  controller: 'mainController'
+                  views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/signature.html',
+                        controller: 'mainController'
+                    }
+                  }
               })
               .state('confirmation', {
                   url: '/confirmation',
-                  templateUrl: '../views/confirmation.html',
-                  controller: 'mainController'
+                  views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/confirmation.html',
+                        controller: 'mainController'
+                    }
+                  }
               })
               .state('export', {
                   url: '/export',

@@ -23,25 +23,21 @@ header, footer
 .centerCol
   flex 14
   min-width 560px
+  max-width 860px
   margin 0 $centerColMargin
   position relative
   overflow visible
   clearfix()
 
-.rightCol, .leftCol
-  padding 20px
+body
+  padding 0 20px
 
-.rightCol, .secondary-instructions
+.rightCol, .annotation
   width $annotationWidth
-  
-.secondary-instructions
-  // border-left 2px solid $hintFontColor
-  padding 0 $centerColMargin
-  secondaryFont()
 
 .annotation
+    secondaryFont()
     position absolute
-    width $annotationWidth
     right (-1 * $annotationWidth)
 
 .annotation.inset
@@ -58,7 +54,6 @@ section
   // border-top $lineThickness solid $lineColor
 
 .stdCard
-  max-width 860px
   // background $cardColor !important;
   background rgba(52,152,219,0.2) !important;
 

@@ -70,7 +70,6 @@
                 });
             });
         }
-        console.log(scope.member);
     }
 
 })();

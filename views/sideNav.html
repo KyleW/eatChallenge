@@ -1,0 +1,9 @@
+  <ul class="side-nav">
+    <li><a ui-sref="start">Start Here</a></li>    
+    <li ng-repeat="section in sections" ng-class="{completed: section.completed, 'not-required': !section.required}"><a ui-sref="{{section.state}}">{{section.label}}</a></li>
+    <li><a ui-sref="confirmation">Confirmation</a></li>
+    <!-- <li><a ui-sref="export">Export Data</a></li>
+    <li><a ui-sref="styleguide">Styleguide</a></li>
+    <li><a ui-sref="signup">Signup</a></li>
+    <li><a ui-sref="login">Login</a></li> -->
+  </ul> 

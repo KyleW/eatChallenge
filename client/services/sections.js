@@ -1,7 +1,7 @@
 (function() {
     angular
         .module('eatChallengeApp')
-        .service('sections', sectionsService);
+        .service('Sections', sectionsService);
 
     sectionsService.$inject = ['$state'];
 
@@ -58,6 +58,7 @@
         }
 
         function navigateToNext(currentState) {
+            console.log(currentState);
             var nextSection  = findNext(currentState);
             $state.go(nextSection);
 

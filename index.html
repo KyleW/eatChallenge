@@ -17,21 +17,9 @@
     <h1>Prototype Application for Free and Reduced Price School Meals</h1>
   </header>
   <div class="mainContainer" layout="row">
-    <div class="leftCol" flex="1">
-      <ul>
-        <li><a ui-sref="start">Start Here</a></li>
-        <li><a ui-sref="children">Children</a></li>
-        <li><a ui-sref="childIncome">Children's Income</a></li>
-        <li><a ui-sref="household">Household</a></li>
-        <li><a ui-sref="signature">Signature</a></li>
-        <li><a ui-sref="confirmation">Confirmation</a></li>
-        <li><a ui-sref="export">Export Data</a></li>
-        <li><a ui-sref="styleguide">Styleguide</a></li>
-        <li><a ui-sref="signup">Signup</a></li>
-        <li><a ui-sref="login">Login</a></li>
-      </ul> 
+    <div class="leftCol" flex="1" ui-view="side-nav">
     </div>
-    <md-content ui-view class='centerCol'  layout-padding flex="4"></md-content>
+    <md-content ui-view='main' class='centerCol'  layout-padding flex="4"></md-content>
     <div class="rightCol"></div>
   </div>
   <!-- <footer layout="row">The footer will go here</footer> -->
