@@ -15,7 +15,7 @@ var paths = {
     styles: [
       './styles/base.styl',
     ],
-    js: ['./scripts/**/*.js'],
+    js: ['./client/**/*.js'],
     vendor: [
       './bower_components/angular/angular.min.js',
       './bower_components/angular-ui-router/release/angular-ui-router.min.js',
