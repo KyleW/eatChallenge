@@ -1,24 +1,22 @@
 <div>
-  <div ng-repeat="incomeSource in incomeSources" layout="row" ng-show="member.earnsIncome" layout-padding>
-    <div flex="30">
-      <label>{{incomeSource.label}}</label>
+  <div ng-repeat="incomeSource in member.incomeSources" layout="row" ng-show="member.earnsIncome" layout-padding>
+    <div flex="55">
+      <label>{{incomeSources[incomeSource.type].label}}</label>
     </div>
-    <div flex="65" offset="5">
+    <div flex="40" offset="5">
       <md-input-container flex="45">
         <label>Amount</label>
-        <!-- TODO: store this in the right place on member -->
-        <input ng-model="member[incomeSource.value].amount" type="number">
+        <input ng-model="incomeSource.amount" type="number">
       </md-input-container>
       <md-input-container flex="45" offset="5">
         <label>How often?</label>
-        <!-- TODO: store this in the right place on member -->
-        <md-select ng-model="member[incomeSource.value].frequency">
-          <md-option ng-repeat="time in incomeSource.frequency" value="{{time}}">{{time}}</md-option>
+        <md-select ng-model="incomeSource.frequency">
+          <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
         </md-select>
       </md-input-container>
     </div>
-    <div class="annotation" ng-if="member.isChild">{{incomeSource.annotation.child}}</div>
-    <div class="annotation" ng-if="!member.isChild">{{incomeSource.annotation.otherMember}}</div>
+    <div class="annotation" ng-if="member.isChild">{{incomeSources[incomeSource.type].annotation.child}}</div>
+    <div class="annotation" ng-if="!member.isChild">{{incomeSources[incomeSource.type].annotation.otherMember}}</div>
   </div>
 </div>
 

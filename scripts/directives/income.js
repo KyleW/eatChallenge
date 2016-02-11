@@ -21,8 +21,8 @@
     // link.$inject = ['scope'];
 
     function link(scope) {
-        scope.incomeSources = [
-            {
+        scope.incomeSources = {
+            work: {
                 vaule:'work',
                 label: 'Earnings from work',
                 frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
@@ -31,7 +31,7 @@
                     otherMember: '',
                 }
             },
-            {
+            socialSecurity: {
                 vaule:'socialSecurity',
                 label: 'Social Security Disability Payments or Survivor’s Benefits ',
                 frequency: ['monthly'],
@@ -40,7 +40,7 @@
                     otherMember: '',
                 }
             },
-            {
+            otherPerson: {
                 vaule:'otherPerson',
                 label: 'Income from persons outside the household',
                 frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
@@ -49,7 +49,7 @@
                     otherMember: '',
                 }
             },
-            {
+            otherSource: {
                 vaule:'otherSource',
                 label: 'Income from any other source',
                 frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
@@ -58,7 +58,19 @@
                     otherMember: '',
                 }
             }
-        ];
+        };
+
+        if (scope.member.incomeSources.length === 0) {
+            scope.member.incomeSources = [];
+            Object.keys(scope.incomeSources).forEach(function(incomeSource) {
+                scope.member.incomeSources.push({
+                    type: incomeSource,
+                    amount: null,
+                    frequency: null
+                });
+            });
+        }
+        console.log(scope.member);
     }
 
 })();
