@@ -56,7 +56,7 @@ module.exports = function(app, passport) {
     //     });
 
     // });
-    
+
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/#/start?success',
         failureRedirect : '/#/login?fail',

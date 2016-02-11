@@ -32,65 +32,54 @@
             $urlRouterProvider.otherwise('/');
 
             $stateProvider
-      .state('start', {
-          url: '/',
-          templateUrl: '../views/start.html',
-          controller: 'mainController'
-      })
-      // .state('application',{
-      //     resolve: {
-      //         household: {};
-      //     }
-      // })
-      .state('children', {
-          url: '/children',
-          // parent: 'application',
-          templateUrl: '../views/children.html',
-          controller: 'mainController'
-      })
-      .state('childIncome', {
-          url: '/childIncome',
-          // parent: 'application',
-          templateUrl: '../views/childIncome.html',
-          controller: 'mainController'
-      })
-      .state('household', {
-          url: '/household',
-          // parent: 'application',
-          templateUrl: '../views/household.html',
-          controller: 'mainController'
-      })
-      .state('signature', {
-          url: '/signature',
-          // parent: 'application',
-          templateUrl: '../views/signature.html',
-          controller: 'mainController'
-      })
-      .state('confirmation', {
-          url: '/confirmation',
-          templateUrl: '../views/confirmation.html',
-          controller: 'mainController'
-      })
-      .state('export', {
-          url: '/export',
-          templateUrl: '../views/export.html',
-          controller: 'mainController'
-      })
-      .state('styleguide', {
-          url: '/styleguide',
-          templateUrl: '../views/styleguide.html',
-          controller: 'mainController'
-      })
-      .state('signup', {
-          url: '/signup',
-          templateUrl: '../views/signup.html',
-          // controller: 'mainController'
-      })
-      .state('login', {
-          url: '/login',
-          templateUrl: '../views/login.html',
-          // controller: 'mainController'
-      });
+              .state('start', {
+                  url: '/',
+                  templateUrl: '../views/start.html',
+                  controller: 'mainController'
+              })
+              .state('children', {
+                  url: '/children',
+                  templateUrl: '../views/children.html',
+                  controller: 'mainController'
+              })
+              .state('childIncome', {
+                  url: '/childIncome',
+                  templateUrl: '../views/childIncome.html',
+                  controller: 'mainController'
+              })
+              .state('household', {
+                  url: '/household',
+                  templateUrl: '../views/household.html',
+                  controller: 'mainController'
+              })
+              .state('signature', {
+                  url: '/signature',
+                  templateUrl: '../views/signature.html',
+                  controller: 'mainController'
+              })
+              .state('confirmation', {
+                  url: '/confirmation',
+                  templateUrl: '../views/confirmation.html',
+                  controller: 'mainController'
+              })
+              .state('export', {
+                  url: '/export',
+                  templateUrl: '../views/export.html',
+                  controller: 'mainController'
+              })
+              .state('styleguide', {
+                  url: '/styleguide',
+                  templateUrl: '../views/styleguide.html',
+                  controller: 'mainController'
+              })
+              .state('signup', {
+                  url: '/signup',
+                  templateUrl: '../views/signup.html',
+              })
+              .state('login', {
+                  url: '/login',
+                  templateUrl: '../views/login.html',
+              });
         }
     }
 

@@ -10,7 +10,6 @@
         this.save = save;
         this.clear = clear;
 
-
         //////////////////////////////////
 
         var Person = {
@@ -64,7 +63,7 @@
             if (household) {
                 return household;
             }
-        
+
             //TODO: if there's a userid, return the household associated with it
             // if (userid) {
             //     // TODO: add error handling
@@ -73,8 +72,8 @@
             //     });
             // } else {
             //     // create a new household if one doesn't exist
-                household = Object.create(Household);
-                household.init();
+            household = Object.create(Household);
+            household.init();
             // }
 
             return household;
