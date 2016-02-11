@@ -15,7 +15,10 @@
         <md-select ng-model="member[incomeSource.value].frequency">
           <md-option ng-repeat="time in incomeSource.frequency" value="{{time}}">{{time}}</md-option>
         </md-select>
-      </md-input-container>     
+      </md-input-container>
     </div>
+    <div class="annotation" ng-if="member.isChild">{{incomeSource.annotation.child}}</div>
+    <div class="annotation" ng-if="!member.isChild">{{incomeSource.annotation.otherMember}}</div>
+  </div>
 </div>
 

@@ -3,10 +3,10 @@
 <section id="children questionMain" layout='column'>
     <h2>Children</h2>
     <div layout="row">
-        <ul class="annotation">
-          <li>School students include anyone attending school through grade 12 regardless of their age.</li>
-          <li>Include children who are supported with the household's income even if they are not related to you.</li>
-        </ul>
+        <div class="annotation">
+          <div>School students include anyone attending school through grade 12 regardless of their age.</div>
+          <div>Include children who are supported with the household's income even if they are not related to you.</div>
+        </div>
         <div flex="55" layout-margin="0 18px" >
           <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
         </div>
@@ -61,11 +61,13 @@
             <md-checkbox ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
             <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
             <md-checkbox ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
-            <md-checkbox ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
+            <md-checkbox ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">
+              <div class="annotation inset">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals.</div>
+              Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
             <md-input-container ng-show="child.assistanceProgram.Participant" flex-offset="0">
               <label>Case Number</label>
               <input ng-model="child.assistanceProgram.caseNumber">
-              <div class="annotation inset">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals. Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. </div>
+              <div class="annotation inset">Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. </div>
             </md-input-container>
           </div>
         </div>

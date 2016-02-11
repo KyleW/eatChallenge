@@ -42,6 +42,7 @@
                 while (this.childCount > this.children.length) {
                     var newChild = Object.create(Person);
                     newChild.init();
+                    newChild.isChild = true;
                     this.children.push(newChild);
                 }
             },
@@ -50,6 +51,7 @@
                 while (this.otherMembersCount > this.otherMembers.length) {
                     var newMember = Object.create(Person);
                     newMember.init();
+                    newMember.isChild = false;
                     this.otherMembers.push(newMember);
                 }
             }
