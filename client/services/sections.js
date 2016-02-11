@@ -58,7 +58,6 @@
         }
 
         function navigateToNext(currentState) {
-            console.log(currentState);
             var nextSection  = findNext(currentState);
             $state.go(nextSection);
 

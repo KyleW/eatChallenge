@@ -4,9 +4,9 @@ angular
     .module('eatChallengeApp')
     .controller('mainController', mainController);
 
-mainController.$inject = ['$mdDialog', '$mdMedia', '$scope', '$state', 'Household', 'Sections'];
+mainController.$inject = ['$mdDialog', '$mdMedia', '$rootScope', '$scope', '$state', 'Household', 'Sections'];
 
-function mainController ($mdDialog, $mdMedia, $scope, $state, Household, Sections) {
+function mainController ($mdDialog, $mdMedia, $scope, $rootScope, $state, Household, Sections) {
     // TODO: replace scope with vm
     $scope.schoolDistrict = 'Oakland Unified School District';
     $scope.studentStatuses = ['in school', 'home schooled', 'some other status'];
@@ -27,7 +27,11 @@ function mainController ($mdDialog, $mdMedia, $scope, $state, Household, Section
     });
 
     $scope.currentState = $state.$current.self.name;
-
+    
+    // TODO: move this to config or something
+    $rootScope.$on('$stateChangeSuccess', function() {
+       document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
 
 }
 
