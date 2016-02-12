@@ -37,24 +37,6 @@
             Sections.updateRequiredSections($scope.household);
             Sections.navigateToNext($state.$current.self.name);
         }
-        // // TODO - make this work
-        // function updateCompleted() {
-        //     // console.log('valid', childrenForm.$valid);
-        //     if (childrenForm.$valid) {
-        //         // console.log('this ran- complete');
-        //         Sections.indexedSections.children.completed = true;
-        //     } else {
-        //         // console.log('this ran- not complete');
-        //         Sections.indexedSections.children.completed = false;
-        //     }
-        // }
-
-        // // $interval(updateCompleted, 1000);
-        // $scope.$watch('childrenForm.$invalid', function(newVal) {
-        //     console.log('new val ', newVal);
-        //     //$scope.valid = newVal;
-        //     // $scope.informationStatus = true;
-        // }, true);
 
     }
 

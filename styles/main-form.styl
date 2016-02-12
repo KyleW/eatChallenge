@@ -1,12 +1,10 @@
-$annotationWidth = 270px
+// Variables
 $centerColMargin = 10px
 $lineThickness = 2px
+$annotationWidth = 270px
 $annotationOffset = -1 * $annotationWidth
-
-.child_checkbox_container md-checkbox:last-of-type
-  margin-left 0
   
-// reset
+// Resets
 a, a:hover, a:visited,  a:active
   color inherit
   text-decoration none
@@ -20,10 +18,14 @@ p
 body
   padding 20px
 
-header, footer
+header
   text-align center
-  padding 0 20px
+  padding 10px 20px
+  margin-bottom 20px
+  border-bottom 2px solid grey
 
+
+// Layout
 .leftCol
   headingBase()
   flex 3
@@ -37,20 +39,20 @@ header, footer
   overflow visible
   clearfix()
 
-.rightCol, 
+.rightCol
+  width $annotationWidth
+  
+// Directives
 .annotation
   width $annotationWidth
-
-.annotation
   secondaryFont()
   position absolute
   right $annotationOffset
-  border-left 2px solid blue
+  border-left $lineThickness solid blue
   padding-left 10px
   
-
 .stdCard
-  background rgba(52,152,219,0.2);
+  background rgba(52,152,219,0.3);
 
 .yes-no
   margin-top 10px
@@ -58,4 +60,11 @@ header, footer
 
 .income md-input-container  
   margin 0
+  
+.child_checkbox_container md-checkbox:last-of-type
+  margin-left 0
+
+//pages
+.start h2
+    margin-bottom 8px
   
