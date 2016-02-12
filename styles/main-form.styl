@@ -1,4 +1,4 @@
-$annotationWidth = 300px
+$annotationWidth = 200px
 $centerColMargin = 30px
 
 
@@ -36,13 +36,15 @@ body
   width $annotationWidth
 
 .annotation
-    secondaryFont()
-    position absolute
-    right (-1 * $annotationWidth)
-
-.annotation.inset
+  secondaryFont()
+  position absolute
+  right (-1 * $annotationWidth)
+  
+  &.inset
     // TODO figure this out
     right (-1 * $annotationWidth) - 50px
+  p 
+    margin-bottom 10px
 
 .leftCol
   flex 2

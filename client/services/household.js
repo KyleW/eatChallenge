@@ -41,7 +41,12 @@
                 while (this.childCount > this.children.length) {
                     var newChild = Object.create(Person);
                     newChild.init();
+
+                    //add child specific fields
                     newChild.isChild = true;
+                    newChild.specialStatus = {};
+                    newChild.assistanceProgram = {};
+
                     this.children.push(newChild);
                 }
             },

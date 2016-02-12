@@ -1,11 +1,11 @@
 
 <!-- children -->
-<section id="children questionMain" layout='column'>
+<form id="children questionMain" layout='column' name="childrenForm" novalidate>
     <h2>Children</h2>
     <div layout="row">
         <div class="annotation">
-          <div>School students include anyone attending school through grade 12 regardless of their age.</div>
-          <div>Include children who are supported with the household's income even if they are not related to you.</div>
+          <p>School students include anyone attending school through grade 12 regardless of their age.</p>
+          <p>Include children who are supported with the household's income even if they are not related to you.</p>
         </div>
         <div flex="55" layout-margin="0 18px" >
           <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
@@ -20,7 +20,7 @@
         </md-input-container>
     </div>
 
-    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5">
+    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5" ng-blur="updateCompleted()">
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">
@@ -36,7 +36,7 @@
         <div layout="row">
           <md-input-container flex="3">
             <label>First Name</label>
-            <input ng-model="child.firstName">
+            <input ng-model="child.firstName" required>
           </md-input-container>
           <md-input-container flex-offset="5" flex="1">
             <label>Middle Initial</label>
@@ -44,7 +44,7 @@
           </md-input-container>
           <md-input-container flex-offset="5" flex="3">
             <label>Last Name</label>
-            <input ng-model="child.lastName">
+            <input ng-model="child.lastName" required>
           </md-input-container>
         </div>
       
@@ -74,7 +74,7 @@
 
       </md-card-content>
     </md-card>
-    <md-button class="md-raised md-primary" ng-click="navigateToNextSection(currentState)">Next Section</md-button>
+    <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
   <!-- <div class="secondary-instructions" layout="column">
     <p>
 
@@ -84,4 +84,4 @@
     </ul>
   </div> -->
 
-</section>
+</form>

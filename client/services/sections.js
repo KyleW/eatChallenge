@@ -38,7 +38,38 @@
 
         // TODO: Put skip logic here
         function updateRequiredSections(household) {
-            return true;
+            var currentChild;
+            var assistanceProgramHousehold = true;
+            var fosterChildCount = 0;
+            var shouldMeansTest = true;
+
+            for (var i = 0 ; i < household.children.length; i++) {
+                currentChild = household.children[i];
+
+                if (currentChild.assistanceProgram.participant) {
+                    assistanceProgramHousehold = false;
+                    break;
+                }
+
+                if (currentChild.specialStatus.fosterChild) {
+                    fosterChildCount++;
+                }
+            }
+
+            if (assistanceProgramHousehold ||
+                household.children.length === fosterChildCount) {
+                shouldMeansTest = false;
+            }
+
+            if (shouldMeansTest) {
+                sections.forEach(function(section) {
+                    section.required = true;
+                });
+            } else {
+                indexedSections['childIncome'].required = false;
+                indexedSections['household'].required = false;
+            }
+
         }
 
         function findNext(currentState) {
@@ -60,14 +91,14 @@
         function navigateToNext(currentState) {
             var nextSection  = findNext(currentState);
             $state.go(nextSection);
-
         }
 
         //////////////////////
         var service = {
             sections: sections,
             indexedSections: indexedSections,
-            navigateToNext: navigateToNext
+            navigateToNext: navigateToNext,
+            updateRequiredSections: updateRequiredSections
         };
 
         return service;
