@@ -1,65 +1,56 @@
-$annotationWidth = 250px
-$centerColMargin = 30px
-
+$annotationWidth = 270px
+$centerColMargin = 10px
+$lineThickness = 2px
+$annotationOffset = -1 * $annotationWidth
 
 .child_checkbox_container md-checkbox:last-of-type
   margin-left 0
   
-
-$lineThickness = 2px
-
 // reset
 a, a:hover, a:visited,  a:active
   color inherit
   text-decoration none
+  
+section
+  padding 20px
 
-// body, header, footer, .mainContainer, md-content
-//   background $backgroundColor
+p 
+  margin-bottom 10px
+
+body
+  padding 20px
 
 header, footer
   text-align center
-  padding 20px
+  padding 0 20px
+
+.leftCol
+  headingBase()
+  flex 3
 
 .centerCol
   flex 14
   min-width 560px
-  max-width 860px
-  margin 0 $centerColMargin
+  max-width 900px
+  padding 0 $centerColMargin
   position relative
   overflow visible
   clearfix()
 
-body
-  padding 0 20px
-
-.rightCol, .annotation
+.rightCol, 
+.annotation
   width $annotationWidth
 
 .annotation
   secondaryFont()
   position absolute
-  right (-1 * $annotationWidth)
+  right $annotationOffset
   border-left 2px solid blue
-  padding-left 5px
+  padding-left 10px
   
-  &.inset
-    // TODO figure this out
-    right (-1 * $annotationWidth) - 50px
-  p 
-    margin-bottom 10px
-
-.leftCol
-  flex 2
-  // color $hintFontColor
-  headingBase()
-  
-section
-  padding 20px
-  // border-top $lineThickness solid $lineColor
 
 .stdCard
-  // background $cardColor !important;
-  background rgba(52,152,219,0.2) !important;
+  background rgba(52,152,219,0.2);
 
 .yes-no
   margin-top 10px
@@ -67,6 +58,4 @@ section
 
 .income md-input-container  
   margin 0
-
-// .questionMain
   
