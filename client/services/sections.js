@@ -60,7 +60,7 @@
                 household.children.length === fosterChildCount) {
                 shouldMeansTest = false;
             }
-            console.log({shouldMeansTest: shouldMeansTest});
+
             if (shouldMeansTest) {
                 sections.forEach(function(section) {
                     section.required = true;
