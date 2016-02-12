@@ -21,7 +21,7 @@
                 <!-- <span class="md-subhead">Large</span> -->
             </md-card-title-text>
         </md-card-title>
-        <md-card-content>
+        <md-card-content layout="column">
 
         <!-- child names -->
             <div layout="row">
@@ -33,21 +33,27 @@
                     <label>Last Name</label>
                     <input ng-model="member.lastName">
                 </md-input-container>
-                <md-input-container>
-                    <label>Last four digits of SSN</label>
+            </div>
+            <div layout="row">
+                <div flex="55" layout="column" layout-align="center start"><label>Does
+                    <span ng-if=member.firstName>{{member.firstName}}</span>
+                    <span ng-if=!member.firstName>this person</span> have a social security number?</label></div>
+                <div yes-no-input model="member.hasSSN" flex-offset="5" flex="40"></div>
+                <div class="annotation"> United States citizenship or immigration status is not a condition of eligibility for free and reduced price benefits</div>
+            </div>
+            <div layout="row" ng-if="member.hasSSN">
+                <div flex="55" layout="column" layout-align="center start"><label>
+                    What are the last 4 digits of 
+                    <span ng-if=member.firstName>{{member.firstName}}'s</span>
+                    <span ng-if=!member.firstName>this person's</span>
+                    social security number?
+                </label></div>
+                <md-input-container flex-offset="5" flex="40">
+                    <label>Last 4 of SSN</label>
                     <input ng-model="member.last4ssn">
                 </md-input-container>
             </div>
-            <div layout="row">
-                <div flex="55"><label>Does 
-                <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
-                <span ng-if="!member.firstName">this person</span>
-                have his or her own source of income?</label></div>
-                <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
-            </div>
-            <div layout="colunm" ng-show="member.earnsIncome">
-                <div member="member" income-questions> </div>
-            </div>
+            <div member="member" income-questions></div>
         </md-card-content>
     </md-card>
     <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>

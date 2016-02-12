@@ -13,16 +13,9 @@
       </md-card-title-text>
     </md-card-title>
     <md-card-content>
-    
-      <!-- Student Status -->
-      <div layout="row">
-        <div flex="55"><label>Does {{child.firstName}} {{child.middleInitial}} {{child.lastName}} have his or her own source of income?</label></div>
-        <div yes-no-input model="child.earnsIncome" flex-offset="5" flex="40"></div>
-      </div>
-      <div layout="colunm" ng-show="child.earnsIncome">
-        <div member="child" income-questions> </div>
-      </div>
 
+        <div member="child" income-questions> </div>
+        
     </md-card-content>
   </md-card>
   

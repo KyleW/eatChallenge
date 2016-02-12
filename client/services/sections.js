@@ -39,7 +39,7 @@
         // TODO: Put skip logic here
         function updateRequiredSections(household) {
             var currentChild;
-            var assistanceProgramHousehold = true;
+            var assistanceProgramHousehold = false;
             var fosterChildCount = 0;
             var shouldMeansTest = true;
 
@@ -47,7 +47,7 @@
                 currentChild = household.children[i];
 
                 if (currentChild.assistanceProgram.participant) {
-                    assistanceProgramHousehold = false;
+                    assistanceProgramHousehold = true;
                     break;
                 }
 
@@ -60,7 +60,7 @@
                 household.children.length === fosterChildCount) {
                 shouldMeansTest = false;
             }
-
+            console.log({shouldMeansTest: shouldMeansTest});
             if (shouldMeansTest) {
                 sections.forEach(function(section) {
                     section.required = true;
