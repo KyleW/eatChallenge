@@ -40,8 +40,8 @@
         function updateRequiredSections(household) {
             var currentChild;
             var assistanceProgramHousehold = false;
-            var fosterChildCount = 0;
-            var shouldMeansTest = true;
+            var specialStatusCount = 0;
+            var skipMeansTest = false;
 
             for (var i = 0 ; i < household.children.length; i++) {
                 currentChild = household.children[i];
@@ -51,24 +51,27 @@
                     break;
                 }
 
-                if (currentChild.specialStatus.fosterChild) {
-                    fosterChildCount++;
+                if (currentChild.specialStatus.fosterChild ||
+                    currentChild.specialStatus.homelessMigrantRunaway ||
+                    currentChild.specialStatus.headStartParticipant
+                ) {
+                    specialStatusCount++;
                 }
             }
 
-            if (assistanceProgramHousehold ||
-                household.children.length === fosterChildCount) {
-                shouldMeansTest = false;
-            }
+            skipMeansTest = assistanceProgramHousehold ||
+                (household.children.length === specialStatusCount);
 
-            if (shouldMeansTest) {
-                sections.forEach(function(section) {
-                    section.required = true;
-                });
-            } else {
+            if (skipMeansTest) {
                 indexedSections['childIncome'].required = false;
                 indexedSections['household'].required = false;
+
+                return;
             }
+
+            sections.forEach(function(section) {
+                section.required = true;
+            });
 
         }
 
