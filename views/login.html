@@ -1,6 +1,6 @@
-
+<!-- 
 <div class="alert alert-danger">{{message}}</div>
-
+ -->
 <!-- LOGIN FORM -->
 <div flex="60" layout-padding>
     <form action="/login" method="post">
@@ -16,9 +16,9 @@
                 <input ng-model="user.password" name='password' type='password' required>
             </md-input-container>            
         </div>
-        <md-button type="submit">Login</button>
+        <md-button type="submit">Login</md-button>
     </form>
 
-    <p>Need an account? <a ui-sref="#/signup">Signup</a></p>
+    <p>Need an account? <a ui-sref="signup">Signup</a></p>
     <p>Or go <a ui-sref="start">start</a>.</p>        
 </div>

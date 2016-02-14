@@ -33,8 +33,17 @@
             document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
 
+        // $rootScope.previousState;
+        // $rootScope.currentState;
+        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+            Sections.previousState = from.name;
+            Sections.currentState = to.name;
+            console.log('Previous state:' + Sections.previousState);
+            console.log('Current state:'+ Sections.currentState);
+        });
+
         function navigateToNextSection() {
-            Sections.updateRequiredSections($scope.household);
+            var updated = Sections.updateRequiredSections($scope.household);
             Sections.navigateToNext($state.$current.self.name);
         }
 

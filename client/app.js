@@ -1,9 +1,9 @@
 (function() {
 
     angular
-      .module('eatChallengeApp',['ngMaterial','ui.router'])
-      .config(routerConfig)
-      .config(materialDesignThemer);
+    .module('eatChallengeApp',['ngMaterial','ui.router'])
+    .config(routerConfig)
+    .config(materialDesignThemer);
 
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
@@ -45,89 +45,111 @@
                     }
                 }
             })
-              .state('children', {
-                  url: '/children',
-                  views:{
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
-                    'main': {
-                        templateUrl: '../views/children.html',
-                        controller: 'mainController'
-                    }
+            .state('children', {
+                url: '/children',
+                views:{
+                'side-nav': {
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
+                'main': {
+                    templateUrl: '../views/children.html',
+                    controller: 'mainController'
                 }
-              })
-              .state('childIncome', {
-                  url: '/childIncome',
-                  views:{
+            }
+            })
+            .state('childIncome', {
+                url: '/childIncome',
+                views:{
                     'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
                     'main': {
-                        templateUrl: '../views/childIncome.html',
-                        controller: 'mainController'
-                    }
-                  }
-              })
-              .state('household', {
-                  url: '/household',
-                  views:{
+                    templateUrl: '../views/childIncome.html',
+                    controller: 'mainController'
+                }
+                }
+            })
+            .state('household', {
+                url: '/household',
+                views:{
                     'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
                     'main': {
-                        templateUrl: '../views/household.html',
-                        controller: 'mainController'
-                    }
-                  }
-              })
-              .state('signature', {
-                  url: '/signature',
-                  views:{
+                    templateUrl: '../views/household.html',
+                    controller: 'mainController'
+                }
+                }
+            })
+            .state('signature', {
+                url: '/signature',
+                views:{
                     'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
                     'main': {
-                        templateUrl: '../views/signature.html',
-                        controller: 'mainController'
-                    }
-                  }
-              })
-              .state('confirmation', {
-                  url: '/confirmation',
-                  views:{
+                    templateUrl: '../views/signature.html',
+                    controller: 'mainController'
+                }
+                }
+            })
+            .state('confirmation', {
+                url: '/confirmation',
+                views:{
                     'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
                     'main': {
-                        templateUrl: '../views/confirmation.html',
-                        controller: 'mainController'
-                    }
-                  }
-              })
-              .state('export', {
-                  url: '/export',
-                  templateUrl: '../views/export.html',
-                  controller: 'mainController'
-              })
-              .state('styleguide', {
-                  url: '/styleguide',
-                  templateUrl: '../views/styleguide.html',
-                  controller: 'mainController'
-              })
-              .state('signup', {
-                  url: '/signup',
-                  templateUrl: '../views/signup.html',
-              })
-              .state('login', {
-                  url: '/login',
-                  templateUrl: '../views/login.html',
-              });
+                    templateUrl: '../views/confirmation.html',
+                    controller: 'mainController'
+                }
+                }
+            })
+            .state('export', {
+              url: '/export',
+              templateUrl: '../views/export.html',
+              controller: 'mainController'
+          })
+            .state('styleguide', {
+              url: '/styleguide',
+              templateUrl: '../views/styleguide.html',
+              controller: 'mainController'
+          })
+            .state('signup', {
+              url: '/signup',
+              templateUrl: '../views/signup.html',
+          })
+            .state('login', {
+                url: '/login',
+                views:{
+                    'side-nav': {
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
+                    'main': {
+                    templateUrl: '../views/login.html',
+                    controller: 'loginController'
+                }
+                }
+            })
+            .state('soFar', {
+                url: '/so-far',
+                views:{
+                    'side-nav': {
+                    templateUrl: '../views/sideNav.html',
+                    controller: 'sideNavController'
+                },
+                    'main': {
+                    templateUrl: '../views/soFar.html',
+                    controller: 'mainController'
+                }
+                }
+            });
         }
     }
 
