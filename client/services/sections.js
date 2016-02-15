@@ -1,12 +1,16 @@
 (function() {
+    'use strict'
+
     angular
         .module('eatChallengeApp')
         .service('Sections', sectionsService);
 
-    sectionsService.$inject = ['$state'];
+    sectionsService.$inject = ['$rootScope' ,'$state'];
 
-    function sectionsService($state) {
-
+    function sectionsService($rootScope, $state) {
+        var previousState,
+            currentState;
+        
         var sections = [
             {
                 label: 'Children',
@@ -36,12 +40,23 @@
 
         var indexedSections = _.indexBy(sections, 'state');
 
-        // TODO: Put skip logic here
+        var service = {
+            sections: sections,
+            indexedSections: indexedSections,
+            navigateToNext: navigateToNext,
+            updateRequiredSections: updateRequiredSections
+        };
+
+        return service;
+        //////////////////////
+
+
         function updateRequiredSections(household) {
             var currentChild;
             var assistanceProgramHousehold = false;
             var specialStatusCount = 0;
             var skipMeansTest = false;
+
 
             for (var i = 0 ; i < household.children.length; i++) {
                 currentChild = household.children[i];
@@ -60,7 +75,8 @@
             }
 
             skipMeansTest = assistanceProgramHousehold ||
-                (household.children.length === specialStatusCount);
+                (household.children.length > 0 &&
+                 household.children.length === specialStatusCount);
 
             if (skipMeansTest) {
                 indexedSections['childIncome'].required = false;
@@ -96,15 +112,17 @@
             $state.go(nextSection);
         }
 
-        //////////////////////
-        var service = {
-            sections: sections,
-            indexedSections: indexedSections,
-            navigateToNext: navigateToNext,
-            updateRequiredSections: updateRequiredSections
-        };
+        $rootScope.$on('$stateChangeSuccess', function() {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        });
 
-        return service;
+        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+            previousState = from.name;
+            currentState = to.name;
+            console.log('Previous state:' + previousState);
+            console.log('Current state:' + currentState);
+        });
+
 
     }
 

@@ -3,6 +3,7 @@ var url = require('url');
 var User = require('./models/user');
 // Controllers
 var household = require('./controllers/household');
+var child = require('./controllers/child');
 
 module.exports = function(app, passport) {
     // Static files
@@ -15,8 +16,10 @@ module.exports = function(app, passport) {
     });
 
     // API
-    app.get('/household', household.findAll);
+    app.get('/household', household.findOrCreate);
     app.post('/household', household.save);
+
+    app.get('/child', child.create);
 
     // Auth
     // app.post('/signup', function(req, res, next) {

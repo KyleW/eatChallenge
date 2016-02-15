@@ -4,11 +4,11 @@ var Child = require('./child');
 var HouseholdMember = require('./household_member.js');
 
 var householdSchema = new Schema({
-    numberOfChildren: Number,
+    childCount: Number,
     children: Array,
     otherMembersCount: Number,
     otherMembers: Array,
-    completed: {type: Boolean, default: false}
+    completedApplication: {type: Boolean, default: false}
 });
 
 module.exports = mongoose.model('household', householdSchema);

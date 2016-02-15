@@ -56,6 +56,18 @@ module.exports = {
             }
             res.send(data);
         });
+    },
+
+    findOrCreate: function(req, res, next) {
+        if (req.body.user) {
+            return this.findForUser(req, res, next);
+        }
+
+        if (req.body._id) {
+            return this.findById(req, res, next);
+        }
+
+        return res.send(new Household());
     }
 
 };

@@ -13,9 +13,8 @@
         <md-input-container flex-offset="5" flex="40">
             <label>number of children</label>
             <md-select ng-model="household.childCount">
-              <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{number}}">
-                {{number}} <span ng-if="number === 1">child</span> <span ng-if="number > 1">children</span>
-              </md-option>
+              <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12, 13, 14, 15, 16, 17, 18, 19, 20]" value="{{number}}">{{number}}</md-option>
+                <!-- <span ng-if="number === 1">child</span> <span ng-if="number > 1">children</span> -->
             </md-select>
         </md-input-container>
     </div>

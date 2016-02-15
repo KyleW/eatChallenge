@@ -8,15 +8,15 @@ var childSchema = new Schema({
     lastName: String,
     enrolled: Boolean,
     specialStatus: {
-        fosterChild: Boolean,
-        homelessMigrantRunaway: Boolean,
-        headStartParticipant: Boolean
+        fosterChild: {type: Boolean, default: false},
+        homelessMigrantRunaway: {type: Boolean, default: false},
+        headStartParticipant: {type: Boolean, default: false},
     },
     assistanceProgram: {
         participant: Boolean,
         caseNumber: String
-    }
+    },
+    incomeSources: Array
 });
 
-// module.exports = mongoose.model('child', childSchema);
-module.exports = childSchema;
+module.exports = mongoose.model('child', childSchema);
