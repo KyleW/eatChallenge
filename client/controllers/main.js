@@ -39,10 +39,11 @@
             Sections.previousState = from.name;
             Sections.currentState = to.name;
             console.log('Previous state:' + Sections.previousState);
-            console.log('Current state:'+ Sections.currentState);
+            console.log('Current state:' + Sections.currentState);
         });
 
         function navigateToNextSection() {
+            Household.save();
             var updated = Sections.updateRequiredSections($scope.household);
             Sections.navigateToNext($state.$current.self.name);
         }

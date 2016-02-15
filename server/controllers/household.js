@@ -2,14 +2,31 @@ var Household = require('../models/household');
 
 module.exports = {
     save: function(req, res, next) {
-        var household = new Household(req.body);
-        household.save(function (err, household) {
-            if (err) {
-                console.error(err);
-                return res.send(err);
-            }
-            return res.send(household);
-        });
+        if (req.body._id) {
+            // update an existing document
+            var toSave = Object.create(req.body);
+            delete toSave._id;
+
+            Household.findByIdAndUpdate(req.body._id, toSave, function (err, household) {
+                if (err) {
+                    console.error(err);
+                    return res.send(err);
+                }
+                console.log('successfully updated ' , household);
+                return res.send(household);
+            });
+        } else {
+            // Create a new document
+            var household = new Household(req.body);
+            household.save(function (err, household) {
+                if (err) {
+                    console.error(err);
+                    return res.send(err);
+                }
+                console.log('successfully saved ' , household);
+                return res.send(household);
+            });
+        }
     },
 
     findById: function(req, res, next) {

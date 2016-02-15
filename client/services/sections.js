@@ -46,12 +46,12 @@
             for (var i = 0 ; i < household.children.length; i++) {
                 currentChild = household.children[i];
 
-                if (currentChild.assistanceProgram.participant) {
+                if (currentChild.assistanceProgram && currentChild.assistanceProgram.participant) {
                     assistanceProgramHousehold = true;
                     break;
                 }
 
-                if (currentChild.specialStatus.fosterChild ||
+                if (currentChild.specialStatus && currentChild.specialStatus.fosterChild ||
                     currentChild.specialStatus.homelessMigrantRunaway ||
                     currentChild.specialStatus.headStartParticipant
                 ) {

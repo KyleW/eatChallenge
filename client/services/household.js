@@ -86,7 +86,9 @@
 
         function save() {
             // TODO: handle errors
-            return $http.post('/household', household);
+            return $http.post('/household', household).then(function(response) {
+                household = response.data;
+            });
         }
 
         function clear () {
