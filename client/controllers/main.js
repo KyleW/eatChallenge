@@ -41,7 +41,7 @@
         }
 
         function submitApplication() {
-            Household.completed = true;
+            $scope.household.completed = true;
             navigateToNextSection();
         }
 

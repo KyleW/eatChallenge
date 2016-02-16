@@ -8,7 +8,7 @@ var householdSchema = new Schema({
     children: Array,
     otherMembersCount: Number,
     otherMembers: Array,
-    completedApplication: {type: Boolean, default: false}
+    completed: {type: Boolean, default: false}
 });
 
 module.exports = mongoose.model('household', householdSchema);

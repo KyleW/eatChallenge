@@ -49,11 +49,13 @@ module.exports = {
 
     },
 
-    findAll: function(req, res, next) {
-        Household.find().exec(function(err, data) {
+    findCompleted: function(req, res, next) {
+        // todo: check auth here
+        Household.find().where({completed: true}).exec(function(err, data) {
             if (err) {
                 return next(err);
             }
+            console.log({'found households': data});
             res.send(data);
         });
     },

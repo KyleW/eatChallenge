@@ -16,10 +16,11 @@ module.exports = function(app, passport) {
     });
 
     // API
+    app.get('/household/completed', household.findCompleted);
     app.get('/household', household.findOrCreate);
     app.post('/household', household.save);
 
-    app.get('/child', child.create);
+    // app.get('/child', child.create);
 
     // Auth
     // app.post('/signup', function(req, res, next) {

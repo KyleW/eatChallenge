@@ -111,30 +111,38 @@
                 }
             })
             .state('export', {
-              url: '/export',
-              templateUrl: '../views/export.html',
-              controller: 'mainController'
-          })
+                url: '/export',
+                views: {
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/export.html',
+                        controller: 'exportController'
+                    }
+                }
+            })
             .state('styleguide', {
               url: '/styleguide',
               templateUrl: '../views/styleguide.html',
               controller: 'mainController'
-          })
+            })
             .state('signup', {
               url: '/signup',
               templateUrl: '../views/signup.html',
-          })
+            })
             .state('login', {
                 url: '/login',
                 views:{
                     'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
                     'main': {
-                    templateUrl: '../views/login.html',
-                    controller: 'loginController'
-                }
+                        templateUrl: '../views/login.html',
+                        controller: 'loginController'
+                    }
                 }
             })
             .state('soFar', {
