@@ -23,6 +23,8 @@ var paths = {
       './bower_components/angular-aria/angular-aria.min.js',
       './bower_components/angular-messages/angular-messages.min.js',
       './bower_components/angular-material/angular-material.min.js',
+      './bower_components/angular-sanitize/angular-sanitize.min.js',
+      './bower_components/ng-csv/build/ng-csv.min.js',
       './bower_components/underscore/underscore-min.js'
     ],
     dist: './build'

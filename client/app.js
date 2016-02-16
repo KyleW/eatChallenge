@@ -1,7 +1,7 @@
 (function() {
 
     angular
-    .module('eatChallengeApp',['ngMaterial','ui.router'])
+    .module('eatChallengeApp',['ngCsv','ngMaterial', 'ngSanitize', 'ui.router'])
     .config(routerConfig)
     .config(materialDesignThemer);
 

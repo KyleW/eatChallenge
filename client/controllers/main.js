@@ -8,12 +8,14 @@
     mainController.$inject = ['$http', '$interval', '$mdDialog', '$mdMedia', '$scope', '$state', 'Household', 'Sections'];
 
     function mainController ($http, $interval, $mdDialog, $mdMedia, $scope, $state, Household, Sections) {
-        // TODO: replace scope with vm
-        $scope.household = Household.get();
-        $scope.schoolDistrict = 'Oakland Unified School District';
+        /* jshint validthis: true */
+        var vm = $scope;
 
-        $scope.navigateToNextSection = navigateToNextSection;
-        $scope.submitApplication = submitApplication;
+        vm.household = Household.get();
+        vm.schoolDistrict = 'Oakland Unified School District';
+
+        vm.navigateToNextSection = navigateToNextSection;
+        vm.submitApplication = submitApplication;
 
         /////////////////////////////////////
 
@@ -27,12 +29,11 @@
             }
         }
 
-        $scope.$watch('household.childCount', addChild);
-        $scope.$watch('household.otherMembersCount', function(newVal) {
+        function addOtherMember(newVal) {
             while (newVal > $scope.household.otherMembers.length) {
                 $scope.household.incrementOtherMembersCount();
             }
-        });
+        }
 
         function navigateToNextSection() {
             Household.save();
@@ -45,6 +46,9 @@
             navigateToNextSection();
         }
 
+        // Watchers
+        $scope.$watch('household.childCount', addChild);
+        $scope.$watch('household.otherMembersCount', addOtherMember);
     }
 
 })();
