@@ -5,7 +5,16 @@
         .module('eatChallengeApp')
         .controller('mainController', mainController);
 
-    mainController.$inject = ['$http', '$interval', '$mdDialog', '$mdMedia', '$scope', '$state', 'Household', 'Sections'];
+    mainController.$inject = [
+        '$http',
+        '$interval',
+        '$mdDialog',
+        '$mdMedia',
+        '$scope',
+        '$state',
+        'Household',
+        'Sections'
+    ];
 
     function mainController ($http, $interval, $mdDialog, $mdMedia, $scope, $state, Household, Sections) {
         /* jshint validthis: true */

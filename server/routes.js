@@ -64,13 +64,13 @@ module.exports = function(app, passport) {
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/#/start?success',
         failureRedirect : '/#/login?fail',
-        failureFlash : true // allow flash messages
+        // failureFlash : true // allow flash messages
     }));
 
     app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/#/start?success',
-        failureRedirect : '/#/login?fail',
-        failureFlash : true // allow flash messages
+        failureRedirect : '/#/login?error=fail',
+        // failureFlash : true // allow flash messages
     }));
 
     app.post('/logout', function(req, res, next) {

@@ -130,7 +130,17 @@
             })
             .state('signup', {
               url: '/signup',
-              templateUrl: '../views/signup.html',
+              views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/signup.html',
+                        controller: 'mainController'
+                    }
+                }
+              
             })
             .state('login', {
                 url: '/login',

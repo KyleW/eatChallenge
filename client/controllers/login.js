@@ -3,10 +3,11 @@
     angular
       .module('eatChallengeApp')
       .controller('loginController', [loginController]);
-
-    function loginController() {
-        var loginVM = this;
-        console.log('running ok');
+    loginController.$inject = ['$location', '$scope'];
+    function loginController($location, $scope) {
+        var vm = $scope;
+        // debugger;
+        // vm.error = $location;
     }
 
 })();

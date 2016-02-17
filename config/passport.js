@@ -30,8 +30,8 @@ module.exports = function(passport) {
         passReqToCallback : true
     },
     function(req, email, password, done) {
-
         // TODO: Move create methods to model
+        email = email.toLowerCase();
         User.findOne({'email' :  email}, function(err, user) {
             var newUser;
             if (err) {
@@ -67,6 +67,7 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, email, password, done) {
+        email = email.toLowerCase();
         User.findOne({'email' :  email}, function(err, user) {
             if (err) {
                 return done(err);
