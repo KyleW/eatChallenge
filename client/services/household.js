@@ -20,7 +20,6 @@
             },
         };
 
-        // Model
         // Todo: consider moving to server??
         var Household = {
             childCount: 0,

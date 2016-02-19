@@ -1,7 +1,7 @@
 <ul class="side-nav">
     <li ng-class="{current: currentState === 'start'}">
         <a ui-sref="start">Start Here</a>
-    </li>    
+    </li>
     <li ng-repeat="section in sections"
         ng-class="{completed: section.completed, 'not-required': !section.required, current: currentState === section.state}">
         <a ui-sref="{{section.state}}">{{section.label}}</a>
@@ -9,7 +9,14 @@
     <li ng-class="{current: currentState === 'confirmation'}">
         <a ui-sref="confirmation">Confirmation</a>
     </li>
-    <!-- <li><a ui-sref="export">Export Data</a></li>
-    <li><a ui-sref="signup">Signup</a></li>
-    <li><a ui-sref="login">Login</a></li> -->
-</ul> 
+    <!-- <li>
+    <a ui-sref="export">Export Data</a>
+</li>
+<li>
+    <a ui-sref="signup">Signup</a>
+</li>
+<li>
+    <a ui-sref="login">Login</a>
+</li>
+-->
+</ul>
