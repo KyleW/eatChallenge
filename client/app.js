@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
 
     angular
     .module('eatChallengeApp',['ngCookies', 'ngCsv','ngMaterial', 'ngSanitize', 'ui.router'])
