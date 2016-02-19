@@ -12,11 +12,13 @@
         '$mdMedia',
         '$scope',
         '$state',
+        'Auth',
         'Household',
         'Sections'
     ];
 
-    function mainController ($http, $interval, $mdDialog, $mdMedia, $scope, $state, Household, Sections) {
+    function mainController ($http, $interval, $mdDialog, $mdMedia,
+                             $scope, $state, Auth, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
 
