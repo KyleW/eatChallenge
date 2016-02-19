@@ -23,59 +23,13 @@ module.exports = function(app, passport) {
     app.get('/child', child.create);
 
     // Auth
-    // app.post('/signup', function(req, res, next) {
-    //     // req.assert('email', 'Email is not valid').isEmail();
-    //     // req.assert('password', 'Password must be at least 4 characters long').len(4);
-    //     // req.assert('confirmPassword', 'Passwords do not match').equals(req.body.password);
+    app.post('/user/signup', passport.authenticate('local-signup'));
 
-    //     // var errors = req.validationErrors();
+    app.post('/user/login', passport.authenticate('local-login'));
 
-    //     // if (errors) {
-    //     //   // req.flash('errors', errors);
-    //     //   return res.redirect('/signup');
-    //     // }
-
-    //     var user = new User({
-    //         email: req.body.email,
-    //         password: req.body.password
-    //     });
-
-    //     User.findOne({email: req.body.email}, function(err, existingUser) {
-    //         if (existingUser) {
-    //             // req.flash('errors', {msg: 'Account with that email address already exists.'});
-    //             return res.redirect('/#/signup?error=duplicate');
-    //         }
-
-    //         user.save(function(err) {
-    //             if (err) {
-    //                 return next(err);
-    //             }
-    //             req.logIn(user, function(err) {
-    //                 if (err) {
-    //                     return next(err);
-    //                 }
-    //                 res.redirect('/?sucess=true');
-    //             });
-    //         });
-    //     });
-
-    // });
-
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/#/start?success',
-        failureRedirect : '/#/login?fail',
-        // failureFlash : true // allow flash messages
-    }));
-
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/#/start?success',
-        failureRedirect : '/#/login?error=fail',
-        // failureFlash : true // allow flash messages
-    }));
-
-    app.post('/logout', function(req, res, next) {
+    app.post('/user/logout', function(req, res, next) {
         req.logout();
-        res.redirect('/');
+        res.status(200).send();
     });
 
 };

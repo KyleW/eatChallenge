@@ -1,118 +1,104 @@
-
 <!-- children -->
 <form id="children questionMain" layout='column' name="childrenForm" novalidate>
     <h2>Children</h2>
     <div layout="row">
         <div class="annotation">
-          <p>School students include anyone attending school through grade 12 regardless of their age.</p>
-          <p>Include children who are supported with the household's income even if they are not related to you.</p>
+            <p>School students include anyone attending school through grade 12 regardless of their age.</p>
+            <p>Include children who are supported with the household's income even if they are not related to you.</p>
         </div>
         <div flex="55" layout-margin="0 18px" >
-          <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
+            <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
         </div>
         <md-input-container flex-offset="5" flex="40">
             <label>number of children</label>
             <md-select ng-model="household.childCount">
-              <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12, 13, 14, 15, 16, 17, 18, 19, 20]" value="{{number}}">{{number}}</md-option>
-                <!-- <span ng-if="number === 1">child</span> <span ng-if="number > 1">children</span> -->
+                <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12, 13, 14, 15, 16, 17, 18, 19, 20]" value="{{number}}">{{number}}</md-option>
             </md-select>
         </md-input-container>
     </div>
-
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5" ng-blur="updateCompleted()">
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">
-            Child #{{$index + 1}}
-            <span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span>
-          </span>
-          <!-- <span class="md-subhead">Large</span> -->
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content>
-
-        <!-- child names -->
-        <div layout="row">
-          <md-input-container flex="3">
-            <label>First Name</label>
-            <input ng-model="child.firstName" required>
-          </md-input-container>
-          <md-input-container flex-offset="5" flex="1">
-            <label>Middle Initial</label>
-            <input ng-model="child.middleInitial">
-          </md-input-container>
-          <md-input-container flex-offset="5" flex="3">
-            <label>Last Name</label>
-            <input ng-model="child.lastName" required>
-          </md-input-container>
-        </div>
-      
-        <!-- Student Status -->
-        <div layout="row">
-          <div flex="55"><label>Is this child a student enrolled in the {{schoolDistrict}}?</label></div>
-          <div yes-no-input model="child.enrolled" flex-offset="5" flex="40"></div>
-        </div>
-
-        <!-- Special Status -->
-        <div layout="column">
-          <div flex="55"><label>Check all that apply for this child:</label></div>
-          <div layout="column" flex-offset="60" class="child_checkbox_container">
-            
-            <md-checkbox ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
-            <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
-            <md-checkbox ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
-            <div>
-              <div class="annotation">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals.</div>
-              <md-checkbox ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">
-                Assistance Program Participant(SNAP, TANF, or FDPIR)
-              </md-checkbox>
-            </div>
-            <div ng-if="child.assistanceProgram.Participant" >
-              <div class="annotation">Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. </div>
-              <md-input-container flex-offset="0">
-                <label>Case Number</label>
-                <input ng-model="child.assistanceProgram.caseNumber">
-              </md-input-container>
-            </div>
-
-          </div>
-        </div>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Child #{{$index + 1}}
+                <span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
         
-        <!-- Race/Ethnicity -->
-        <div layout="column" class="race_ethnicity_instructions">
-          <h4 class="race_ethnicity_title">Race/Ethnicity<h4>
-          <label>
-            We are required to ask for information about your children’s race and ethnicity. This information is important and helps to make sure we are fully serving our community.
-          </label>
-        </div>
-        <div layout="column">
-          <div flex="55"><label>Ethnicity(check one):</label></div>
-          <div layout="column" flex-offset="60" class="child_checkbox_container">
-            <div class="annotation">Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</div>
-            <md-radio-group ng-model="child.ethnicity">
-              <md-radio-button class="md-primary" value="hispanic">Hispanic or Latino</md-radio-button>
-              <md-radio-button class="md-primary" value="notHispanic">Not Hispanic or Latino</md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="55"><label>Race (check one or more):</label></div>
-        <div layout="column" flex-offset="60" class="child_checkbox_container">
-          <div class="annotation">Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</div>
-          <md-checkbox ng-model="child.race.americanIndian" class="md-primary" flex-offset="0">American Indian or Alaskan Native</md-checkbox>
-          <md-checkbox ng-model="child.race.asian" class="md-primary" flex-offset="0">Asian</md-checkbox>
-          <md-checkbox ng-model="child.race.black" class="md-primary" flex-offset="0">Black or African American</md-checkbox>
-          <md-checkbox ng-model="child.race.pacificIslander" class="md-primary" flex-offset="0">Native Hawaiian or Other Pacifi­c Islander</md-checkbox>
-          <md-checkbox ng-model="child.race.white" class="md-primary" flex-offset="0">White</md-checkbox>
-        </div>
-      </md-card-content>
+            <!-- child names -->
+            <div layout="row">
+                <md-input-container flex="3">
+                    <label>First Name</label>
+                    <input ng-model="child.firstName" required>
+                </md-input-container>
+                <md-input-container flex-offset="5" flex="1">
+                    <label>Middle Initial</label>
+                    <input ng-model="child.middleInitial">
+                </md-input-container>
+                <md-input-container flex-offset="5" flex="3">
+                    <label>Last Name</label>
+                    <input ng-model="child.lastName" required>
+                </md-input-container>
+            </div>
+        
+            <!-- Student Status -->
+            <div layout="row">
+                <div flex="55"><label>Is this child a student enrolled in the {{schoolDistrict}}?</label></div>
+                <div yes-no-input model="child.enrolled" flex-offset="5" flex="40"></div>
+            </div>
+            
+            <!-- Special Status -->
+            <div layout="column">
+                <div flex="55"><label>Check all that apply for this child:</label></div>
+                <div layout="column" flex-offset="60" class="child_checkbox_container">
+                    
+                    <md-checkbox ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
+                    <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
+                    <md-checkbox ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
+                    <div>
+                        <div class="annotation">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals.</div>
+                        <md-checkbox ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
+                    </div>
+                    <div ng-if="child.assistanceProgram.Participant" >
+                        <div class="annotation">
+                            Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. 
+                        </div>
+                        <md-input-container flex-offset="0">
+                            <label>Case Number</label>
+                            <input ng-model="child.assistanceProgram.caseNumber">
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Race/Ethnicity -->
+            <div layout="column" class="race_ethnicity_instructions">
+                <h4 class="race_ethnicity_title">Race/Ethnicity<h4>
+                <label>
+                    We are required to ask for information about your children’s race and ethnicity. This information is important and helps to make sure we are fully serving our community.
+                </label>
+            </div>
+            <div layout="column">
+                <div flex="55"><label>Ethnicity(check one):</label></div>
+                <div layout="column" flex-offset="60" class="child_checkbox_container">
+                    <div class="annotation">Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</div>
+                    <md-radio-group ng-model="child.ethnicity">
+                    <md-radio-button class="md-primary" value="hispanic">Hispanic or Latino</md-radio-button>
+                    <md-radio-button class="md-primary" value="notHispanic">Not Hispanic or Latino</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div flex="55"><label>Race (check one or more):</label></div>
+                <div layout="column" flex-offset="60" class="child_checkbox_container">
+                    <div class="annotation">Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</div>
+                    <md-checkbox ng-model="child.race.americanIndian" class="md-primary" flex-offset="0">American Indian or Alaskan Native</md-checkbox>
+                    <md-checkbox ng-model="child.race.asian" class="md-primary" flex-offset="0">Asian</md-checkbox>
+                    <md-checkbox ng-model="child.race.black" class="md-primary" flex-offset="0">Black or African American</md-checkbox>
+                    <md-checkbox ng-model="child.race.pacificIslander" class="md-primary" flex-offset="0">Native Hawaiian or Other Pacifi­c Islander</md-checkbox>
+                    <md-checkbox ng-model="child.race.white" class="md-primary" flex-offset="0">White</md-checkbox>
+                </div>
+            </div>
+        </md-card-content>
     </md-card>
     <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
-  <!-- <div class="secondary-instructions" layout="column">
-    <p>
-
-    </p>
-    <ul>
-      
-    </ul>
-  </div> -->
-
-</form>
+    </form>
+    

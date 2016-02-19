@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "ng-cookies": "^1.1.1"
   }
 }
