@@ -10,7 +10,7 @@
     function sectionsService($rootScope, $state) {
         var previousState,
             currentState;
-        
+
         var sections = [
             {
                 label: 'Children',
@@ -19,7 +19,7 @@
                 required: true
             },
             {
-                label: 'Child Income',
+                label: "Children's Income",
                 state: 'childIncome',
                 completed: false,
                 required: true
@@ -50,13 +50,11 @@
         return service;
         //////////////////////
 
-
         function updateRequiredSections(household) {
             var currentChild;
             var assistanceProgramHousehold = false;
             var specialStatusCount = 0;
             var skipMeansTest = false;
-
 
             for (var i = 0 ; i < household.children.length; i++) {
                 currentChild = household.children[i];
@@ -122,7 +120,6 @@
             console.log('Previous state:' + previousState);
             console.log('Current state:' + currentState);
         });
-
 
     }
 

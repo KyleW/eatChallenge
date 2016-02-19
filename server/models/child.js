@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var childSchema = new Schema({
     firstName: String,
     middleInitial: String,

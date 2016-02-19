@@ -123,14 +123,9 @@
                     }
                 }
             })
-            .state('styleguide', {
-              url: '/styleguide',
-              templateUrl: '../views/styleguide.html',
-              controller: 'mainController'
-            })
             .state('signup', {
-              url: '/signup',
-              views:{
+                url: '/signup',
+                views:{
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -140,7 +135,7 @@
                         controller: 'mainController'
                     }
                 }
-              
+
             })
             .state('login', {
                 url: '/login',

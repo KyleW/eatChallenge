@@ -60,7 +60,7 @@ gulp.task('buildCss',function() {
     .pipe(sourcemaps.init())
     .pipe(stylus({
         compress: true,
-        "include css": true,
+        'include css': true,
         use: nib(),
     })
   )

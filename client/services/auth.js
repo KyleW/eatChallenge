@@ -39,7 +39,7 @@
 
         function logout() {
             $http.post('/user/logout').success(function() {
-                user =fasle;
+                user = fasle;
             })
 
         }
