@@ -1,9 +1,9 @@
 var express = require('express');
 var url = require('url');
-var User = require('./models/user');
+
 // Controllers
 var household = require('./controllers/household');
-var child = require('./controllers/child');
+var child     = require('./controllers/child');
 
 module.exports = function(app, passport) {
     // Static files

@@ -1,38 +1,40 @@
 <div class="income" layout="column">
-  <div layout="row">
-      <div flex="55" layout="column" layout-align="center">
-          <label>Does 
-              <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
-              <span ng-if="!member.firstName">this person</span>
-              have his or her own source of income?
-          </label>
-      </div>
-      <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
-  </div>
-
-  <h3 ng-if="member.earnsIncome">Income Sources</h3>
-  <div ng-if="member.earnsIncome" layout="row">Please indicate how much&nbsp
-    <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
-    <span ng-if="!member.firstName">this person</span>&nbspreceives from each of these income sources</div>
-
-  <div ng-repeat="incomeSource in member.incomeSources" layout="row" ng-if="member.earnsIncome">
-    <div flex="55" layout="column" layout-align="center start">
-      <label>{{incomeSources[incomeSource.type].label}}</label>
+    <div layout="row">
+        <div flex="55" layout="column" layout-align="center">
+            <label>
+                Does
+                <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
+                <span ng-if="!member.firstName">this person</span>
+                have his or her own source of income?
+            </label>
+        </div>
+        <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
     </div>
-    <div flex="40" offset="5" layout="row" layout-align="center space-between">
-      <md-input-container flex="45">
-        <label>Amount</label>
-        <input ng-model="incomeSource.amount" type="number">
-      </md-input-container>
-      <md-input-container flex="45" offset="10">
-        <label>How often?</label>
-        <md-select ng-model="incomeSource.frequency">
-          <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
-        </md-select>
-      </md-input-container>
+
+    <h3 ng-if="member.earnsIncome">Income Sources</h3>
+    <div ng-if="member.earnsIncome" layout="row">
+        Please indicate how much&nbsp
+        <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
+        <span ng-if="!member.firstName">this person</span>
+        &nbspreceives from each of these income sources
     </div>
-    <div class="annotation" ng-if="member.isChild">{{incomeSources[incomeSource.type].annotation.child}}</div>
-    <div class="annotation" ng-if="!member.isChild">{{incomeSources[incomeSource.type].annotation.otherMember}}</div>
-  </div>
+
+    <div ng-repeat="incomeSource in member.incomeSources" layout="row" ng-if="member.earnsIncome">
+        <div flex="55" layout="column" layout-align="center start">
+            <label>{{incomeSources[incomeSource.type].label}}</label>
+        </div>
+        <div flex="40" offset="5" layout="row" layout-align="center space-between">
+            <md-input-container flex="45">
+                <label>Amount</label>
+                <input ng-model="incomeSource.amount" type="number"></md-input-container>
+            <md-input-container flex="45" offset="10">
+                <label>How often?</label>
+                <md-select ng-model="incomeSource.frequency">
+                    <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div class="annotation" ng-if="member.isChild">{{incomeSources[incomeSource.type].annotation.child}}</div>
+        <div class="annotation" ng-if="!member.isChild">{{incomeSources[incomeSource.type].annotation.otherMember}}</div>
+    </div>
 </div>
-
