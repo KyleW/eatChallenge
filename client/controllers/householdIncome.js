@@ -17,7 +17,7 @@
         var vm = $scope;
         var household = Household.get();
 
-        var fromWork = {
+        var work = {
             categoryName: 'work',
             headline: 'Work Income',
             question: 'earn money through work',
@@ -65,21 +65,21 @@
                     checkboxLabel: 'Unemployment benefits',
                     shortLabel: 'Unemployment benefits',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    // annotation: 'Please report gross income. This is the amount of income earned before any money is taken out for taxes or deductions. Include salary, wages, and cash bonuses.'
+                    // annotation: ''
                 },
                 {
                     vaule:'workersComp',
                     checkboxLabel: 'Worker’s compensation',
                     shortLabel: 'Worker’s compensation',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    // annotation: 'Please report gross income. This is the amount of income earned before any money is taken out for taxes or deductions. Include salary, wages, and cash bonuses.'
+                    // annotation: ''
                 },
                 {
                     vaule:'ssi',
                     checkboxLabel: 'Supplemental Security Income (SSI)',
                     shortLabel: 'Supplemental Security Income (SSI)',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    // annotation: 'Please report gross income. This is the amount of income earned before any money is taken out for taxes or deductions. Include salary, wages, and cash bonuses.'
+                    // annotation: ''
                 },
                 {
                     vaule:'cashAssistance',
@@ -134,12 +134,18 @@
             question: 'receive any pension or retirement money',
             sources: [
                 {
-                    // TODO sub groups
-                    vaule: 'retirement',
-                    checkboxLabel: 'any pension or retirement money',
-                    shortLabel: 'pension or retirement money',
+                    vaule: 'socialSecurity',
+                    checkboxLabel: 'Social Security (including railroad retirement and black lung benefits)',
+                    shortLabel: 'Social security',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    // annotation: 'If income is received from child support or childSupport, only court-ordered payments should be reported here. Informal but regular payments should be reported later as “other” income.'
+                    annotation: 'Please include railroad retirement and black lung benefits'
+                },
+                {
+                    vaule: 'privatePension',
+                    checkboxLabel: 'Private pensions or disability',
+                    shortLabel: 'Private pensions or disability',
+                    frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                    // annotation: ''
                 }
             ]
         };
@@ -150,20 +156,49 @@
             question: 'recieve money through any other source',
             sources: [
                 {
-                    // TODO sub groups
-                    vaule: 'otherIncome',
-                    checkboxLabel: 'money through any other source',
-                    shortLabel: 'pension or retirement money',
+                    vaule: 'trusts',
+                    checkboxLabel: 'Income from trusts or estates',
+                    shortLabel: 'Income from trusts or estates',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    // annotation: 'If income is received from child support or clearImmediate(immediate);hildSupport, only court-ordered payments should be reported here. Informal but regular payments should be reported later as “other” income.'
-                }
+                    // annotation: ''
+                },
+                {
+                    vaule: 'annuities',
+                    checkboxLabel: 'Annuities',
+                    shortLabel: 'Income from annuities',
+                    frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                    // annotation: ''
+                },
+                {
+                    vaule: 'investment',
+                    checkboxLabel: 'Investment income',
+                    shortLabel: 'Investment income',
+                    frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                    // annotation: ''
+                },
+                {
+                    vaule: 'interest',
+                    checkboxLabel: 'Earned interest',
+                    shortLabel: 'Earned interest',
+                    frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                    // annotation: ''
+                },
+                {
+                    vaule: 'rentalIncome',
+                    checkboxLabel: 'Rental income',
+                    shortLabel: 'Rental income',
+                    frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                    // annotation: ''
+                },
+                {
+                    vaule: 'otherCash',
+                    checkboxLabel: 'Regular cash payments from outside household',
+                    shortLabel: 'Regular cash payments from outside household',
+                    frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                    annotation: 'Such cash payments should include regular child support or alimony payments received by the household that are not court-ordered.'
+                },
             ]
         };
-
-        household.otherMembers.forEach(function(member) {
-            member.income = {};
-        });
-
 
         function navigateToNextSection() {
             Household.save();
@@ -171,7 +206,14 @@
             Sections.navigateToNext($state.$current.self.name);
         }
 
-        var incomeCategories = [fromWork, publicAssistance, alimony, childSupport, retirement, otherIncome];
+        var incomeCategories = [
+                                work,
+                                publicAssistance,
+                                alimony,
+                                childSupport,
+                                retirement,
+                                otherIncome
+                                ];
 
         /////////////////////////////
 

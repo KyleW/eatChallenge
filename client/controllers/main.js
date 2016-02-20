@@ -40,7 +40,10 @@
         }
 
         // TODO: Move to mongoose model
-        var HouseholdMember = {};
+        var HouseholdMember = {
+            income: {}
+        };
+        
         function addOtherMember(newVal) {
             while (newVal > $scope.household.otherMembers.length) {
                 var householdMember = Object.create(HouseholdMember);

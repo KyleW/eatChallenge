@@ -1,6 +1,5 @@
 <form id="household-income questionMain" layout="column">
     <h2>Household Income</h2>
-    
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
         <md-card-title>
             <md-card-title-text>
@@ -12,9 +11,9 @@
         </md-card-title>
         <md-card-content layout="column">
             <div ng-repeat="incomeCategory in incomeCategories">
-                <!-- Work Income? -->
-                <!-- <h3>{{incomeCategory.headline}}</h3> -->
 
+                <!-- <h3>{{incomeCategory.headline}}</h3> -->
+                <!-- Income Category -->
                 <div layout="row">
                     <div flex="55" layout="column" layout-align="center">
                         <label>
@@ -27,7 +26,7 @@
                     <div yes-no-input model="member.incomeCategory[$index].showCheckboxes" flex-offset="5" flex="40"></div>
                 </div>
 
-                <!-- Income Sources From Work -->
+                <!-- Income Sources-->
                 <div layout="column" ng-if="member.incomeCategory[$index].showCheckboxes">
                     <div ng-if="incomeCategory.sources.length > 1"><label>Check all that apply:</label></div>
                     <div layout="column" class="child_checkbox_container">
