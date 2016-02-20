@@ -76,13 +76,26 @@
                 url: '/household',
                 views:{
                     'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
                     'main': {
-                    templateUrl: '../views/household.html',
-                    controller: 'mainController'
+                        templateUrl: '../views/household.html',
+                        controller: 'mainController'
+                    }
                 }
+            })
+            .state('householdIncome', {
+                url: '/household-income',
+                views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/householdIncome.html',
+                        controller: 'householdIncome'
+                    }
                 }
             })
             .state('signature', {

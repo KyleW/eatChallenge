@@ -31,6 +31,12 @@
                 required: true
             },
             {
+                label: 'Household Income',
+                state: 'householdIncome',
+                completed: false,
+                required: true
+            },
+            {
                 label: 'Sign and Confirm',
                 state: 'signature',
                 completed: false,
@@ -79,7 +85,7 @@
             if (skipMeansTest) {
                 indexedSections['childIncome'].required = false;
                 indexedSections['household'].required = false;
-
+                indexedSections['householdIncome'].required = false;
                 return;
             }
 

@@ -41,11 +41,14 @@
     "express": "~4.13.3",
     "express-session": "^1.13.0",
     "express-validator": "^2.19.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-util": "^3.0.7",
     "jshint": "^2.9.1",
     "kerberos": "0.0.18",
     "mongoose": "~4.3.7",
     "npmlog": "~2.0.1",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "yargs": "^4.1.0"
   }
 }

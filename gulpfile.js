@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 
 var concat = require('gulp-concat');
 var del = require('del');
@@ -31,6 +32,49 @@ var paths = {
     dist: './build'
 };
 
+// Error handling
+
+// Command line option:
+//  --fatal=[warning|error|off]
+var fatalLevel = require('yargs').argv.fatal;
+var ERROR_LEVELS = ['error', 'warning'];
+
+function isFatal(level) {
+    return ERROR_LEVELS.indexOf(level) <= ERROR_LEVELS.indexOf(fatalLevel || 'error');
+}
+
+// Handle an error based on its severity level.
+// Log all levels, and exit the process for fatal levels.
+function handleError(level, error) {
+    gutil.log(error.message);
+    if (isFatal(level)) {
+        process.exit(1);
+    }
+}
+
+// Convenience handler for error-level errors.
+function onError(error) { handleError.call(this, 'error', error);}
+
+// Convenience handler for warning-level errors.
+function onWarning(error) { handleError.call(this, 'warning', error);}
+
+
+// Task that emits an error that's treated as a warning.
+gulp.task('warning', function() {
+   gulp.src(paths.js).
+      pipe(jshint()).
+      pipe(jshint.reporter('fail')).
+      on('error', onWarning);
+});
+
+// Task that emits an error that's treated as an error.
+gulp.task('error', function() {
+   gulp.src(paths.js).
+      pipe(jshint()).
+      pipe(jshint.reporter('fail')).
+      on('error', onError);
+});
+
 // Cleanup
 gulp.task('clean',function() {
     // Make sure to delete the contents of the directory
@@ -51,6 +95,7 @@ gulp.task('buildApp',function () {
     .pipe(sourcemaps.init())
       .pipe(concat('app.js'))
       .pipe(uglify())
+      .on('error', gutil.log)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
 });
@@ -65,6 +110,7 @@ gulp.task('buildCss',function() {
     })
   )
   .pipe(sourcemaps.write())
+  .on('error', gutil.log)
   .pipe(gulp.dest(paths.dist));
 });
 
@@ -85,7 +131,8 @@ gulp.task('start', function () {
 });
 
 gulp.task('watch', function() {
-    // gulp.watch(paths.js, ['jshint']);
+    fatalLevel = fatalLevel || 'off';
+    gulp.watch(paths.js, ['error']);
     gulp.watch(['./styles/*.styl'], ['buildCss']);
     gulp.watch(paths.vendor, ['buildVendor']);
     gulp.watch(paths.js, ['buildApp']);

@@ -1,0 +1,57 @@
+<form id="household-income questionMain" layout="column">
+    <h2>Household Income</h2>
+    <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Household Member #{{$index + 1}}<span class="md-headline" ng-if="member.firstName">: {{member.firstName}} {{member.lastName}}</span></span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column">
+            <!-- Earn Income? -->
+            <div layout="row">
+                <div flex="55" layout="column" layout-align="center">
+                    <label>
+                        Does
+                        <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
+                        <span ng-if="!member.firstName">this person</span>
+                        earn money through work?
+                    </label>
+                </div>
+                <div yes-no-input model="member.workIncome" flex-offset="5" flex="40"></div>
+            </div>
+
+            <!-- Income Sources -->
+            <div layout="column" ng-if="member.workIncome">
+                <div flex="55"><label>Check all that apply:</label></div>
+                <div layout="column" flex-offset="60" class="child_checkbox_container">
+                    <div ng-repeat="incomeSource in member.incomeSources">
+                        <md-checkbox ng-model="incomeSource.earnsFromSource" class="md-primary" flex-offset="0">
+                            Work outside the home in a non-military capacity
+                        </md-checkbox>
+                        <div ng-if="incomeSource.earnsFromSource" layout="row">
+                            <div flex="40" offset="5" layout="row" layout-align="center space-between">
+                                <md-input-container flex="45">
+                                    <label>Amount</label>
+                                    <input ng-model="incomeSource.amount" type="number">
+                                </md-input-container>
+                                <md-input-container flex="45" offset="10">
+                                    <label>How often?</label>
+                                    <md-select ng-model="incomeSource.frequency">
+                                        <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="annotation" ng-if="incomeSource.annotation>"> {{incomeSources[incomeSource.type].annotation}}</div>
+                    </div>
+
+                    
+                    <md-checkbox ng-model="member.incomeSource.selfEmployed" class="md-primary" flex-offset="0">Self-employed</md-checkbox>
+                    <md-checkbox ng-model="member.incomeSource.strikeFund" class="md-primary" flex-offset="0">On strike</md-checkbox>
+                    <md-checkbox ng-model="member.incomeSource.military" class="md-primary" flex-offset="0">In the U.S. military</md-checkbox>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
+    <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
+</form>
