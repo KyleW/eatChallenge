@@ -38,9 +38,10 @@
         }
 
         function save() {
-            return $http.post('/household', household).then(function(response) {
-                household = response.data;
-            });
+            return $http.post('/household', household)
+            // .then(function(response) {
+            //     household = response.data;
+            // });
         }
 
         function clear () {

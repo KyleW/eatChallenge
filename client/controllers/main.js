@@ -54,7 +54,7 @@
 
         function navigateToNextSection() {
             Household.save();
-            var updated = Sections.updateRequiredSections($scope.household);
+            Sections.updateRequiredSections($scope.household);
             Sections.navigateToNext($state.$current.self.name);
         }
 
