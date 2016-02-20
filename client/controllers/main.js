@@ -29,20 +29,6 @@
         vm.submitApplication = submitApplication;
 
         /////////////////////////////////////
-        var memberIncomeSources = {};
-
-        var HouseholdMember = {
-            incomeSources: []
-        };
-
-        Object.keys(memberIncomeSources).forEach(function(incomeSource) {
-            HouseholdMember.incomeSources.push({
-                type: incomeSource,
-                amount: null,
-                frequency: null
-            });
-        });
-
         function addChild(newVal) {
             if (newVal > $scope.household.children.length) {
                 $http.get('/child').then(function(response) {
@@ -53,6 +39,8 @@
             }
         }
 
+        // TODO: Move to mongoose model
+        var HouseholdMember = {};
         function addOtherMember(newVal) {
             while (newVal > $scope.household.otherMembers.length) {
                 var householdMember = Object.create(HouseholdMember);

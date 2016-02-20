@@ -4,6 +4,7 @@ var gutil = require('gulp-util');
 var concat = require('gulp-concat');
 var del = require('del');
 var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 var mainBowerFiles = require('main-bower-files');
 var nodemon = require('gulp-nodemon');
 var sourcemaps = require('gulp-sourcemaps');
@@ -63,7 +64,8 @@ function onWarning(error) { handleError.call(this, 'warning', error);}
 gulp.task('warning', function() {
    gulp.src(paths.js).
       pipe(jshint()).
-      pipe(jshint.reporter('fail')).
+      pipe(jshint.reporter(stylish)).
+      // pipe(jshint.reporter('fail')).
       on('error', onWarning);
 });
 
@@ -71,7 +73,8 @@ gulp.task('warning', function() {
 gulp.task('error', function() {
    gulp.src(paths.js).
       pipe(jshint()).
-      pipe(jshint.reporter('fail')).
+      pipe(jshint.reporter(stylish)).
+      // pipe(jshint.reporter('fail')).
       on('error', onError);
 });
 
@@ -94,7 +97,7 @@ gulp.task('buildApp',function () {
     return gulp.src(paths.js)
     .pipe(sourcemaps.init())
       .pipe(concat('app.js'))
-      .pipe(uglify())
+      // .pipe(uglify())
       .on('error', gutil.log)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
