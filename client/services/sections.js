@@ -70,9 +70,9 @@
                     break;
                 }
 
-                if (currentChild.specialStatus && currentChild.specialStatus.fosterChild ||
+                if (currentChild.specialStatus && (currentChild.specialStatus.fosterChild ||
                     currentChild.specialStatus.homelessMigrantRunaway ||
-                    currentChild.specialStatus.headStartParticipant
+                    currentChild.specialStatus.headStartParticipant)
                 ) {
                     specialStatusCount++;
                 }
