@@ -25,15 +25,27 @@ section
 
 header
   text-align center
-  padding 10px 20px
+  // padding 10px 20px
   margin-top -1px
   margin-bottom 20px
   border-bottom 2px solid grey
+  padding-left 180px
   width 100%
   position fixed
   z-index 100
   background $backgroundColor 
-  height $headerHeight
+  min-height $headerHeight
+  
+  .logo
+    position absolute
+    top -42px
+    left 0    
+    height 180px
+    width 180px
+
+
+  h1
+    padding-top 30px
 
 .mainContainer
   margin-top $headerHeight
