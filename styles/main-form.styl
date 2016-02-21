@@ -1,7 +1,7 @@
 // Variables
 $centerColMargin = 10px
 $lineThickness = 2px
-$annotationWidth = 300px
+$annotationWidth = 270px
 $annotationOffset = -1 * $annotationWidth
 $headerHeight = 100px 
 
@@ -27,9 +27,8 @@ header
   text-align center
   // padding 10px 20px
   margin-top -1px
-  margin-bottom 20px
   border-bottom 2px solid grey
-  padding-left 180px
+  // padding-left 190px
   padding-right 20px
   width 100%
   position fixed
@@ -41,20 +40,21 @@ header
     position absolute
     top -42px
     left 0    
-    height 180px
-    width 180px
+    height 190px
+    width 190px
 
 
   h1
     padding-top 30px
+    text-align left
 
 .mainContainer
-  margin-top $headerHeight
+  margin-top $headerHeight + 10px
   
 .leftCol
   headingBase()
   padding-left 20px
-  width 190px
+  min-width 190px
 
 .centerCol
   flex 14
@@ -115,6 +115,9 @@ header
   height 400px
   overflow scroll
 
+.children
+  .child-count-instructions
+    margin-top 14px
 
 // .stdCard
 //   background rgba(52,152,219,0.3);

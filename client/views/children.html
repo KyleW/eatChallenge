@@ -1,19 +1,17 @@
 <!-- children -->
-<form id="children questionMain" layout='column' name="childrenForm" novalidate>
+<form id="questionMain" class="children" layout='column' name="childrenForm" novalidate>
     <h2>Children</h2>
     <div layout="row">
         <div class="annotation">
             <p>School students include anyone attending school through grade 12 regardless of their age.</p>
             <p>Include children who are supported with the household's income even if they are not related to you.</p>
         </div>
-        <div flex="55" layout-margin="0 18px" >
+        <div flex="55" class="child-count-instructions">
             <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
         </div>
         <md-input-container flex-offset="5" flex="40">
             <label>number of children</label>
-            <md-select ng-model="household.childCount">
-                <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12, 13, 14, 15, 16, 17, 18, 19, 20]" value="{{number}}">{{number}}</md-option>
-            </md-select>
+            <input ng-model="household.childCount" type="number" min="0"></input>
         </md-input-container>
     </div>
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5" ng-blur="updateCompleted()">
@@ -81,7 +79,7 @@
             <div layout="column">
                 <div flex="55"><label>Ethnicity(check one):</label></div>
                 <div layout="column" flex-offset="60" class="child_checkbox_container">
-                    <div class="annotation">Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</div>
+                    <div class="annotation">Responding to this section is optional and does not affect your child’s eligibility for free or reduced price meals.</div>
                     <md-radio-group ng-model="child.ethnicity">
                     <md-radio-button class="md-primary" value="hispanic">Hispanic or Latino</md-radio-button>
                     <md-radio-button class="md-primary" value="notHispanic">Not Hispanic or Latino</md-radio-button>
@@ -89,7 +87,6 @@
                 </div>
                 <div flex="55"><label>Race (check one or more):</label></div>
                 <div layout="column" flex-offset="60" class="child_checkbox_container">
-                    <div class="annotation">Responding to this section is optional and does not affect your children’s eligibility for free or reduced price meals.</div>
                     <md-checkbox ng-model="child.race.americanIndian" class="md-primary" flex-offset="0">American Indian or Alaskan Native</md-checkbox>
                     <md-checkbox ng-model="child.race.asian" class="md-primary" flex-offset="0">Asian</md-checkbox>
                     <md-checkbox ng-model="child.race.black" class="md-primary" flex-offset="0">Black or African American</md-checkbox>
