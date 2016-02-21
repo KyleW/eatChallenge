@@ -1,7 +1,4 @@
 <ul class="side-nav">
-    <li ng-class="{current: currentState === 'start'}">
-        <a ui-sref="start">Getting Started</a>
-    </li>
     <li ng-repeat="section in sections"
         ng-class="{completed: section.completed, 'not-required': !section.required, current: currentState === section.state}">
         <a ui-sref="{{section.state}}">{{section.label}}</a>

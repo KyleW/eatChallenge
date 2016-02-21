@@ -13,6 +13,11 @@
 
         var sections = [
             {
+                label: 'Getting Started',
+                state: 'start',
+                completed: false,
+                required: true
+            },            {
                 label: 'Children',
                 state: 'children',
                 completed: false,

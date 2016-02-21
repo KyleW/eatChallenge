@@ -1,5 +1,5 @@
 <!--Household -->
-<form id="household questionMain" layout="column">
+<form id="questionMain" class="household" layout="column">
     <h2>Other Household Members</h2>
     <div layout="row">
         <div class="annotation">
@@ -13,16 +13,17 @@
                 <li>The children and students already included in the Children’s section</li>
             </ul>
         </div>
-        <div flex="55" layout-margin="0 18px" >
+        <div flex="55" class="count-instructions">
             <div><label>Tell us how many people live in your household in addition to the students you told us about before. Make sure to include yourself!</label></div>
         </div>
         <md-input-container flex-offset="5" flex="40">
             <label>Other Household Members</label>
-            <md-select ng-model="household.otherMembersCount">
+            <input ng-model="household.otherMembersCount" type="number" min="0"></input>
+            <!-- <md-select ng-model="household.otherMembersCount">
                 <md-option ng-repeat="number in [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{number}}">
                     {{number}} <span ng-if="number === 1">Other Household Member</span> <span ng-if="number > 1">Other Household Members</span>
                 </md-option>
-            </md-select>
+            </md-select> -->
         </md-input-container>
     </div>
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
