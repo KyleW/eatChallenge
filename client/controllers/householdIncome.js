@@ -86,14 +86,14 @@
                     checkboxLabel: 'Cash assistance from State or local government',
                     shortLabel: 'Cash assistance',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    annotation: 'This could include TANF or General Assistance money'
+                    annotation: 'This could include TANF or General Assistance money.'
                 },
                 {
                     vaule:'veteransBenefits',
                     checkboxLabel: 'Veteran’s benefits',
                     shortLabel: 'Veteran’s benefits',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
-                    annotation: 'This could include TANF or General Assistance money'
+                    // annotation: 'This could include TANF or General Assistance money'
                 }
             ]
         };
