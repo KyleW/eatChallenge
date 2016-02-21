@@ -121,15 +121,11 @@
             $state.go(nextSection);
         }
 
-        $rootScope.$on('$stateChangeSuccess', function() {
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-        });
-
         $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
             previousState = from.name;
             currentState = to.name;
-            console.log('Previous state:' + previousState);
-            console.log('Current state:' + currentState);
+            // console.log('Previous state:' + previousState);
+            // console.log('Current state:' + currentState);
         });
 
     }

@@ -12,7 +12,7 @@
     </div>
 
     <h3 ng-if="member.earnsIncome">Income Sources</h3>
-    <div ng-if="member.earnsIncome" layout="row">
+    <div ng-if="member.earnsIncome" layout="row" class="child-instructions">
         Please indicate how much&nbsp
         <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
         <span ng-if="!member.firstName">this person</span>
@@ -26,7 +26,7 @@
         <div flex="40" offset="5" layout="row" layout-align="center space-between">
             <md-input-container flex="45">
                 <label>Amount</label>
-                <input ng-model="incomeSource.amount" type="number"></md-input-container>
+                <input ng-model="incomeSource.amount"></md-input-container>
             <md-input-container flex="45" offset="10">
                 <label>How often?</label>
                 <md-select ng-model="incomeSource.frequency">
