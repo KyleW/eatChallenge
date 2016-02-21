@@ -34,7 +34,6 @@
                 </md-select>
             </md-input-container>
         </div>
-        <div class="annotation" ng-if="member.isChild">{{incomeSources[incomeSource.type].annotation.child}}</div>
-        <div class="annotation" ng-if="!member.isChild">{{incomeSources[incomeSource.type].annotation.otherMember}}</div>
+        <div class="annotation">{{incomeSources[incomeSource.type].annotation}}</div>
     </div>
 </div>
