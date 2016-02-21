@@ -104,6 +104,19 @@
                     }
                 }
             })
+            .state('disclosure', {
+                url: '/disclosure',
+                views:{
+                    'side-nav': {
+                        templateUrl: '../views/sideNav.html',
+                        controller: 'sideNavController'
+                    },
+                    'main': {
+                        templateUrl: '../views/disclosure.html',
+                        controller: 'mainController'
+                    }
+                }
+            })
             .state('signature', {
                 url: '/signature',
                 views:{

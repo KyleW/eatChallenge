@@ -42,6 +42,12 @@
                 required: true
             },
             {
+                label: 'Disclosure',
+                state: 'disclosure',
+                completed: false,
+                required: true
+            },
+            {
                 label: 'Sign and Confirm',
                 state: 'signature',
                 completed: false,
