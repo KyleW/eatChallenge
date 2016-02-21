@@ -50,12 +50,12 @@
                 <div flex="55"><label>Check all that apply for this child:</label></div>
                 <div layout="column" flex-offset="60" class="child_checkbox_container">
                     
-                    <md-checkbox ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
-                    <md-checkbox ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
-                    <md-checkbox ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
                     <div>
                         <div class="annotation">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals.</div>
-                        <md-checkbox ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
+                        <md-checkbox md-no-ink ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
                     </div>
                     <div ng-if="child.assistanceProgram.Participant" >
                         <div class="annotation">
@@ -87,11 +87,11 @@
                 </div>
                 <div flex="55"><label>Race (check one or more):</label></div>
                 <div layout="column" flex-offset="60" class="child_checkbox_container">
-                    <md-checkbox ng-model="child.race.americanIndian" class="md-primary" flex-offset="0">American Indian or Alaskan Native</md-checkbox>
-                    <md-checkbox ng-model="child.race.asian" class="md-primary" flex-offset="0">Asian</md-checkbox>
-                    <md-checkbox ng-model="child.race.black" class="md-primary" flex-offset="0">Black or African American</md-checkbox>
-                    <md-checkbox ng-model="child.race.pacificIslander" class="md-primary" flex-offset="0">Native Hawaiian or Other Pacifi­c Islander</md-checkbox>
-                    <md-checkbox ng-model="child.race.white" class="md-primary" flex-offset="0">White</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.race.americanIndian" class="md-primary" flex-offset="0">American Indian or Alaskan Native</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.race.asian" class="md-primary" flex-offset="0">Asian</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.race.black" class="md-primary" flex-offset="0">Black or African American</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.race.pacificIslander" class="md-primary" flex-offset="0">Native Hawaiian or Other Pacifi­c Islander</md-checkbox>
+                    <md-checkbox md-no-ink ng-model="child.race.white" class="md-primary" flex-offset="0">White</md-checkbox>
                 </div>
             </div>
         </md-card-content>

@@ -39,7 +39,7 @@
                 },
                 {
                     vaule:'onStrike',
-                    checkboxLabel: 'On Strike',
+                    checkboxLabel: 'On strike',
                     shortLabel: 'Strike Benefits',
                     frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
                     // annotation:

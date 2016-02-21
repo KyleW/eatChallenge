@@ -31,7 +31,7 @@
                     <div ng-if="incomeCategory.sources.length > 1"><label>Check all that apply:</label></div>
                     <div layout="column" class="child_checkbox_container">
                         <div ng-if="incomeCategory.sources.length > 1" ng-repeat="incomeSource in incomeCategory.sources">
-                            <md-checkbox 
+                            <md-checkbox md-no-ink  
                                 ng-model="member.incomeCategory[$parent.$index][$index].earnsFromSource" 
                                 class="md-primary"
                                 flex-offset="60"
