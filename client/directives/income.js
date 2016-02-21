@@ -33,7 +33,7 @@
                 vaule:'socialSecurity',
                 label: 'Social Security Disability Payments or Survivor’s Benefits ',
                 frequency: ['monthly'],
-                annotation: 'A child is blind or disabled and receives Social Security benefits.',
+                // annotation: 'A child is blind or disabled and receives Social Security benefits.',
                     // ' A parent is disabled, retired, or deceased, and their child receives social security benefits',
                 
             },
