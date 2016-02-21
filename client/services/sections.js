@@ -19,7 +19,7 @@
                 required: true
             },
             {
-                label: "Children's Income",
+                label: 'Children\'s Income',
                 state: 'childIncome',
                 completed: false,
                 required: true
