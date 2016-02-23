@@ -68,10 +68,11 @@
         //////////////////////
 
         function updateRequiredSections(household) {
-            var currentChild;
+            var currentChild, studentCount;
             var assistanceProgramHousehold = false;
             var specialStatusCount = 0;
             var skipMeansTest = false;
+
 
             for (var i = 0 ; i < household.children.length; i++) {
                 currentChild = household.children[i];
@@ -81,7 +82,7 @@
                     break;
                 }
 
-                if (currentChild.specialStatus && (currentChild.specialStatus.fosterChild ||
+                if (currentChild.specialStatus && currentChild.enrolled && (currentChild.specialStatus.fosterChild ||
                     currentChild.specialStatus.homelessMigrantRunaway ||
                     currentChild.specialStatus.headStartParticipant)
                 ) {
@@ -89,9 +90,11 @@
                 }
             }
 
+            studentCount = _.where(household.children, {enrolled: true}).length;
+
             skipMeansTest = assistanceProgramHousehold ||
                 (household.children.length > 0 &&
-                 household.children.length === specialStatusCount);
+                 studentCount === specialStatusCount);
 
             if (skipMeansTest) {
                 indexedSections['childIncome'].required = false;
