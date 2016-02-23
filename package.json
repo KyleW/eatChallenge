@@ -41,6 +41,7 @@
     "express": "~4.13.3",
     "express-session": "^1.13.0",
     "express-validator": "^2.19.1",
+    "gulp-cssnano": "^2.1.1",
     "gulp-jshint": "^2.0.0",
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.1",

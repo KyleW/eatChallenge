@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 
 var concat = require('gulp-concat');
+var cssnano = require('gulp-cssnano');
 var del = require('del');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
@@ -85,19 +86,13 @@ gulp.task('clean',function() {
     return del(paths.dist + '/**');
 });
 
-// Linting
-// gulp.task('jshint', function(){
-//   return gulp.src(paths.js)
-//     .pipe(jshint('./.jshintrc'))
-//     .pipe(jshint.reporter('jshint-stylish'));
-// });
 
 // Builders
 gulp.task('buildApp',function () {
     return gulp.src(paths.js)
     .pipe(sourcemaps.init())
-      .pipe(concat('app.js'))
-      // .pipe(uglify())
+      .pipe(uglify())
+      .pipe(concat('app.min.js'))
       .on('error', gutil.log)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
@@ -110,17 +105,17 @@ gulp.task('buildCss',function() {
         compress: true,
         'include css': true,
         use: nib(),
-    })
-  )
-  .pipe(sourcemaps.write())
-  .on('error', gutil.log)
-  .pipe(gulp.dest(paths.dist));
+    }))
+    .pipe(cssnano())
+    .pipe(sourcemaps.write())
+    .on('error', gutil.log)
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('buildVendor', function() {
     return gulp.src(paths.vendor)
     .pipe(sourcemaps.init())
-      .pipe(concat('vendor.js'))
+      .pipe(concat('vendor.min.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
 });

@@ -16,7 +16,7 @@
     function materialDesignThemer($mdThemingProvider) {
          $mdThemingProvider.theme('default')
         // .primaryPalette('blue-grey')
-        .primaryPalette('teal')
+        .primaryPalette('teal');
         // $mdThemingProvider.theme('light-blue');
         // .primaryPalette('pink', {
         //   'default': '400', // by default use shade 400 from the pink palette for primary intentions
