@@ -5,12 +5,15 @@
     .module('eatChallengeApp',['ngCookies', 'ngCsv','ngMaterial', 'ngSanitize', 'ui.router'])
     .config(routerConfig)
     .config(materialDesignThemer)
-    .run(function($rootScope) {
-        // scroll to the top on page transition
+    .run(scroller);
+
+    scroller.$inject = ['$rootScope'];
+    function scroller($rootScope) {
+         // scroll to the top on page transition
         $rootScope.$on('$stateChangeSuccess', function() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
-    });
+    }
 
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {

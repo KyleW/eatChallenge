@@ -66,7 +66,6 @@ gulp.task('warning', function() {
    gulp.src(paths.js).
       pipe(jshint()).
       pipe(jshint.reporter(stylish)).
-      // pipe(jshint.reporter('fail')).
       on('error', onWarning);
 });
 
@@ -75,7 +74,6 @@ gulp.task('error', function() {
    gulp.src(paths.js).
       pipe(jshint()).
       pipe(jshint.reporter(stylish)).
-      // pipe(jshint.reporter('fail')).
       on('error', onError);
 });
 
@@ -102,7 +100,6 @@ gulp.task('buildCss',function() {
     return gulp.src(paths.styles)
     .pipe(sourcemaps.init())
     .pipe(stylus({
-        compress: true,
         'include css': true,
         use: nib(),
     }))
@@ -115,7 +112,7 @@ gulp.task('buildCss',function() {
 gulp.task('buildVendor', function() {
     return gulp.src(paths.vendor)
     .pipe(sourcemaps.init())
-      .pipe(concat('vendor.min.js'))
+    .pipe(concat('vendor.min.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.dist));
 });
