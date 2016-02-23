@@ -1,10 +1,9 @@
 <form id="children qustionMain" layout='column'>
-    <h2>Children's Income</h2>
-    <div layout="row">
-        <div>
-            Sometimes children in the household have their own income. If a child in your household receives money directly, please fill out their income card.
-        </div>
-    </div>
+    <h2>Children's Income</h2>    
+    <P>
+        Sometimes children or students have their own income, like from a job, disability, or a regular payment from a family member who lives outside the house. If a child in your house receives money directly, please fill out this section.
+    </P>
+    
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60">
         <md-card-title>
             <md-card-title-text>

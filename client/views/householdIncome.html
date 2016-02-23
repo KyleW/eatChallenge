@@ -1,5 +1,10 @@
 <form id="household-income questionMain" layout="column">
     <h2>Household Income</h2>
+    <p>
+    In this section, we’ll go over the income you and the other members of your household who are not infants, children, or students receive.</p>
+    <!--TODO: emdash  -->
+    <p>We’ll ask a lot of questions--this is just to help you remember all of the different possible sources of income that might support your household. 
+    </p>
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
         <md-card-title>
             <md-card-title-text>

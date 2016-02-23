@@ -30,7 +30,7 @@
                 required: true
             },
             {
-                label: 'Household',
+                label: 'Household Members',
                 state: 'household',
                 completed: false,
                 required: true

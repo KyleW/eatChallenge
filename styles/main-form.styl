@@ -82,7 +82,8 @@ header
   width $annotationWidth
   position absolute
   right $annotationOffset
-  border-left $lineThickness solid blue
+  // border-left $lineThickness solid blue
+  border-left $lineThickness solid $mdTeal
   padding-left 10px
   padding-right 20px
   
@@ -111,9 +112,13 @@ header
 
 
 //pages
-.start h2
+.start 
+  h2
     margin-bottom 8px
-  
+
+  .hero 
+    width 100%
+    
   .start-button
     width 200px
     white-space normal

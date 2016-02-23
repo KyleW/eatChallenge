@@ -14,6 +14,9 @@
 
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
+         $mdThemingProvider.theme('default')
+        // .primaryPalette('blue-grey')
+        .primaryPalette('teal')
         // $mdThemingProvider.theme('light-blue');
         // .primaryPalette('pink', {
         //   'default': '400', // by default use shade 400 from the pink palette for primary intentions
@@ -42,10 +45,10 @@
             .state('start', {
                 url: '/',
                 views:{
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/start.html',
                         controller: 'mainController'
