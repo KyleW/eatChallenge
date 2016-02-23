@@ -24,38 +24,40 @@
             </md-card-title-text>
         </md-card-title> -->
         <md-card-content>
-            <div>
-                <md-input-container flex="70">
+            <div layout="row">
+                <md-input-container flex="65">
                     <label>Electronic Signature</label>
                     <input ng-model="household.signature"></md-input-container>
                 <!-- TODO: Autofill? Datepicker? -->
-                <md-input-container flex="25" >
+                <md-input-container flex="30" flex-offset="5" >
                     <label>Today's Date</label>
                     <input ng-model="household.signedon"></md-input-container>
             </div>
             <div layout="row">
-                <md-input-container>
+                <md-input-container flex="100">
                     <label>Street Address</label>
-                    <input></md-input-container>
+                    <input>
+                </md-input-container>
             </div>
             <div layout="row">
-                <md-input-container>
+                <md-input-container flex="50">
                     <label>City</label>
                     <input></md-input-container>
-                <md-input-container>
+                <md-input-container flex="10" flex-offset="5">
                     <label>State</label>
                     <input></md-input-container>
-                <md-input-container>
-                    <label>Zipcode</label>
+                <md-input-container flex="30" flex-offset="5">
+                    <label>Zipcode</label >
                     <input></md-input-container>
             </div>
             <div layout="row">
-                <md-input-container>
+                <md-input-container flex="45">
                     <label>Phone Number [optional]</label>
                     <input></md-input-container>
-                <md-input-container>
+                <md-input-container flex="45" flex-offset="5">
                     <label>Email [optional]</label>
-                    <input></md-input-container>
+                    <input type="email">
+                </md-input-container>
             </div>
         </md-card-content>
     </md-card>
