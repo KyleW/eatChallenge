@@ -13,7 +13,7 @@
 
         var sections = [
             {
-                label: 'Getting Started',
+                label: 'Let\’s Get Started! ',
                 state: 'start',
                 completed: false,
                 required: true
