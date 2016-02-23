@@ -25,6 +25,7 @@
         vm.household = Household.get();
         vm.schoolDistrict = 'Oakland Unified School District';
 
+        vm.goBack = goBack;
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
 
@@ -43,7 +44,7 @@
         var HouseholdMember = {
             income: {}
         };
-        
+    
         function addOtherMember(newVal) {
             while (newVal > $scope.household.otherMembers.length) {
                 var householdMember = Object.create(HouseholdMember);
@@ -52,10 +53,16 @@
             }
         }
 
+        function goBack() {
+            Household.save();
+            Sections.updateRequiredSections($scope.household);
+            Sections.goBack();
+        }
+
         function navigateToNextSection() {
             Household.save();
             Sections.updateRequiredSections($scope.household);
-            Sections.navigateToNext($state.$current.self.name);
+            Sections.navigateToNext();
         }
 
         function submitApplication() {

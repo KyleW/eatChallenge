@@ -13,6 +13,12 @@
         $rootScope.$on('$stateChangeSuccess', function() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
+
+            // Keep track of history
+        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+            $rootScope.previousState = from.name;
+            $rootScope.currentState = to.name;
+        });
     }
 
     materialDesignThemer.$inject = ['$mdThemingProvider'];

@@ -8,50 +8,54 @@
     sectionsService.$inject = ['$rootScope' ,'$state'];
 
     function sectionsService($rootScope, $state) {
-        var previousState,
-            currentState;
-
         var sections = [
             {
                 label: 'Let\’s Get Started! ',
                 state: 'start',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: false
             },            {
                 label: 'Children',
                 state: 'children',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: true
             },
             {
                 label: 'Children\'s Income',
                 state: 'childIncome',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: true
             },
             {
                 label: 'Household Members',
                 state: 'household',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: true
             },
             {
                 label: 'Household Income',
                 state: 'householdIncome',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: true
             },
             {
                 label: 'Disclosure',
                 state: 'disclosure',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: false
             },
             {
                 label: 'Sign and Confirm',
                 state: 'signature',
                 completed: false,
-                required: true
+                required: true,
+                showSummaryAfter: false
             },
         ];
 
@@ -61,6 +65,7 @@
             sections: sections,
             indexedSections: indexedSections,
             navigateToNext: navigateToNext,
+            goBack: goBack,
             updateRequiredSections: updateRequiredSections
         };
 
@@ -72,7 +77,6 @@
             var assistanceProgramHousehold = false;
             var specialStatusCount = 0;
             var skipMeansTest = false;
-
 
             for (var i = 0 ; i < household.children.length; i++) {
                 currentChild = household.children[i];
@@ -125,17 +129,37 @@
             return 'confirmation';
         }
 
-        function navigateToNext(currentState) {
-            var nextSection  = findNext(currentState);
+        function navigateToNext() {
+            var nextSection;
+            var currentState = $rootScope.currentState || $state.$current.self.name;
+            var previousState =$rootScope.previousState || 'start';
+
+            // If on the summary page go to the next form page
+            if (currentState === 'soFar') {
+                if (previousState) {
+                    nextSection  = findNext(previousState);
+                } else {
+                    // This happens if you refresh the page on the so far screen.
+                    // Come up with something better? stash in url?
+                    nextSection = 'start';
+                }
+                
+            } else if (indexedSections[currentState].showSummaryAfter) {
+                // if on a form page, go to summary page
+                nextSection = 'soFar';
+            } else {
+                // If you're on some other page like start or signature
+                // Move ahead as normal
+                nextSection  = findNext(currentState);
+            }
+
             $state.go(nextSection);
         }
 
-        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
-            previousState = from.name;
-            currentState = to.name;
-            // console.log('Previous state:' + previousState);
-            // console.log('Current state:' + currentState);
-        });
+        function goBack() {
+            var previousState = $rootScope.previousState || 'start';
+            $state.go(previousState);
+        }
 
     }
 
