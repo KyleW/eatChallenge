@@ -1,18 +1,36 @@
-<div id="so-far" layout='column'>
-  <h2>Here's what you've entered so far:</h2>
-  <pre>{{household | json}}</pre>
-  <div layout="column">
-      <div layout="row">
-          Children: {{household.children.length}}
-      </div>
-      <div layout="row">
-          Adults: {{household.otherMembers.length}}
-      </div>
-      <div>For a total of {{household.children.length + household.otherMembers.length}} people in your household including yourself.</div>
-  </div>
-  <div class="actions" layout="row" layout-align="center">
-      <md-button class="md-raised " ng-click="goBack()">Go Back</md-button>
-      <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
-  </div>
+<div class="so-far" layout='column'>
+    <h2>Here's what you've entered so far:</h2>
+    <!-- <pre>{{household | json}}</pre>
+-->
+    <div layout="column">
+        <div class="summary-section" layout="column" ng-if="household.children.length > 0">
+            <h4>Children:</h4>
+            <ul>
+                <li ng-repeat="child in household.children">{{child.firstName}} {{child.lastName}}</li>
+            </ul>
+        </div>
+        <div class="summary-section" layout="column" ng-if="household.otherMembers.length >0">
+            <h4>Adults:</h4>
+            <ul>
+                <li ng-repeat="member in household.otherMembers">{{member.firstName}} {{member.lastName}}</li>
+            </ul>
+        </div>
+        <div class="summary-section">
+            You've indicated that there are <b>{{household.children.length}} children</b>
+            <span ng-if="household.otherMembers.length >
+                0">and <b>{{household.otherMembers.length}} adults</b>
+            </span>
+            in your household
+            <span ng-if="household.otherMembers.length > 0">
+                 for a <b>total of {{household.children.length + household.otherMembers.length}}</b> 
+                people including yourself
+            </span>
+            .
+        </div>
+    </div>
+    <div class="actions" layout="row" layout-align="center">
+        <md-button class="md-raised " ng-click="goBack()">Go Back</md-button>
+        <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
+    </div>
 
 </div>

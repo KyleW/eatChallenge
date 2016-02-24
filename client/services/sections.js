@@ -20,7 +20,7 @@
                 state: 'children',
                 completed: false,
                 required: true,
-                showSummaryAfter: true
+                showSummaryAfter: false
             },
             {
                 label: 'Children\'s Income',
