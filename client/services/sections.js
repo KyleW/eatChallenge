@@ -97,7 +97,7 @@
             studentCount = _.where(household.children, {enrolled: true}).length;
 
             skipMeansTest = assistanceProgramHousehold ||
-                (household.children.length > 0 &&
+                (studentCount > 0 &&
                  studentCount === specialStatusCount);
 
             if (skipMeansTest) {

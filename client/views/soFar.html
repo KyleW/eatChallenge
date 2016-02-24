@@ -1,6 +1,15 @@
 <div id="so-far" layout='column'>
   <h2>Here's what you've entered so far:</h2>
-  <pre>{{houseond | json}}</pre>
+  <pre>{{household | json}}</pre>
+  <div layout="column">
+      <div layout="row">
+          Children: {{household.children.length}}
+      </div>
+      <div layout="row">
+          Adults: {{household.otherMembers.length}}
+      </div>
+      <div>For a total of {{household.children.length + household.otherMembers.length}} people in your household including yourself.</div>
+  </div>
   <div class="actions" layout="row" layout-align="center">
       <md-button class="md-raised " ng-click="goBack()">Go Back</md-button>
       <md-button class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
