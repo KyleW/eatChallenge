@@ -28,6 +28,7 @@
         vm.goBack = goBack;
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
+        vm.meansTest = Sections.meansTest;
 
         /////////////////////////////////////
         function addChild(newVal) {
@@ -44,7 +45,7 @@
         var HouseholdMember = {
             income: {}
         };
-    
+
         function addOtherMember(newVal) {
             while (newVal > $scope.household.otherMembers.length) {
                 var householdMember = Object.create(HouseholdMember);

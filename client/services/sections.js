@@ -20,7 +20,7 @@
                 state: 'children',
                 completed: false,
                 required: true,
-                showSummaryAfter: false
+                showSummaryAfter: true
             },
             {
                 label: 'Children\'s Income',
@@ -149,7 +149,6 @@
             var nextSection;
             var currentState = $rootScope.currentState || $state.$current.self.name;
             var previousState = $rootScope.previousState || 'start';
-
             // If on the summary page go to the next form page
             if (currentState === 'soFar') {
                 if (previousState) {
@@ -159,7 +158,6 @@
                     // Come up with something better? stash in url?
                     nextSection = 'start';
                 }
-
             } else if (indexedSections[currentState].showSummaryAfter) {
                 // if on a form page, go to summary page
                 nextSection = 'soFar';
