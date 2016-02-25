@@ -80,14 +80,20 @@
         }
 
         function trimChildren(household) {
+            // get rid of extra empty child obejcets created in process
+            if (household.children.length > household.childCount) {
+                household.children = household.children.slice(0, household.childCount);
+            }
             return household;
         }
 
         function trimOtherMembers(household) {
+            // get rid of extra empty otherMember obejcets created in process
+            if (household.otherMembers.length > household.otherMembersCount) {
+                household.otherMembers.slice(0, household.otherMembersCount);
+            }
             return household;
         }
-
-
 
         function goBack() {
             Household.save();
