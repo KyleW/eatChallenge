@@ -10,7 +10,7 @@ module.exports = function(app, passport) {
     app.use('/public', express.static('./build'));
     app.use('/views', express.static('./client/views'));
     app.use('/icons', express.static('./icons'));
-
+    
     //Home
     app.get('/', function (req, res) {
         res.sendFile(url.resolve(__dirname, './index.html'));

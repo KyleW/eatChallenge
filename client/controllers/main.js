@@ -76,9 +76,17 @@
 
         // TODO: finish this function
         function estimateIncome(household) {
-
             return 47;
         }
+
+        function trimChildren(household) {
+            return household;
+        }
+
+        function trimOtherMembers(household) {
+            return household;
+        }
+
 
 
         function goBack() {
@@ -88,6 +96,9 @@
         }
 
         function navigateToNextSection() {
+            trimChildren(household);
+            trimOtherMembers(household);
+
             Household.save();
             Sections.updateRequiredSections($scope.household);
             Sections.navigateToNext();
