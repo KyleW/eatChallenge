@@ -21,16 +21,36 @@
                              $scope, $state, Auth, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
+        var household = Household.get();
 
-        vm.household = Household.get();
         vm.schoolDistrict = 'Oakland Unified School District';
 
+        vm.household = household;
+        vm.meansTest = Sections.meansTest;
+        vm.estimatedIncome = estimateIncome(household);
+
+        vm.childrenLabel = 'children';
+        vm.adultsLabel = 'adults';
+
+        // navigation
         vm.goBack = goBack;
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
-        vm.meansTest = Sections.meansTest;
+        
 
         /////////////////////////////////////
+        function init() {
+            if (household.children.length === 1) {
+                vm.childrenLabel = 'child';
+            }
+            if (household.otherMembers.length === 1) {
+                vm.adultsLabel = 'adult';
+            }
+
+        }
+
+        init();
+
         function addChild(newVal) {
             if (newVal > $scope.household.children.length) {
                 $http.get('/child').then(function(response) {
@@ -53,6 +73,13 @@
 
             }
         }
+
+        // TODO: finish this function
+        function estimateIncome(household) {
+
+            return 47;
+        }
+
 
         function goBack() {
             Household.save();

@@ -23,15 +23,15 @@
                 showSummaryAfter: true
             },
             {
-                label: 'Children\'s Income',
-                state: 'childIncome',
+                label: 'Household Members',
+                state: 'household',
                 completed: false,
                 required: true,
                 showSummaryAfter: true
             },
             {
-                label: 'Household Members',
-                state: 'household',
+                label: 'Children\'s Income',
+                state: 'childIncome',
                 completed: false,
                 required: true,
                 showSummaryAfter: true

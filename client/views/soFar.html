@@ -3,22 +3,11 @@
     <!-- <pre>{{household | json}}</pre>
 -->
     <div layout="column">
-        <div class="summary-section" layout="column" ng-if="household.children.length > 0">
-            <h4>Children:</h4>
-            <ul>
-                <li ng-repeat="child in household.children">{{child.firstName}} {{child.lastName}}</li>
-            </ul>
-        </div>
-        <div class="summary-section" layout="column" ng-if="household.otherMembers.length >0">
-            <h4>Adults:</h4>
-            <ul>
-                <li ng-repeat="member in household.otherMembers">{{member.firstName}} {{member.lastName}}</li>
-            </ul>
-        </div>
+
         <div class="summary-section">
-            You've indicated that there are <b>{{household.children.length}} children</b>
+            You've indicated that there are <b>{{household.children.length}} {{childrenLabel}}</b>
             <span ng-if="household.otherMembers.length >
-                0">and <b>{{household.otherMembers.length}} adults</b>
+                0">and <b>{{household.otherMembers.length}} {{adultsLabel}}</b>
             </span>
             in your household
             <span ng-if="household.otherMembers.length > 0">
@@ -28,9 +17,24 @@
             .
         </div>
 
-        <div class="means-testing-notification" ng-if="!meansTest"><b>
-            Good news! Based on your responses so far, we don't need to ask you about your household income. We'll skip those sections for you.
+        <div class="summary-section" layout="column" ng-if="household.children.length > 0">
+            <h4>Children:</h4>
+            <ul>
+                <li ng-repeat="child in household.children">{{child.firstName}} {{child.lastName}}</li>
+            </ul>
+        </div>
+        
+        <div class="summary-section" layout="column" ng-if="household.otherMembers.length >0">
+            <h4>Adults:</h4>
+            <ul>
+                <li ng-repeat="member in household.otherMembers">{{member.firstName}} {{member.lastName}}</li>
+            </ul>
+        </div>
+
+        <div class="summary-section means-testing-notification" ng-if="!meansTest"><b>
+            Good news! Based on your responses so far, we don't need to ask you about the adults in your household or your household income. We'll skip those sections for you.
         </b></div>
+        
     </div>
     <div class="actions" layout="row" layout-align="center">
         <md-button class="md-raised " ng-click="goBack()">Go Back</md-button>
