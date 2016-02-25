@@ -103,7 +103,7 @@ gulp.task('buildCss',function() {
         'include css': true,
         use: nib(),
     }))
-    .pipe(cssnano())
+    // .pipe(cssnano())
     .pipe(sourcemaps.write())
     .on('error', gutil.log)
     .pipe(gulp.dest(paths.dist));
