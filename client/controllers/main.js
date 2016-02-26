@@ -21,13 +21,11 @@
                              $scope, $state, Auth, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
-        var household = Household.get();
-
         vm.schoolDistrict = 'Oakland Unified School District';
 
-        vm.household = household;
+        vm.household = Household.household;
         vm.meansTest = Sections.meansTest;
-        vm.estimatedIncome = estimateIncome(household);
+        // vm.estimatedIncome = estimateIncome(household);
 
         vm.childrenLabel = 'children';
         vm.adultsLabel = 'adults';
@@ -39,10 +37,10 @@
 
         /////////////////////////////////////
         function init() {
-            if (household.children.length === 1) {
+            if (vm.household.children.length === 1) {
                 vm.childrenLabel = 'child';
             }
-            if (household.otherMembers.length === 1) {
+            if (vm.household.otherMembers.length === 1) {
                 vm.adultsLabel = 'adult';
             }
 
@@ -53,12 +51,30 @@
         //New children and household members are created
         //by calling the server to make use of mongoose models
         function addChild(newVal) {
-            if (newVal > $scope.household.children.length) {
+            // var newChild = {
+            //     firstName:'',
+            //     middleInitial: '',
+            //     lastName: '',
+            //     enrolled: null,
+            //     specialStatus: {
+            //         fosterChild: false,
+            //         headStartParticipant: false,
+            //         homelessMigrantRunaway: false
+            //     },
+            //     assistanceProgram: {},
+            //     incomeSources: []
+            // };
+
+            // while (newVal > $scope.household.children.length) {
+            //     $scope.household.children.push(Object.create(newChild));
+            // }
+
+            if (newVal > vm.household.children.length) {
                 $http.get('/child').then(function(response) {
                     var newChild = response.data;
                     console.log({newChild: newChild});
-                    newChild = {};
-                    $scope.household.children.push(newChild);
+                    // newChild = {};
+                    vm.household.children.push(newChild);
                     // Recurse if necessary
                     addChild(newVal);
                 });
@@ -66,11 +82,11 @@
         }
 
         function addOtherMember(newVal) {
-            if (newVal > $scope.household.otherMembers.length) {
+            if (newVal > vm.household.otherMembers.length) {
                 $http.get('/household-member').then(function(response) {
                     var newHouseholdMember = response.data;
                     newHouseholdMember = {};
-                    $scope.household.otherMembers.push(newHouseholdMember);
+                    vm.household.otherMembers.push(newHouseholdMember);
                     // Recurse if necessary
                     addOtherMember(newVal);
                 });
@@ -100,17 +116,19 @@
 
         function goBack() {
             Household.save();
-            Sections.updateRequiredSections($scope.household);
+            Sections.updateRequiredSections(vm.household);
             Sections.goBack();
         }
 
         function navigateToNextSection() {
-            trimChildren(household);
-            trimOtherMembers(household);
+            trimChildren(vm.household);
+            trimOtherMembers(vm.household);
 
-            Household.save();
-            Sections.updateRequiredSections($scope.household);
-            Sections.navigateToNext();
+            console.log(vm.household);
+            Household.save(vm.household).then(function() {
+                Sections.updateRequiredSections(vm.household);
+                Sections.navigateToNext();
+            });
         }
 
         function submitApplication() {

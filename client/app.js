@@ -5,7 +5,7 @@
     .module('eatChallengeApp',['ngCookies', 'ngCsv','ngMaterial', 'ngSanitize', 'ui.router'])
     .config(routerConfig)
     .config(materialDesignThemer)
-    .config('$provide', errorDecorator)
+    .config(errorDecorator)
     .run(scroller);
 
     errorDecorator.$inject = ['$provide'];

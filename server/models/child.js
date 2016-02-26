@@ -19,3 +19,4 @@ var childSchema = new Schema({
 });
 
 module.exports = childSchema;
+// module.exports = mongoose.model('child', childSchema);

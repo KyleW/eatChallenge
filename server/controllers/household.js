@@ -12,8 +12,8 @@ module.exports = {
                     console.error(err);
                     return res.send(err);
                 }
-                console.log('successfully updated ' , JSON.stringify(household));
-                return res.send(household);
+                console.log('successfully updated ' , household);
+                return res.json(household);
             });
         } else {
             // Create a new document
@@ -23,8 +23,8 @@ module.exports = {
                     console.error(err);
                     return res.send(err);
                 }
-                console.log('successfully saved ' , JSON.stringify(household));
-                return res.send(household);
+                console.log('successfully saved ' , household);
+                return res.json(household);
             });
         }
     },
@@ -34,7 +34,7 @@ module.exports = {
             if (err) {
                 return next(err);
             }
-            return res.send(data);
+            return res.json(data);
         });
 
     },
@@ -44,7 +44,7 @@ module.exports = {
             if (err) {
                 return next(err);
             }
-            return res.send(data);
+            return res.json(data);
         });
 
     },
@@ -56,7 +56,7 @@ module.exports = {
                 return next(err);
             }
             console.log({'found households': data});
-            res.send(data);
+            res.json(data);
         });
     },
 
@@ -69,7 +69,7 @@ module.exports = {
             return this.findById(req, res, next);
         }
 
-        return res.send(new Household());
+        return res.json(new Household());
     }
 
 };
