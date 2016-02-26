@@ -7,7 +7,7 @@ var householdSchema = new Schema({
     childCount: Number,
     children: [Child],
     otherMembersCount: Number,
-    // otherMembers: [HouseholdMember],
+    otherMembers: [HouseholdMember],
     completed: {type: Boolean, default: false}
 });
 

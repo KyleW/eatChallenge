@@ -5,16 +5,29 @@
     .module('eatChallengeApp',['ngCookies', 'ngCsv','ngMaterial', 'ngSanitize', 'ui.router'])
     .config(routerConfig)
     .config(materialDesignThemer)
+    .config('$provide', errorDecorator)
     .run(scroller);
+
+    errorDecorator.$inject = ['$provide'];
+    function errorDecorator($provide) {
+        $provide.decorator('$exceptionHandler', decorateError);
+        decorateError.$inject = ['$delegate'];
+        function decorateError($delegate) {
+            return function(exception, cause) {
+                $delegate(exception, cause);
+                throw exception;
+            };
+        }
+    }
 
     scroller.$inject = ['$rootScope'];
     function scroller($rootScope) {
-         // scroll to the top on page transition
+        // scroll to the top on page transition
         $rootScope.$on('$stateChangeSuccess', function() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
 
-            // Keep track of history
+        // Keep track of history
         $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
             $rootScope.previousState = from.name;
             $rootScope.currentState = to.name;
@@ -23,9 +36,9 @@
 
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
-         $mdThemingProvider.theme('default')
-        // .primaryPalette('blue-grey')
-        .primaryPalette('teal')
+        $mdThemingProvider.theme('default')
+       // .primaryPalette('blue-grey')
+       .primaryPalette('teal')
         .backgroundPalette('brown', {
             'default': '50'
         });

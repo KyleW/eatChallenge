@@ -12,7 +12,7 @@ module.exports = {
                     console.error(err);
                     return res.send(err);
                 }
-                console.log('successfully updated ' , household);
+                console.log('successfully updated ' , JSON.stringify(household));
                 return res.send(household);
             });
         } else {
@@ -23,7 +23,7 @@ module.exports = {
                     console.error(err);
                     return res.send(err);
                 }
-                console.log('successfully saved ' , household);
+                console.log('successfully saved ' , JSON.stringify(household));
                 return res.send(household);
             });
         }

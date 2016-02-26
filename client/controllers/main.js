@@ -54,8 +54,11 @@
         //by calling the server to make use of mongoose models
         function addChild(newVal) {
             if (newVal > $scope.household.children.length) {
+                $scope.household.
                 $http.get('/child').then(function(response) {
                     var newChild = response.data;
+                    console.log({newChild: newCHild});
+                    newChild = {};
                     $scope.household.children.push(newChild);
                     // Recurse if necessary
                     addChild(newVal);
@@ -67,6 +70,7 @@
             if (newVal > $scope.household.otherMembers.length) {
                 $http.get('/household-member').then(function(response) {
                     var newHouseholdMember = response.data;
+                    newHouseholdMember = {};
                     $scope.household.otherMembers.push(newHouseholdMember);
                     // Recurse if necessary
                     addOtherMember(newVal);
