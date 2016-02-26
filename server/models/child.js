@@ -18,4 +18,4 @@ var childSchema = new Schema({
     incomeSources: Array
 });
 
-module.exports = mongoose.model('child', childSchema);
+module.exports = childSchema;

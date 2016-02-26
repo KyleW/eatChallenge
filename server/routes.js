@@ -2,15 +2,16 @@ var express = require('express');
 var url = require('url');
 
 // Controllers
-var household = require('./controllers/household');
-var child     = require('./controllers/child');
+var household       = require('./controllers/household');
+var child           = require('./controllers/child');
+var householdMember = require('./controllers/household-member');
 
 module.exports = function(app, passport) {
     // Static files
     app.use('/public', express.static('./build'));
     app.use('/views', express.static('./client/views'));
     app.use('/icons', express.static('./icons'));
-    
+
     //Home
     app.get('/', function (req, res) {
         res.sendFile(url.resolve(__dirname, './index.html'));
@@ -18,6 +19,7 @@ module.exports = function(app, passport) {
 
     // API
     app.get('/child', child.create);
+    app.get('/household-member', householdMember.create);
 
     app.get('/household/completed', household.findCompleted);
     app.get('/household', household.findOrCreate);

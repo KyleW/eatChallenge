@@ -36,7 +36,6 @@
         vm.goBack = goBack;
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
-        
 
         /////////////////////////////////////
         function init() {
@@ -51,26 +50,27 @@
 
         init();
 
+        //New children and household members are created
+        //by calling the server to make use of mongoose models
         function addChild(newVal) {
             if (newVal > $scope.household.children.length) {
                 $http.get('/child').then(function(response) {
                     var newChild = response.data;
                     $scope.household.children.push(newChild);
+                    // Recurse if necessary
                     addChild(newVal);
                 });
             }
         }
 
-        // TODO: Move to mongoose model
-        var HouseholdMember = {
-            income: {}
-        };
-
         function addOtherMember(newVal) {
-            while (newVal > $scope.household.otherMembers.length) {
-                var householdMember = Object.create(HouseholdMember);
-                $scope.household.otherMembers.push(householdMember);
-
+            if (newVal > $scope.household.otherMembers.length) {
+                $http.get('/household-member').then(function(response) {
+                    var newHouseholdMember = response.data;
+                    $scope.household.otherMembers.push(newHouseholdMember);
+                    // Recurse if necessary
+                    addOtherMember(newVal);
+                });
             }
         }
 

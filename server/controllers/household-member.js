@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-var childSchema = require('../models/child');
+var householdMemberSchema = require('../models/household_member');
 
 module.exports = {
     create: function(req, res, next) {
-        Child = mongoose.model('child', childSchema);
-        var child = new Child(req.body);
-        return res.send(child);
+        HouseholdMember = mongoose.model('householdMember', householdMemberSchema);
+        var householdMember = new HouseholdMember(req.body);
+        return res.send(householdMember);
         // child.save(function (err, household) {
         //     if (err) {
         //         console.error(err);

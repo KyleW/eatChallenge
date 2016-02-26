@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Child = require('./child');
-var HouseholdMember = require('./household_member.js');
+var HouseholdMember = require('./household_member');
 
 var householdSchema = new Schema({
     childCount: Number,
-    children: Array,
+    children: [Child],
     otherMembersCount: Number,
-    otherMembers: Array,
+    // otherMembers: [HouseholdMember],
     completed: {type: Boolean, default: false}
 });
 
