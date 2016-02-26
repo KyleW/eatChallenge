@@ -14,7 +14,7 @@ var passport = require('passport');
 var config = require('../config/config');
 
 // TODO: move to db config
-var DB_NAME = 'eatChallenge';
+var DB_NAME = 'eatchallenge';
 //provide a sensible default for local development
 var MONGODB_CONNECTION_STRING = 'mongodb://127.0.0.1:27017/' + DB_NAME;
 //take advantage of openshift env vars when available:
