@@ -6,7 +6,7 @@ var HouseholdMemberSchema = new Schema({
     lastName: String,
     hasSSN: Boolean,
     last4ssn: String,
-    incomeSources: Array
+    incomeCategory: Array
 });
 
 module.exports = HouseholdMemberSchema;

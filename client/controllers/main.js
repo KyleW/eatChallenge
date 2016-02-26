@@ -72,8 +72,6 @@
             if (newVal > vm.household.children.length) {
                 $http.get('/child').then(function(response) {
                     var newChild = response.data;
-                    console.log({newChild: newChild});
-                    // newChild = {};
                     vm.household.children.push(newChild);
                     // Recurse if necessary
                     addChild(newVal);
@@ -124,7 +122,6 @@
             trimChildren(vm.household);
             trimOtherMembers(vm.household);
 
-            console.log(vm.household);
             Household.save(vm.household).then(function() {
                 Sections.updateRequiredSections(vm.household);
                 Sections.navigateToNext();

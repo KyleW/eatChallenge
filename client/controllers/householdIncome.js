@@ -15,7 +15,8 @@
 
     function householdIncome ($scope, $state, Auth, Household, Sections, HouseholdIncome) {
         var vm = $scope;
-        var household = Household.get();
+        vm.household = Household.household;
+        vm.navigateToNextSection = navigateToNextSection;
 
         var work = {
             categoryName: 'work',
@@ -200,26 +201,22 @@
             ]
         };
 
+        // TODO: duplicated with main.js. Share in a better way
         function navigateToNextSection() {
-            Household.save();
-            Sections.updateRequiredSections($scope.household);
-            Sections.navigateToNext($state.$current.self.name);
+            Household.save(vm.household).then(function() {
+                Sections.updateRequiredSections(vm.household);
+                Sections.navigateToNext();
+            });
         }
 
-        var incomeCategories = [
+        vm.incomeCategories = [
                                 work,
                                 publicAssistance,
                                 alimony,
                                 childSupport,
                                 retirement,
                                 otherIncome
-                                ];
-
-        /////////////////////////////
-
-        vm.household = household;
-        vm.navigateToNextSection = navigateToNextSection;
-        vm.incomeCategories = incomeCategories;
+                              ];
 
     }
 
