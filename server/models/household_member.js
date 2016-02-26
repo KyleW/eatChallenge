@@ -9,4 +9,4 @@ var HouseholdMemberSchema = new Schema({
     incomeSources: Array
 });
 
-module.exports = mongoose.model('householdMember', HouseholdMemberSchema);
+module.exports = HouseholdMemberSchema;

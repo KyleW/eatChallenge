@@ -4,7 +4,7 @@ var url = require('url');
 // Controllers
 var household       = require('./controllers/household');
 var child           = require('./controllers/child');
-var householdMember = require('./controllers/household-member');
+var householdMember = require('./controllers/household_member');
 
 module.exports = function(app, passport) {
     // Static files
