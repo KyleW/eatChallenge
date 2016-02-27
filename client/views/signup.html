@@ -1,25 +1,27 @@
 <!-- LOGIN FORM -->
-<div flex="60" layout-padding>
-    <h2>Sign Up</h2>
+<div>
+    
     <p>Create an account so that we can save the progress of your application</p>
-    <div class="alert alert-danger">{{error}}</div>
     <form action="/signup" method="post" novalidate name="form">
         <md-card>
+            <md-card-title>
+            <md-cart-title-text><span class="md-headline">Create an account</span></md-cart-title-text>
+            </md-card-title>
             <md-card-content>
-                <div>
-                    <md-input-container >
+                <div flex="70" layout="row">
+                    <md-input-container flex="100">
                         <label>Email Address</label>
                         <input ng-model="user.email" type='email' name='email' required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
                     </md-input-container>            
                 </div>
-                <div>
-                    <md-input-container>
+                <div flex="70" layout="row">
+                    <md-input-container flex="100">
                         <label>Password</label>
                         <input ng-model="user.password" name='password' type='password' required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
                     </md-input-container>            
                 </div>
-                <div>
-                    <md-input-container>
+                <div flex="70" layout="row">
+                    <md-input-container flex="100">
                         <label>Confirm Password</label>
                         <input ng-model="confirmPassword" name='confirmPassword' type='password' required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
                     </md-input-container>            
@@ -32,12 +34,12 @@
                 </div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
-               <md-button type="submit" ng-disabled="!form.$valid || (user.password !== confirmPassword) ">Create Account</md-button>
+               <md-button type="submit" ng-disabled="!form.$valid || (user.password !== confirmPassword) ">Submit</md-button>
              </div>
         </md-card>
     </form>
     <div>
     <p>Already have an account?<a ui-sref="login"><md-button md-no-ink>Login Here</md-button></a></p>
-    <p>Or<a ui-sref="start"><md-button md-no-ink>Start Over</md-button></a>.</p>
+    <!-- <p>Or<a ui-sref="start"><md-button md-no-ink>Start Over</md-button></a>.</p> -->
     </div>
 </div>
