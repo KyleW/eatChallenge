@@ -22,7 +22,7 @@
             <div layout="row" layout-align="end" ui-view="user-controls">
                 <a ui-sref="signup"><md-button md-no-ink class="">Create an Account</md-button></a>
                 <a ui-sref="login"><md-button md-no-ink class="">Log In</md-button></a>
-                <a ui-sref="signup"><md-button md-no-ink class="md-raised start-button md-primary">Log Out</md-button>></a>
+                <a ng-click="logout()"><md-button md-no-ink class="">Log Out</md-button>></a>
             </div>
             <div layout="row">
                 <div class="leftCol" ui-view="side-nav">

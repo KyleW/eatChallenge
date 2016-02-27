@@ -70,6 +70,9 @@
             .state('start', {
                 url: '/',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     // 'side-nav': {
                     //     templateUrl: '../views/sideNav.html',
                     //     controller: 'sideNavController'
@@ -83,19 +86,25 @@
             .state('children', {
                 url: '/children',
                 views:{
-                'side-nav': {
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
+                    'side-nav': {
                     templateUrl: '../views/sideNav.html',
                     controller: 'sideNavController'
                 },
-                'main': {
+                    'main': {
                     templateUrl: '../views/children.html',
                     controller: 'mainController'
                 }
-            }
+                }
             })
             .state('childIncome', {
                 url: '/childIncome',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                     templateUrl: '../views/sideNav.html',
                     controller: 'sideNavController'
@@ -109,6 +118,9 @@
             .state('household', {
                 url: '/household',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -122,6 +134,9 @@
             .state('householdIncome', {
                 url: '/household-income',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -135,6 +150,9 @@
             .state('disclosure', {
                 url: '/disclosure',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -148,6 +166,9 @@
             .state('signature', {
                 url: '/signature',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                     templateUrl: '../views/sideNav.html',
                     controller: 'sideNavController'
@@ -161,6 +182,9 @@
             .state('confirmation', {
                 url: '/confirmation',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                     templateUrl: '../views/sideNav.html',
                     controller: 'sideNavController'
@@ -174,6 +198,9 @@
             .state('export', {
                 url: '/export',
                 views: {
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -187,6 +214,9 @@
             .state('signup', {
                 url: '/signup',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -201,6 +231,9 @@
             .state('login', {
                 url: '/login',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                         templateUrl: '../views/sideNav.html',
                         controller: 'sideNavController'
@@ -214,6 +247,9 @@
             .state('soFar', {
                 url: '/so-far',
                 views:{
+                    'user-controls': {
+                        controller: 'userControlsController'
+                    },
                     'side-nav': {
                     templateUrl: '../views/sideNav.html',
                     controller: 'sideNavController'
