@@ -2,9 +2,10 @@ var express = require('express');
 var url = require('url');
 
 // Controllers
-var household       = require('./controllers/household');
 var child           = require('./controllers/child');
+var household       = require('./controllers/household');
 var householdMember = require('./controllers/household_member');
+var user            = require('./controllers/user');
 
 module.exports = function(app, passport) {
     // Static files
@@ -19,18 +20,15 @@ module.exports = function(app, passport) {
 
     // API
     app.get('/child', child.create);
-    app.get('/household-member', householdMember.create);
 
     app.get('/household/completed', household.findCompleted);
     app.get('/household', household.findOrCreate);
     app.post('/household', household.save);
 
-    // Auth
-    app.post('/user/signup', passport.authenticate('local-signup'));
-    app.post('/user/login', passport.authenticate('local-login'));
-    app.post('/user/logout', function(req, res, next) {
-        req.logout();
-        res.status(200).send();
-    });
+    app.get('/household-member', householdMember.create);
+
+    app.post('/user/signup', user.signup);
+    app.post('/user/login', user.login);
+    app.post('/user/logout', user.logout);
 
 };

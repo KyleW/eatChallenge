@@ -26,12 +26,14 @@ module.exports = function(passport) {
     // =========================================================================
     passport.use('local-signup', new LocalStrategy({
         usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true
+        passwordField : 'password'
+        // passReqToCallback : true
     },
     function(req, email, password, done) {
+        console.log('arrived at passport');
         // TODO: Move create methods to model
         email = email.toLowerCase();
+        console.log(email);
         User.findOne({'email' :  email}, function(err, user) {
             var newUser;
             if (err) {

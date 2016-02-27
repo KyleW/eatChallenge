@@ -1,75 +1,42 @@
 var User = require('../models/user');
+var passport = require('passport');
 
 module.exports = {
-    save: function(req, res, next) {
-        if (req.body._id) {
-            // update an existing document
-            var toSave = Object.create(req.body);
-            delete toSave._id;
-
-            Household.findByIdAndUpdate(req.body._id, toSave, function (err, household) {
-                if (err) {
-                    console.error(err);
-                    return res.send(err);
-                }
-                console.log('successfully updated ' , household);
-                return res.send(household);
+    signup: function(req, res) {
+        var username = req.body.username.toLowerCase();
+        var password = req.body.password;
+        console.log(email);
+        User.register(new User({username: username}), password, function(err, user) {
+            var newUser;
+            // TODO: should these really be 500's??
+            if (err) {
+                return res.status(500).json({err: err});
+            }
+            passport.authenticate('local')(req, res, function() {
+                return res.status(200).json({status: 'Registration successful!'});
             });
-        } else {
-            // Create a new document
-            var household = new Household(req.body);
-            household.save(function (err, household) {
+        });
+    },
+
+    login: function(req ,res, next) {
+        passport.authenticate('local', function(err, user, info) {
+            if (err) {
+                return res.status(500).json({err: err});
+            }
+            if (!user) {
+                return res.status(401).json({err: info});
+            }
+            req.logIn(user, function(err) {
                 if (err) {
-                    console.error(err);
-                    return res.send(err);
+                    return res.status(500).json({err: 'Could not log in user'});
                 }
-                console.log('successfully saved ' , household);
-                return res.send(household);
+                res.status(200).json({status: 'Login successful!'});
             });
-        }
+        })(req, res, next);
     },
 
-    findById: function(req, res, next) {
-        Household.findById(req.user.id, function(err, data) {
-            if (err) {
-                return next(err);
-            }
-            return res.send(data);
-        });
-
-    },
-
-    findForUser: function(req, res, next) {
-        Household.findOne({userId: req.body.userId}).exec(function(err, data) {
-            if (err) {
-                return next(err);
-            }
-            return res.send(data);
-        });
-
-    },
-
-    findCompleted: function(req, res, next) {
-        // todo: check auth here
-        Household.find().where({completed: true}).exec(function(err, data) {
-            if (err) {
-                return next(err);
-            }
-            console.log({'found households': data});
-            res.send(data);
-        });
-    },
-
-    findOrCreate: function(req, res, next) {
-        if (req.body.user) {
-            return this.findForUser(req, res, next);
-        }
-
-        if (req.body._id) {
-            return this.findById(req, res, next);
-        }
-
-        return res.send(new Household());
+    logout: function(req, res) {
+        req.logout();
+        res.status(200).json({status:'Goodbye!'});
     }
-
 };

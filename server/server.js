@@ -6,10 +6,10 @@ var redirectToHttps = require('./middleware/forceHttps');
 var flash    = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
-var expressValidator = require('express-validator');
+// var expressValidator = require('express-validator');
 
-var session      = require('express-session');
 var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
 
 var config = require('../config/config');
 
@@ -33,21 +33,32 @@ db.once('open', function() {
 });
 
 // Middleware
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-// app.use(expressValidator());
-
-// app.use(cookieParser);
 app.use(redirectToHttps); //force https
 app.use(compress()); // gzip
 
-// Passport
-require('../config/passport')(passport); // pass passport for configuration
-// app.use(session({secret: 'LunchLunchLunch'})); // session secret
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'lunchLunchLunch',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-// app.use(flash()); // use connect-flash for flash messages stored in session
 
+
+// Passport
+// require('../config/passport')(passport); // pass passport for configuration
+
+
+// app.use(flash()); // use connect-flash for flash messages stored in session
+// TODO: move this to a seperate file;
+// configure passport
+var User = require('./models/user');
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 require('./routes.js')(app, passport);
 
 //Start server

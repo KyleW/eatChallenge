@@ -2,7 +2,7 @@
 <div>
     
     <p>Create an account so that we can save the progress of your application</p>
-    <form action="/signup" method="post" novalidate name="form">
+    <form novalidate name="signupForm">
         <md-card>
             <md-card-title>
             <md-cart-title-text><span class="md-headline">Create an account</span></md-cart-title-text>
@@ -26,15 +26,15 @@
                         <input ng-model="confirmPassword" name='confirmPassword' type='password' required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
                     </md-input-container>            
                 </div>
-                <div ng-if="form.email.$error.email">
+                <div ng-if="signupForm.email.$error.email">
                     You must enter a valid email address.
                 </div>
-                <div ng-if="(user.password !== confirmPassword) && form.password.$dirty && form.confirmPassword.$dirty">
+                <div ng-if="(user.password !== confirmPassword) && signupForm.password.$dirty && signupForm.confirmPassword.$dirty">
                     Your passwords don't match.
                 </div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
-               <md-button type="submit" ng-disabled="!form.$valid || (user.password !== confirmPassword) ">Submit</md-button>
+               <md-button type="submit" ng-click="submit()" ng-disabled="!signupForm.$valid || (user.password !== confirmPassword) ">Submit</md-button>
              </div>
         </md-card>
     </form>

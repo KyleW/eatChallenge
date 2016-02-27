@@ -3,24 +3,33 @@
 
     angular
         .module('eatChallengeApp')
-        .service('Auth', Auth);
+        .service('User', User);
 
-    Auth.$inject = ['$http'];
+    User.$inject = ['$http'];
 
-    function Auth($http) {
+    function User($http) {
+        var service  = {};
+        service.create = create;
+            // login: login,
+            // logout: logout,
+            // user: user
 
-        var user = false;
+        return service;
 
-        function signup(email, password) {
+        // var user = false;
+
+        function create(email, password) {
             var data = {
-                email: email,
+                username: email,
                 password: password
             };
-            $http.post('/user/signup', data)
+            return $http.post('/user/signup', data)
             .success(function(response) {
-                user = true;
+                console.log('successfully returned');
+                console.log(response);
+            }).error(function(err) {
+                console.log(err);
             });
-            // .error(function(data) {});
 
         }
 
@@ -43,15 +52,7 @@
             });
 
         }
-
-        ////////
-        var service  = {
-            login: login,
-            logout: logout,
-            user: user
-        };
-
-        return service;
+        
     }
 
 })();

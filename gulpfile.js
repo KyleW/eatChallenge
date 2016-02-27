@@ -89,7 +89,7 @@ gulp.task('clean',function() {
 gulp.task('buildApp',function () {
     return gulp.src(paths.js)
     .pipe(sourcemaps.init())
-      .pipe(uglify())
+      // .pipe(uglify())
       .pipe(concat('app.min.js'))
       .on('error', gutil.log)
     .pipe(sourcemaps.write())

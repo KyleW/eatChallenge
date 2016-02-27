@@ -12,13 +12,12 @@
         '$mdMedia',
         '$scope',
         '$state',
-        'Auth',
         'Household',
         'Sections'
     ];
 
     function mainController ($http, $interval, $mdDialog, $mdMedia,
-                             $scope, $state, Auth, Household, Sections) {
+                             $scope, $state, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
         vm.schoolDistrict = 'Oakland Unified School District';
