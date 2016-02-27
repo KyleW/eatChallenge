@@ -16,14 +16,13 @@
             vm.error = false;
             vm.disabled = true;
             auth.login(user.email, user.password)
-            .then(successHandler)
-            .catch(errorHandler);
+            .then(successHandler, errorHandler);
 
             function successHandler() {
                 // TODO: redirect somewhere??
                 vm.disabled = false;
                 vm.loginForm = {};
-                console.log('login success');
+                vm.success = 'successfully logged in';
             }
 
             function errorHandler() {

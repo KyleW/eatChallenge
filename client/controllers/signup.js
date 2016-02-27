@@ -19,8 +19,7 @@
             vm.disabled = true;
 
             auth.signup(user.email, user.password)
-            .then(successHandler)
-            .catch(errorHandler);
+            .then(successHandler, errorHandler);
 
             function successHandler() {
                 //TODO: Redirect to . ..  somewhere?
@@ -28,6 +27,7 @@
                 // Sections.goBack();
                 vm.disabled = false;
                 vm.signupForm = {}; //Reset form
+                vm.success="successfully created an account"
                 console.log('signup success');
                 // });
             }

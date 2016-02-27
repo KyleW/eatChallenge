@@ -54,7 +54,7 @@
 
         function login(email, password) {
             var data = {
-                email: email,
+                username: email,
                 password: password
             };
             var deferred = $q.defer();
