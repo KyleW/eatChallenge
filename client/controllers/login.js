@@ -4,11 +4,11 @@
     angular
       .module('eatChallengeApp')
       .controller('loginController', [loginController]);
-    loginController.$inject = ['$location', '$scope'];
-    function loginController($location, $scope) {
+    loginController.$inject = ['$scope', 'auth'];
+    function loginController($scope, auth) {
         var vm = $scope;
-        // debugger;
-        // vm.error = $location;
+
+        console.log(auth.getUserStatus());
     }
 
 })();

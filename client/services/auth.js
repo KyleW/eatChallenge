@@ -32,12 +32,8 @@
         }
 
         function signup(email, password) {
-            var data = {
-                username: email,
-                password: password
-            };
             var deferred = $q.defer();
-            $http.post('/user/signup', data)
+            $http.post('/user/signup', {username: email, password: password})
                 .then(successHandler, errorHandler);
 
             function successHandler(data, status) {
@@ -58,7 +54,7 @@
 
         function login(email, password) {
             var data = {
-                username: email,
+                email: email,
                 password: password
             };
             var deferred = $q.defer();

@@ -3,11 +3,8 @@ var passport = require('passport');
 
 module.exports = {
     signup: function(req, res) {
-        var username = req.body.username.toLowerCase();
-        var password = req.body.password;
-        console.log(email);
-        User.register(new User({username: username}), password, function(err, user) {
-            var newUser;
+        var newUser = new User({username: req.body.username});
+        User.register(newUser, req.body.password, function(err, account) {
             // TODO: should these really be 500's??
             if (err) {
                 return res.status(500).json({err: err});
