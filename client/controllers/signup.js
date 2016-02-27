@@ -28,15 +28,16 @@
                 // Sections.goBack();
                 vm.disabled = false;
                 vm.signupForm = {}; //Reset form
-                console.log('login success');
+                console.log('signup success');
                 // });
             }
 
-            function errorHandler() {
+            function errorHandler(err) {
+                console.log(err);
                 vm.error = true;
                 vm.errorMessage = 'Something went wrong. Please try again';
                 vm.disabled = false;
-                console.log('login fail');
+                console.log('signup fail');
                 // vm.signupForm = {}
 
             }

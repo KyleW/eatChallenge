@@ -1,12 +1,11 @@
 <!-- LOGIN FORM -->
-<div flex="60" layout-padding>
+<div>
     <h2>Log In</h2>
     <p> Log in to continue your application from where you left off</p>
     <div class="alert alert-danger">{{error}}</div>
-    <form action="/login" method="post">
+    <form name="loginForm">
         <md-card>
             <md-card-content>
-
                 <div>
                     <md-input-container>
                         <label>Email Address</label>
@@ -21,11 +20,13 @@
                 </div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
-               <md-button type="submit">Login</md-button>
+               <md-button ng-click="submit()" type="submit">Login</md-button>
              </div>
         </md-card>
     </form>
 
-    <div>Need an account? <a ui-sref="signup">Signup</a></div>
-    <p>Or go <a ui-sref="start">start</a>.</p>        
+    <div>
+        Need an account? 
+        <a ui-sref="signup"><md-button md-no-ink>Signup Here</md-button></a>
+    </div>
 </div>
