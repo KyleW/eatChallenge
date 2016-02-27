@@ -5,65 +5,97 @@
         .module('eatChallengeApp')
         .service('auth', AuthService);
 
-    AuthService.$inject = ['$cookieStore', 'Household', 'User'];
+    AuthService.$inject = ['$http', '$q'];
 
-    function AuthService($cookieStore, Household, User) {
-        
+    function AuthService($http, $q) {
+        var user = null;
+
         var service = {};
+        service.isLoggedIn = isLoggedIn;
+        service.getUserStatus = getUserStatus;
         service.signup = signup;
-        service.setCredentials = setCredentials;
-        service.clearCredentials = clearCredentials;
+        service.login = login;
+        service.logout = logout;
 
         return service;
         ///////////////////////////
 
-        function errorHandler(err) {
-            console.log(err);
-        }
-
-        function signup(email,password) {
-            console.log(email, password);
-            
-            User.create(email, password);
-                // .then(successHandler,errorHandler);
-
-            // function successHandler(response) {
-            //     setCredentials(response.data);
-            // }
-        }
-
-        function login(email,password) {
-            User.get({email:email, password:password})
-                .then(successHandler,errorHandler);
-
-            //retrieve application
-
-            function successHandler(response) {
-                setCredentials(response.data);
+        function isLoggedIn() {
+            if (user) {
+                return true;
             }
+            return false;
+        }
+
+        function getUserStatus() {
+            return user;
+        }
+
+        function signup(email, password) {
+            var data = {
+                username: email,
+                password: password
+            };
+            var deferred = $q.defer();
+            $http.post('/user/signup', data)
+                .then(successHandler, errorHandler);
+
+            function successHandler(data, status) {
+                if (status === 200 && data.status) {
+                    deferred.resolve();
+                } else {
+                    deferred.reject();
+                }
+            }
+
+            function errorHandler() {
+                deferred.reject();
+            }
+
+            return deferred.promise;
+
+        }
+
+        function login(email, password) {
+            var data = {
+                username: email,
+                password: password
+            };
+            var deferred = $q.defer();
+
+            $http.post('/user/login', data)
+                .then(successHandler, errorHandler);
+
+            function successHandler(data, status) {
+                if (status === 200 && data.status) {
+                    user = true;
+                    deferred.resolve();
+                } else {
+                    user = false;
+                    deferred.reject();
+                }
+            }
+
+            function errorHandler() {
+                user = false;
+                deferred.reject();
+            }
+
+            return deferred.promise;
         }
 
         function logout() {
-            clearCredentials();
+            return $http.get('user/logout')
+                .then(successHandler, errorHandler);
+
+            function successHandler() {
+                user = false;
+            }
+
+            function errorHandler() {
+                user = false;
+            }
         }
-
-
-        function setCredentials() {
-            // TODO: Replace with encoding
-            // var authdata = Base64.encode(username + ':' + password);
-
-        }
-
-        function getCredentialis() {
-
-        }
-
-        function clearCredentials() {
-            // $rootScope.session = {};
-            // $cookieStore.remove('globals');
-            // $http.defaults.headers.common.Authorization = 'Basic';
-        }
-
     }
 
 })();

@@ -29,6 +29,6 @@ module.exports = function(app, passport) {
 
     app.post('/user/signup', user.signup);
     app.post('/user/login', user.login);
-    app.post('/user/logout', user.logout);
+    app.get('/user/logout', user.logout);
 
 };

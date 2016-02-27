@@ -8,13 +8,12 @@
     
     function signupController($scope, auth) {
         var vm = $scope;
+        var user = {}
         vm.submit = submit;
-        vm.user = {};
+        vm.user = user;
 
         function submit() {
-            // console.log(vm.signupForm.email);
-            // console.log(vm.user.email, vm.user.password);
-            auth.signup(vm.user.email, vm.user.password);
+            auth.signup(user.email, user.password);
         }
     }
 
