@@ -17,11 +17,19 @@
                 <h1>Application for Free and Reduced Price School Meals</h1>
             </div>
         </header>
-        <div class="mainContainer" layout="row">
-            <div class="leftCol" ui-view="side-nav">
+        
+        <div class="mainContainer" layout="column">
+            <div layout="row" layout-align="end" ui-view="user-controls">
+                <a ui-sref="signup"><md-button md-no-ink class="">Save and Exit</md-button></a>
+                <a ui-sref="login"><md-button md-no-ink class="">Log In</md-button></a>
+                <!-- <a ui-sref="signup"><md-button md-no-ink class="md-raised start-button md-primary">Log Out</md-button>></a> -->
             </div>
-            <md-content ui-view='main' class='centerCol' layout-padding></md-content>
-            <div class="rightCol"></div>
+            <div layout="row">
+                <div class="leftCol" ui-view="side-nav">
+                </div>
+                <md-content ui-view='main' class='centerCol' layout-padding></md-content>
+                <div class="rightCol"></div>
+            </div>
         </div>
 
         <!-- JS -->

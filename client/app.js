@@ -193,7 +193,7 @@
                     },
                     'main': {
                         templateUrl: '../views/signup.html',
-                        controller: 'mainController'
+                        controller: 'signupController'
                     }
                 }
 
