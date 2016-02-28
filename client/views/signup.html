@@ -2,7 +2,7 @@
 <div>
     
     <p>Create an account so that we can save the progress of your application</p>
-    <div class="alert alert-danger">{{success}}</div>
+    <div class="md-accent">{{message}}</div>
     <form novalidate name="signupForm">
         <md-card>
             <md-card-title>
@@ -13,8 +13,11 @@
                     <md-input-container flex="100">
                         <label>Email Address</label>
                         <input ng-model="user.email" type='email' name='email' required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
-                    </md-input-container>            
+                    </md-input-container>   
                 </div>
+                <div flex="70" layout="row" class="warn" ng-if="signupForm.email.$error.email">
+                    You must enter a valid email address.
+                </div>         
                 <div flex="70" layout="row">
                     <md-input-container flex="100">
                         <label>Password</label>
@@ -27,12 +30,10 @@
                         <input ng-model="confirmPassword" name='confirmPassword' type='password' required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                     </md-input-container>            
                 </div>
-                <div ng-if="signupForm.email.$error.email">
-                    You must enter a valid email address.
-                </div>
-                <div ng-if="(user.password !== confirmPassword) && signupForm.password.$dirty && signupForm.confirmPassword.$dirty">
+                <div flex="70" layout="row" class="warn" ng-if="(user.password !== confirmPassword) && signupForm.password.$dirty && signupForm.confirmPassword.$dirty">
                     Your passwords don't match.
                 </div>
+                
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
                <md-button ng-click="submit()" ng-disabled="!signupForm.$valid || (user.password !== confirmPassword)">Submit</md-button>

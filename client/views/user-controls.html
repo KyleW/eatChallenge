@@ -1,4 +1,5 @@
 <div ng-if="user">{{user.username}}</div>
-<a ui-sref="signup" ng-if="!loggedIn"><md-button md-no-ink class="">Create an Account</md-button></a>
-<a ui-sref="login" ng-if="!loggedIn"><md-button md-no-ink class="">Log In</md-button></a>
+<a ui-sref="signup" ng-if="!loggedIn"><md-button md-no-ink class="">Save For Later</md-button></a>
+<!-- TODO: -->
+<!-- <a ui-sref="login" ng-if="!loggedIn"><md-button md-no-ink class="">Log In</md-button></a> -->
 <a ng-click="logout()" ng-if="loggedIn"><md-button md-no-ink class="">Save and Exit</md-button></a>

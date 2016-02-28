@@ -6,10 +6,12 @@ $annotationOffset = (-1 * $annotationWidth) - 10
 $headerHeight = 100px 
 
 // Resets
+// fixes issue which breaks layout in Safari
 [flex].item {
   -webkit-flex-basis: auto !important;
   flex-basis: auto !important;
 }
+
 a, a:hover, a:visited,  a:active
   color inherit
   text-decoration none
@@ -31,6 +33,9 @@ p
 
 section
   padding 20px
+
+.warn
+  color rgb(255,87,34)
 
 header
   text-align center

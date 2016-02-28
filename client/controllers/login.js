@@ -13,26 +13,22 @@
         //////////////////////
 
         function submit() {
-            vm.error = false;
-            vm.disabled = true;
+            // vm.disabled = true;
 
             auth
             .login(user.email, user.password)
             .then(successHandler, errorHandler);
 
             function successHandler(response) {
-                vm.disabled = false;
+                // vm.disabled = false;
                 vm.loginForm = {};
-                vm.success = 'successfully logged in';
+                vm.message = 'successfully logged in';
                 $state.go('soFar');
-                // Household.save(Household.household);
-                // Sections.goBack();
             }
 
             function errorHandler(response) {
-                vm.error = true;
-                vm.errorMessage = 'Something went wrong. Please try again';
-                vm.disabled = false;
+                vm.message = 'Something went wrong. Please try again';
+                // vm.disabled = false;
             }
 
         }

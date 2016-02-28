@@ -4,9 +4,9 @@
     angular
       .module('eatChallengeApp')
       .controller('signupController', signupController);
-    signupController.$inject = ['$scope', 'auth'];
+    signupController.$inject = ['$scope', 'auth', 'Sections'];
 
-    function signupController($scope, auth) {
+    function signupController($scope, auth, Sections) {
         console.log(auth.getUserStatus());
         var vm = $scope;
         var user = {};
@@ -22,22 +22,17 @@
             .then(successHandler, errorHandler);
 
             function successHandler() {
-                //TODO: Redirect to . ..  somewhere?
-                // Household.save().then(function(){
-                // Sections.goBack();
                 vm.disabled = false;
                 vm.signupForm = {}; //Reset form
-                vm.success = 'successfully created an account';
-                console.log('signup success');
-                // });
+                vm.message = 'successfully created an account';
+                Sections.goBack();
             }
 
             function errorHandler(err) {
                 console.log(err);
                 vm.error = true;
-                vm.errorMessage = 'Something went wrong. Please try again';
+                vm.message = 'Something went wrong. Please try again';
                 vm.disabled = false;
-                console.log('signup fail');
                 // vm.signupForm = {}
 
             }
