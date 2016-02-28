@@ -48,7 +48,7 @@
 
             function successHandler(response) {
                 setCredentials(response.data.user);
-                Household.save();
+                Household.save(Household.household);
             }
 
             function errorHandler(err) {
@@ -69,7 +69,7 @@
             function successHandler(response) {
                 setCredentials(response.data.user);
                 if (response.data.household) {
-                    Household.set(response.data.household);
+                    Household.retrieveForUser(response.data.household);
                     $state.go('soFar');
                 }
             }
@@ -88,13 +88,11 @@
             function successHandler() {
                 clearCredentials();
                 Household.clear();
-                $state.go('save-and-exit');
             }
 
             function errorHandler() {
                 clearCredentials();
                 Household.clear();
-                $state.go('save-and-exit');
             }
         }
 
