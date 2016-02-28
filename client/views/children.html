@@ -1,20 +1,20 @@
 <!-- children -->
 <form id="questionMain" class="children" layout='column' name="childrenForm" novalidate>
     <h2>Children</h2>
-    <p class="section-description">
+<!--     <p class="section-description">
         In this section, we’ll ask you for some information about the infants, children, and students who live in your house. Make sure to include all of them. It’s OK if they aren’t all your biological children or even related to you.
     </p>
-    <div layout="row">
+ -->    <div layout="row">
         <div class="annotation">
-            <p>School students include anyone attending school through grade 12 regardless of their age.</p>
             <p>Include children who are supported with the household's income even if they are not related to you.</p>
+            <p>School students include anyone attending school through grade 12 regardless of their age.</p>
         </div>
         <div flex="55" class="count-instructions">
             <div><label>Tell us how many infants, children, and school students live in your household.</label></div>
         </div>
         <md-input-container flex-offset="5" flex="40">
-            <label>number of children</label>
-            <input ng-model="household.childCount" min="0"></input>
+            <label>Enter Number of Children</label>
+            <input ng-model="household.childCount"></input>
         </md-input-container>
     </div>
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5" ng-blur="updateCompleted()">
@@ -27,6 +27,7 @@
         <md-card-content>
         
             <!-- child names -->
+            <div flex="55"><label>Enter the child's name:</label></div>
             <div layout="row">
                 <md-input-container flex="40">
                     <label>First Name</label>
@@ -58,19 +59,46 @@
                     <md-checkbox md-no-ink ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
                     <div>
                         <div class="annotation">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals.</div>
-                        <md-checkbox md-no-ink ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant(SNAP, TANF, or FDPIR)</md-checkbox>
-                    </div>
-                    <div ng-if="child.assistanceProgram.Participant" >
-                        <div class="annotation">
-                            Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number. 
-                        </div>
-                        <md-input-container flex-offset="0">
-                            <label>Case Number</label>
-                            <input ng-model="child.assistanceProgram.caseNumber">
-                        </md-input-container>
+                        <md-checkbox md-no-ink ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant (SNAP, TANF, or FDPIR)</md-checkbox>
                     </div>
                 </div>
-            </div>
+                <div ng-if="child.assistanceProgram.Participant" layout="row">
+                    <div class="annotation">
+                        Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number.
+                    </div>
+                    <div flex="95" layout="row" layout-align="center space-between">
+                        <div flex="30">
+                            <label>Enter Case Number:</label>
+                        </div>
+                        <md-input-container flex="30">
+                            <label>Select Program</label>
+                            <md-select ng-model="child.assistanceProgram.programName">
+                                <md-option value="SNAP">SNAP</md-option>
+                                <md-option value="TANF">TANF</md-option>
+                                <md-option value="FDPIR">FDPIR</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex="40" flex-offset="10">
+                            <label>Case Number</label>
+                        <input ng-model="child.assistanceProgram.caseNumber">
+                        </md-input-container>
+                    </div>
+                    
+<!--                 </div>
+                    <md-input-container>
+                        <label>Program Name</label>
+                        <md-select ng-model="child.assistanceProgram.programName">
+                            <md-option value="SNAP">SNAP</md-option>
+                            <md-option value="TANF">TANF</md-option>
+                            <md-option value="FDPIR">FDPIR</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container flex-offset="10px">
+                        <label>Case Number</label>
+                        <input ng-model="child.assistanceProgram.caseNumber">
+                    </md-input-container>
+                </div>
+ -->            </div>
             
             <!-- Race/Ethnicity -->
             <div layout="column" class="race_ethnicity_instructions">

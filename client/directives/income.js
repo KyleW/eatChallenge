@@ -25,31 +25,29 @@
         scope.incomeSources = {
             work: {
                 vaule:'work',
-                label: 'Earnings from work',
-                frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                label: 'Earnings from work:',
+                frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                 annotation: 'A child has a job where they earn salary or wages. Please report gross income. This is the amount of income earned before any money is taken out for taxes or deductions. Include salary, wages, and cash bonuses.',
             },
             socialSecurity: {
                 vaule:'socialSecurity',
-                label: 'Social Security Disability Payments or Survivor’s Benefits ',
+                label: 'Social Security Disability Payments or Survivor’s Benefits:',
                 frequency: ['monthly'],
                 // annotation: 'A child is blind or disabled and receives Social Security benefits.',
-                    // ' A parent is disabled, retired, or deceased, and their child receives social security benefits',
-                
+                // ' A parent is disabled, retired, or deceased, and their child receives social security benefits',
+
             },
             otherPerson: {
                 vaule:'otherPerson',
-                label: 'Income from persons outside the household',
-                frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                label: 'Income from persons outside the household:',
+                frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                 annotation: 'A friend or extended family member regularly gives a child spending money.',
-                
             },
             otherSource: {
                 vaule:'otherSource',
-                label: 'Income from any other source',
-                frequency: ['weekly', 'biweekly', '2x month', 'monthly'],
+                label: 'Income from any other source:',
+                frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                 annotation: 'A child receives income from a private pension fund, annuity, or trust.',
-                
             }
         };
 

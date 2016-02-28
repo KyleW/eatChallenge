@@ -1,10 +1,10 @@
 <!--Household -->
 <form id="questionMain" class="household" layout="column">
     <h2>Other Household Members</h2>
-    <p>
+<!--     <p>
         Who else lives in your household? Tell us how many people live in your household who are not the infants, children, and students you told us about before. Make sure to include yourself!
     </p>
-    <div layout="row">
+ -->    <div layout="row">
         <div class="annotation">
             <p>Please include all members in your household who are:</p>
             <ul>
@@ -13,15 +13,15 @@
             <p>Do not include:</p>
             <ul>
                 <li>People who live with you who are not supported by your household’s income and not contributing income to your household.</li>
-                <li>The children and students already included in the Children’s section</li>
+                <li>The children and students already included in the children’s section</li>
             </ul>
         </div>
         <div flex="55" class="count-instructions">
             <div><label>Tell us how many people live in your household in addition to the students you told us about before. Make sure to include yourself!</label></div>
         </div>
         <md-input-container flex-offset="5" flex="40">
-            <label>Other Household Members</label>
-            <input ng-model="household.otherMembersCount" min="0"></input>
+            <label>Enter Number of Other Household Members</label>
+            <input ng-model="household.otherMembersCount" ng-value=""></input>
         </md-input-container>
     </div>
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70">
@@ -33,6 +33,7 @@
         <md-card-content layout="column">
 
         <!-- Household names -->
+            <div flex="55"><label>Enter the adult's name:</label></div>
             <div layout="row">
                 <md-input-container flex="3">
                     <label>First Name</label>
@@ -50,7 +51,7 @@
                 <div yes-no-input model="member.hasSSN" flex-offset="5" flex="40"></div>
                 <div class="annotation"> United States citizenship or immigration status is not a condition of eligibility for free and reduced price meals.</div>
             </div>
-            <div layout="row" ng-if="member.hasSSN">
+            <div layout="row" ng-if="member.hasSSN" layout-align="center">
                 <div flex="55" layout="column" layout-align="center start"><label>
                     What are the last 4 digits of 
                     <span ng-if=member.firstName>{{member.firstName}}'s</span>
@@ -58,7 +59,7 @@
                     social security number?
                 </label></div>
                 <md-input-container flex-offset="5" flex="40">
-                    <label>Last 4 of SSN</label>
+                    <label>Enter Last 4 Digits of SSN</label>
                     <input ng-model="member.last4ssn">
                 </md-input-container>
             </div>

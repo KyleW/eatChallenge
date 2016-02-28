@@ -11,24 +11,24 @@
         <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
     </div>
 
-    <h3 ng-if="member.earnsIncome">Income Sources</h3>
+    <!-- <h3 ng-if="member.earnsIncome">Income Sources</h3> -->
     <div ng-if="member.earnsIncome" layout="row" class="child-instructions">
         Please indicate how much&nbsp
         <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
         <span ng-if="!member.firstName">this person</span>
-        &nbspreceives from each of these income sources
+        &nbspreceives from each of these income sources:
     </div>
 
     <div ng-repeat="incomeSource in member.incomeSources" layout="row" ng-if="member.earnsIncome">
         <div flex="55" layout="column" layout-align="center start">
             <label>{{incomeSources[incomeSource.type].label}}</label>
         </div>
-        <div flex="40" offset="5" layout="row" layout-align="center space-between">
+        <div flex="40" offset="5" layout="row" layout-align="center start">
             <md-input-container flex="45">
-                <label>Amount</label>
+                <label>Enter Amount</label>
                 <input ng-model="incomeSource.amount">
             </md-input-container>
-            <md-input-container flex="45" offset="10">
+            <md-input-container flex="45" offset="10" ng-if="incomeSource.amount > 0">
                 <label>How often?</label>
                 <md-select ng-model="incomeSource.frequency">
                     <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>

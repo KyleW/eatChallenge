@@ -3,14 +3,14 @@
     <p>
     In this section, we’ll go over the income you and the other members of your household who are not infants, children, or students receive.</p>
     <!--TODO: emdash  -->
-    <p>We’ll ask a lot of questions--this is just to help you remember all of the different possible sources of income that might support your household. 
+    <p>We’ll ask a lot of questions&mdash;this is just to help you remember all of the different possible sources of income that might support your household. 
     </p>
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70" layout-padding="5">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">
                     Household Member #{{$index + 1}}
-                    <span class="md-headline" ng-if="member.firstName">: {{member.firstName}} {{member.lastName}}</span>
+                    <span class="md-headline" ng-if="member.firstName">: {{member.firstName}}</span>
                 </span>
             </md-card-title-text>
         </md-card-title>
@@ -23,7 +23,7 @@
                     <div flex="55" layout="column" layout-align="center">
                         <label>
                             Does
-                            <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
+                            <span ng-if="member.firstName">{{member.firstName}}</span>
                             <span ng-if="!member.firstName">this person</span>
                             {{incomeCategory.question}}?
                         </label>
@@ -48,13 +48,13 @@
                             <div ng-if="member.incomeCategory[$parent.$parent.$index][$index].earnsFromSource" layout="row">
                                 <div flex layout="row" layout-align="center space-between">
                                     <md-input-container flex>
-                                        <label>{{incomeSource.shortLabel}}</label>
+                                        <label class="dark-label">{{incomeSource.shortLabel}}:</label>
                                     </md-input-container>
                                     <md-input-container flex>
-                                        <label>Amount</label>
+                                        <label>Enter Amount</label>
                                         <input ng-model="member.incomeCategory[$parent.$parent.$index][$index].amount" type="number">
                                     </md-input-container>
-                                    <md-input-container>
+                                    <md-input-container flex flex-offset="5">
                                         <label>How often?</label>
                                         <md-select ng-model="member.incomeCategory[$parent.$parent.$index][$index].frequency">
                                             <md-option ng-repeat="time in incomeSource.frequency" value="{{time}}">{{time}}</md-option>
@@ -68,7 +68,7 @@
                             <div layout="row">
                                 <div flex layout="row" layout-align="center space-between">
                                     <md-input-container flex>
-                                        <label>{{incomeSource.shortLabel}}</label>
+                                        <label class="dark-label">{{incomeSource.shortLabel}}</label>
                                     </md-input-container>
                                     <md-input-container flex>
                                         <label>Amount</label>
