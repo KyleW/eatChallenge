@@ -68,10 +68,7 @@
 
             function successHandler(response) {
                 setCredentials(response.data.user);
-                if (response.data.household) {
-                    Household.retrieveForUser(response.data.household);
-                    $state.go('soFar');
-                }
+                Household.retrieveForUser(response.data.user);
             }
 
             function errorHandler(response, err) {

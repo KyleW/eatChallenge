@@ -4,8 +4,8 @@
     angular
       .module('eatChallengeApp')
       .controller('loginController', loginController);
-    loginController.$inject = ['$scope', 'auth', 'Household', 'Sections'];
-    function loginController($scope, auth, Household, Sections) {
+    loginController.$inject = ['$scope', '$state', 'auth', 'Household', 'Sections'];
+    function loginController($scope, $state, auth, Household, Sections) {
         var vm = $scope;
         var user = {};
         vm.submit = submit;
@@ -24,8 +24,9 @@
                 vm.disabled = false;
                 vm.loginForm = {};
                 vm.success = 'successfully logged in';
+                $state.go('soFar');
                 // Household.save(Household.household);
-                Sections.goBack();
+                // Sections.goBack();
             }
 
             function errorHandler(response) {
