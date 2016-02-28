@@ -8,12 +8,11 @@
     householdIncome.$inject = [
         '$scope',
         '$state',
-        'Auth',
         'Household',
         'Sections'
     ];
 
-    function householdIncome ($scope, $state, Auth, Household, Sections, HouseholdIncome) {
+    function householdIncome ($scope, $state, Household, Sections, HouseholdIncome) {
         var vm = $scope;
         vm.household = Household.household;
         vm.navigateToNextSection = navigateToNextSection;

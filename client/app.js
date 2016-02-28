@@ -70,9 +70,10 @@
             .state('start', {
                 url: '/',
                 views:{
-                    'user-controls': {
-                        controller: 'userControlsController'
-                    },
+                    // 'user-controls': {
+                    //     templateUrl: '../views/user-controls.html',
+                    //     controller: 'userControlsController'
+                    // },
                     // 'side-nav': {
                     //     templateUrl: '../views/sideNav.html',
                     //     controller: 'sideNavController'
@@ -87,12 +88,13 @@
                 url: '/children',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                //     'side-nav': {
+                //     templateUrl: '../views/sideNav.html',
+                //     controller: 'sideNavController'
+                // },
                     'main': {
                     templateUrl: '../views/children.html',
                     controller: 'mainController'
@@ -103,12 +105,13 @@
                 url: '/childIncome',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                //     'side-nav': {
+                //     templateUrl: '../views/sideNav.html',
+                //     controller: 'sideNavController'
+                // },
                     'main': {
                     templateUrl: '../views/childIncome.html',
                     controller: 'mainController'
@@ -119,6 +122,7 @@
                 url: '/household',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
                     'side-nav': {
@@ -135,6 +139,7 @@
                 url: '/household-income',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
                     'side-nav': {
@@ -151,6 +156,7 @@
                 url: '/disclosure',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
                     'side-nav': {
@@ -167,12 +173,13 @@
                 url: '/signature',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                //     'side-nav': {
+                //     templateUrl: '../views/sideNav.html',
+                //     controller: 'sideNavController'
+                // },
                     'main': {
                     templateUrl: '../views/signature.html',
                     controller: 'mainController'
@@ -183,12 +190,13 @@
                 url: '/confirmation',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                //     'side-nav': {
+                //     templateUrl: '../views/sideNav.html',
+                //     controller: 'sideNavController'
+                // },
                     'main': {
                     templateUrl: '../views/confirmation.html',
                     controller: 'mainController'
@@ -199,6 +207,7 @@
                 url: '/export',
                 views: {
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
                     'side-nav': {
@@ -215,6 +224,7 @@
                 url: '/signup',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
                     'side-nav': {
@@ -232,6 +242,7 @@
                 url: '/login',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
                     'side-nav': {
@@ -248,12 +259,13 @@
                 url: '/so-far',
                 views:{
                     'user-controls': {
+                        templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                    templateUrl: '../views/sideNav.html',
-                    controller: 'sideNavController'
-                },
+                //     'side-nav': {
+                //     templateUrl: '../views/sideNav.html',
+                //     controller: 'sideNavController'
+                // },
                     'main': {
                     templateUrl: '../views/soFar.html',
                     controller: 'mainController'

@@ -5,10 +5,10 @@
         .module('eatChallengeApp')
         .service('auth', AuthService);
 
-    AuthService.$inject = ['$http', '$q'];
+    AuthService.$inject = ['$http', '$q', '$rootScope'];
 
-    function AuthService($http, $q) {
-        var user = null;
+    function AuthService($http, $q, $rootScope) {
+        $rootScope.user = null;
 
         var service = {};
         service.isLoggedIn = isLoggedIn;
@@ -21,35 +21,28 @@
         ///////////////////////////
 
         function isLoggedIn() {
-            if (user) {
+            if ($rootScope.user) {
                 return true;
             }
             return false;
         }
 
         function getUserStatus() {
-            return user;
+            return $rootScope.user;
         }
 
         function signup(email, password) {
-            var deferred = $q.defer();
-            $http.post('/user/signup', {username: email, password: password})
+            return $http
+                .post('/user/signup', {username: email, password: password})
                 .then(successHandler, errorHandler);
 
-            function successHandler(data, status) {
-                if (status === 200 && data.status) {
-                    deferred.resolve();
-                } else {
-                    deferred.reject();
-                }
+            function successHandler(response) {
+                setCredentials(response.data.user);
             }
 
-            function errorHandler() {
-                deferred.reject();
+            function errorHandler(err) {
+                console.log(err);
             }
-
-            return deferred.promise;
-
         }
 
         function login(email, password) {
@@ -57,40 +50,42 @@
                 username: email,
                 password: password
             };
-            var deferred = $q.defer();
 
-            $http.post('/user/login', data)
+            return $http
+                .post('/user/login', data)
                 .then(successHandler, errorHandler);
 
-            function successHandler(data, status) {
-                if (status === 200 && data.status) {
-                    user = true;
-                    deferred.resolve();
-                } else {
-                    user = false;
-                    deferred.reject();
-                }
+            function successHandler(response) {
+                setCredentials(response.data.user);
             }
 
-            function errorHandler() {
-                user = false;
-                deferred.reject();
+            function errorHandler(err) {
+                console.log(err);
+                clearCredentials();
             }
-
-            return deferred.promise;
         }
 
         function logout() {
-            return $http.get('user/logout')
+            return $http
+                .get('user/logout')
                 .then(successHandler, errorHandler);
 
             function successHandler() {
-                user = false;
+                clearCredentials();
             }
 
             function errorHandler() {
-                user = false;
+                clearCredentials();
             }
+        }
+
+        // TODO: move to cookie??
+        function setCredentials(user) {
+            $rootScope.user = user;
+        }
+
+        function clearCredentials() {
+            $rootScope.user = null;
         }
     }
 

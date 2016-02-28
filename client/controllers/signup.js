@@ -27,7 +27,7 @@
                 // Sections.goBack();
                 vm.disabled = false;
                 vm.signupForm = {}; //Reset form
-                vm.success="successfully created an account"
+                vm.success = 'successfully created an account';
                 console.log('signup success');
                 // });
             }

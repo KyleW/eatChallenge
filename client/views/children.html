@@ -14,7 +14,7 @@
         </div>
         <md-input-container flex-offset="5" flex="40">
             <label>number of children</label>
-            <input ng-model="household.childCount" type="number" min="0"></input>
+            <input ng-model="household.childCount" min="0"></input>
         </md-input-container>
     </div>
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5" ng-blur="updateCompleted()">

@@ -4,13 +4,22 @@
     angular
       .module('eatChallengeApp')
       .controller('userControlsController', userControlsController);
-    userControlsController.$inject = ['$scope', 'auth'];
-    function userControlsController($scope, auth) {
+    userControlsController.$inject = ['$rootScope', '$scope', 'auth'];
+    function userControlsController($rootScope, $scope, auth) {
         var vm = $scope;
-        vm.logout = auth.logout;
-        console.log('user controls controller');
-        console.log(auth.getUserStatus());
-        //////////////////////
+        vm.loggedIn = auth.getUserStatus();
+        vm.logout = logout;
+        vm.user = $rootScope.user;
+        /////////////////////////
+        function logout() {
+            auth.logout();
+            vm.loggedIn = auth.getUserStatus();
+        }
+
+        $rootScope.$watch('user', function() {
+            vm.loggedIn = auth.getUserStatus();
+            vm.user = $rootScope.user;
+        });
     }
 
 })();

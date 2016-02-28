@@ -2,7 +2,7 @@
 <div>
     <h2>Log In</h2>
     <p> Log in to continue your application from where you left off</p>
-    <div class="alert alert-danger">{{error}}</div>
+    <!-- <div class="alert alert-danger">{{error}}</div> -->
     <div class="alert alert-danger">{{success}}</div>
     <form name="loginForm">
         <md-card>
@@ -21,7 +21,7 @@
                 </div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
-               <md-button ng-click="submit()" type="submit">Login</md-button>
+               <md-button ng-click="submit()" type="submit" ng-disabled="!loginForm.$valid">Login</md-button>
              </div>
         </md-card>
     </form>
