@@ -80,10 +80,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                //     'side-nav': {
-                //     templateUrl: '../views/sideNav.html',
-                //     controller: 'sideNavController'
-                // },
+                    //     'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                     templateUrl: '../views/children.html',
                     controller: 'mainController'
@@ -97,10 +97,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                //     'side-nav': {
-                //     templateUrl: '../views/sideNav.html',
-                //     controller: 'sideNavController'
-                // },
+                    //     'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                     templateUrl: '../views/childIncome.html',
                     controller: 'mainController'
@@ -165,10 +165,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                //     'side-nav': {
-                //     templateUrl: '../views/sideNav.html',
-                //     controller: 'sideNavController'
-                // },
+                    //     'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                     templateUrl: '../views/signature.html',
                     controller: 'mainController'
@@ -182,10 +182,10 @@
                     //     templateUrl: '../views/user-controls.html',
                     //     controller: 'userControlsController'
                     // },
-                //     'side-nav': {
-                //     templateUrl: '../views/sideNav.html',
-                //     controller: 'sideNavController'
-                // },
+                    //     'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                     templateUrl: '../views/confirmation.html',
                     controller: 'mainController'
@@ -251,14 +251,31 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                //     'side-nav': {
-                //     templateUrl: '../views/sideNav.html',
-                //     controller: 'sideNavController'
-                // },
+                    //     'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
-                    templateUrl: '../views/soFar.html',
-                    controller: 'mainController'
+                        templateUrl: '../views/soFar.html',
+                        controller: 'mainController'
+                    }
                 }
+            })
+            .state('saveAndExit', {
+                url: '/save-and-exit',
+                views:{
+                    // 'user-controls': {
+                    //     templateUrl: '../views/user-controls.html',
+                    //     controller: 'userControlsController'
+                    // },
+                    //     'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
+                    'main': {
+                        templateUrl: '../views/save-and-exit.html',
+                        controller: 'mainController'
+                    }
                 }
             });
         }

@@ -74,7 +74,7 @@
                 }
             }
 
-            function errorHandler(err) {
+            function errorHandler(response, err) {
                 console.log(err);
                 clearCredentials();
             }
@@ -88,13 +88,13 @@
             function successHandler() {
                 clearCredentials();
                 Household.clear();
-                $state.go('start');
+                // $state.go('start');
             }
 
             function errorHandler() {
                 clearCredentials();
                 Household.clear();
-                $state.go('start');
+                // $state.go('start');
             }
         }
 

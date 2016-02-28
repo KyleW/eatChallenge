@@ -35,7 +35,7 @@
                 </div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
-               <md-button type="submit" ng-click="submit()" ng-disabled="!signupForm.$valid || (user.password !== confirmPassword)">Submit</md-button>
+               <md-button ng-click="submit()" ng-disabled="!signupForm.$valid || (user.password !== confirmPassword)">Submit</md-button>
              </div>
         </md-card>
     </form>
