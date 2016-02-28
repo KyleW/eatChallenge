@@ -7,7 +7,9 @@
     .config(materialDesignThemer)
     .config(errorDecorator)
     .run(scroller);
+    ///////////////////////////////////
 
+    //Show source maps in errors
     errorDecorator.$inject = ['$provide'];
     function errorDecorator($provide) {
         $provide.decorator('$exceptionHandler', decorateError);
@@ -20,6 +22,7 @@
         }
     }
 
+    //Routing enhancements
     scroller.$inject = ['$rootScope'];
     function scroller($rootScope) {
         // scroll to the top on page transition
@@ -34,35 +37,21 @@
         });
     }
 
+    //Color themes for buttons
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
         $mdThemingProvider.theme('default')
-       // .primaryPalette('blue-grey')
-       .primaryPalette('teal')
-        .backgroundPalette('brown', {
-            'default': '50'
-        });
-        // $mdThemingProvider.theme('light-blue');
-        // .primaryPalette('pink', {
-        //   'default': '400', // by default use shade 400 from the pink palette for primary intentions
-        //   'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
-        //   'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
-        //   'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
-        // })
-        // // If you specify less than all of the keys, it will inherit from the
-        // // default shades
-        // .accentPalette('purple', {
-        //   'default': '200' // use shade 200 for default, and keep all other shades the same
-        // });
+                          .primaryPalette('teal')
+                          .backgroundPalette('brown', {'default': '50'});
     }
 
+    // UI router
     routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-
     function routerConfig ($stateProvider, $urlRouterProvider) {
 
         router($stateProvider, $urlRouterProvider);
-
         //////////
+
         function router($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/');
 
@@ -125,10 +114,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/household.html',
                         controller: 'mainController'
@@ -142,10 +131,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/householdIncome.html',
                         controller: 'householdIncome'
@@ -159,10 +148,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/disclosure.html',
                         controller: 'mainController'
@@ -210,10 +199,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/export.html',
                         controller: 'exportController'
@@ -227,10 +216,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/signup.html',
                         controller: 'signupController'
@@ -245,10 +234,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/login.html',
                         controller: 'loginController'

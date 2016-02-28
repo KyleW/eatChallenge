@@ -22,6 +22,7 @@ module.exports = function(app, passport) {
     app.get('/child', child.create);
 
     app.get('/household/completed', household.findCompleted);
+    app.get('/household/:userId', household.findForUser);
     app.get('/household', household.findOrCreate);
     app.post('/household', household.save);
 

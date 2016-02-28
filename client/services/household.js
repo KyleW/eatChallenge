@@ -15,40 +15,40 @@
             completedApplication: false
         };
 
-        this.get = get;
-        this.set = set;
-        this.save = save;
-        this.clear = clear;
-        this.household = Object.create(Household);
+        var service = {};
+        service.get = get;
+        service.retrieveForUser = retrieveForUser;
+        service.save = save;
+        service.clear = clear;
+        service.household = Object.create(Household);
 
-        return this;
+        return service;
         //////////////////////////////////
 
         function get() {
-            if (this.household) {
-                return this.household;
+            if (service.household) {
+                return service.household;
             }
-            // household = 
-            // return household;
         }
 
-        function set(retrievedHousehold) {
-            this.household = retrievedHousehold;
+        function retrieveForUser(user) {
+            $http.get('/household/' + user._id)
+                .then(function(response) {
+                    service.household = response.data;
+                });
         }
 
         function save(household) {
+            household = household || service.household;
             if ($rootScope.user) {
                 household.userId = $rootScope.user._id;
             }
 
             return $http.post('/household', household);
-            // .then(function(response) {
-            //     return response.data;
-            // });
         }
 
         function clear () {
-            this.household = Object.create(Household);
+            service.household = Object.create(Household);
         }
     }
 

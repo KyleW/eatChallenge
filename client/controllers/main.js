@@ -23,6 +23,11 @@
         vm.schoolDistrict = 'Oakland Unified School District';
 
         vm.household = Household.household;
+        $scope.$watch(function() {
+            return Household.household;
+        }, function() {
+            vm.household = Household.household;
+        });
         vm.meansTest = Sections.meansTest;
         // vm.estimatedIncome = estimateIncome(household);
 
@@ -112,7 +117,7 @@
         }
 
         function goBack() {
-            Household.save();
+            Household.save(vm.household);
             Sections.updateRequiredSections(vm.household);
             Sections.goBack();
         }

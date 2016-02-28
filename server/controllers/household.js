@@ -40,7 +40,7 @@ module.exports = {
     },
 
     findForUser: function(req, res, next) {
-        Household.findOne({userId: req.body.userId}).exec(function(err, data) {
+        Household.findOne({userId: req.params.userId}).exec(function(err, data) {
             if (err) {
                 return next(err);
             }

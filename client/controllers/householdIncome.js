@@ -15,6 +15,11 @@
     function householdIncome ($scope, $state, Household, Sections, HouseholdIncome) {
         var vm = $scope;
         vm.household = Household.household;
+        $scope.$watch(function() {
+            return Household.household;
+        }, function() {
+            vm.household = Household.household;
+        });
         vm.navigateToNextSection = navigateToNextSection;
 
         var work = {

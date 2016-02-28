@@ -5,20 +5,30 @@
         .module('eatChallengeApp')
         .service('auth', AuthService);
 
-    AuthService.$inject = ['$http', '$q', '$rootScope', '$state', 'Household'];
+    AuthService.$inject = ['$cookies', '$http', '$q', '$rootScope', '$state', 'Household'];
 
-    function AuthService($http, $q, $rootScope, $state, Household) {
+    function AuthService($cookies, $http, $q, $rootScope, $state, Household) {
         $rootScope.user = null;
-
+        init();
         var service = {};
         service.isLoggedIn = isLoggedIn;
         service.getUserStatus = getUserStatus;
         service.signup = signup;
         service.login = login;
         service.logout = logout;
+        service.init = init;
 
         return service;
         ///////////////////////////
+        function init() {
+            // Check for user on start
+            var user = getCredentials();
+            if (user) {
+                $rootScope.user = user;
+                Household.retrieveForUser(user);
+            }
+
+        }
 
         function isLoggedIn() {
             if ($rootScope.user) {
@@ -88,13 +98,18 @@
             }
         }
 
-        // TODO: move to cookie??
         function setCredentials(user) {
             $rootScope.user = user;
+            return $cookies.putObject('user', user);
+        }
+
+        function getCredentials() {
+            return $cookies.getObject('user');
         }
 
         function clearCredentials() {
             $rootScope.user = null;
+            return $cookies.remove('user');
         }
     }
 
