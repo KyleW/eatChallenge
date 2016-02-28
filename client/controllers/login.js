@@ -10,9 +10,8 @@
         var user = {};
         vm.submit = submit;
         vm.user = user;
-        console.log(auth.isLoggedIn());
         //////////////////////
-        
+
         function submit() {
             vm.error = false;
             vm.disabled = true;
@@ -20,9 +19,6 @@
             .then(successHandler, errorHandler);
 
             function successHandler(response) {
-                console.log('success');
-                console.log(response)
-                // TODO: redirect somewhere??
                 vm.disabled = false;
                 vm.loginForm = {};
                 vm.success = 'successfully logged in';
@@ -32,9 +28,6 @@
                 vm.error = true;
                 vm.errorMessage = 'Something went wrong. Please try again';
                 vm.disabled = false;
-                console.log('login fail');
-                console.log(response);
-                // vm.loginForm = {}
             }
 
         }

@@ -7,12 +7,7 @@
 
     function householdService($http, $rootScope) {
         // Todo: consider moving to server??
-        var Household =  {};
-
-        this.get = get;
-        this.save = save;
-        this.clear = clear;
-        this.household = {
+        var Household =  {
             childCount: 0,
             children: [],
             otherMembersCount: 0,
@@ -20,15 +15,25 @@
             completedApplication: false
         };
 
+        this.get = get;
+        this.set = set;
+        this.save = save;
+        this.clear = clear;
+        this.household = Object.create(Household);
+
         return this;
         //////////////////////////////////
 
         function get() {
-            // if (this.household) {
-            //     return this.household;
-            // }
-            // // household = 
+            if (this.household) {
+                return this.household;
+            }
+            // household = 
             // return household;
+        }
+
+        function set(retrievedHousehold) {
+            this.household = retrievedHousehold;
         }
 
         function save(household) {
@@ -45,8 +50,6 @@
         function clear () {
             this.household = Object.create(Household);
         }
-
-        
     }
 
 })();

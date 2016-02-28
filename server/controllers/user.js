@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Household = require('../models/household');
 var passport = require('passport');
 
 module.exports = {
@@ -27,7 +28,13 @@ module.exports = {
                 if (err) {
                     return res.status(500).json({err: 'Could not log in user'});
                 }
-                res.status(200).json({status: 'Login successful!', user: user});
+
+                Household.findOne({userId: user._id.toString()}).exec(function(err, data) {
+                    if (err) {
+                        return res.status(200).json({status: 'Login successful!', user: user});
+                    }
+                    res.status(200).json({status: 'Login successful!', user: user, household: data});
+                });
             });
         })(req, res, next);
     },

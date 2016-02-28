@@ -5,9 +5,9 @@
         .module('eatChallengeApp')
         .service('auth', AuthService);
 
-    AuthService.$inject = ['$http', '$q', '$rootScope'];
+    AuthService.$inject = ['$http', '$q', '$rootScope', '$state', 'Household'];
 
-    function AuthService($http, $q, $rootScope) {
+    function AuthService($http, $q, $rootScope, $state, Household) {
         $rootScope.user = null;
 
         var service = {};
@@ -38,6 +38,7 @@
 
             function successHandler(response) {
                 setCredentials(response.data.user);
+                Household.save();
             }
 
             function errorHandler(err) {
@@ -57,6 +58,10 @@
 
             function successHandler(response) {
                 setCredentials(response.data.user);
+                if (response.data.household) {
+                    Household.set(response.data.household);
+                    $state.go('soFar');
+                }
             }
 
             function errorHandler(err) {
@@ -72,10 +77,14 @@
 
             function successHandler() {
                 clearCredentials();
+                Household.clear();
+                $state.go('start');
             }
 
             function errorHandler() {
                 clearCredentials();
+                Household.clear();
+                $state.go('start');
             }
         }
 
