@@ -88,13 +88,13 @@
             function successHandler() {
                 clearCredentials();
                 Household.clear();
-                // $state.go('start');
+                $state.go('save-and-exit');
             }
 
             function errorHandler() {
                 clearCredentials();
                 Household.clear();
-                // $state.go('start');
+                $state.go('save-and-exit');
             }
         }
 

@@ -1,5 +1,11 @@
-<div>
-  <p>Administrators can click below to export forms as a csv.</p>
-  <!-- <pre>{{completedApplications | json}}</pre> -->
-  <md-button class="md-primary" ng-csv="completedApplications" filename="school_lunch_applications.csv"> Export Data</md-button>
+<div class="export">
+    <div class="hero-container">
+        <img class="hero" src="/icons/food-vegetables-meal-kitchen.jpg">
+    </div>
+    <h2>Export Forms</h2>
+    <p>Click below to export forms as a csv. </p>
+    <!-- <pre>{{completedApplications[0] | json}}</pre> -->
+    <div layout="row" layout-align="center" layout-padding>
+        <md-button class="md-primary md-raised" ng-csv="completedApplications" filename="school_lunch_applications.csv"> Export Data</md-button>
+    </div>
 </div>
