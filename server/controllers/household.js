@@ -9,10 +9,10 @@ module.exports = {
 
             Household.findByIdAndUpdate(req.body._id, toSave, function (err, household) {
                 if (err) {
-                    console.error(err);
+                    // console.error(err);
                     return res.send(err);
                 }
-                console.log('successfully updated ' , household);
+                // console.log('successfully updated ' , household);
                 return res.json(household);
             });
         } else {
@@ -20,10 +20,10 @@ module.exports = {
             var household = new Household(req.body);
             household.save(function (err, household) {
                 if (err) {
-                    console.error(err);
+                    // console.error(err);
                     return res.send(err);
                 }
-                console.log('successfully saved ' , household);
+                // console.log('successfully saved ' , household);
                 return res.json(household);
             });
         }
@@ -50,12 +50,14 @@ module.exports = {
     },
 
     findCompleted: function(req, res, next) {
-        // todo: check auth here
-        Household.find().where({completed: true}).exec(function(err, data) {
+        // TODO: check auth here
+        // Household.find().where({completed: true}).exec(function(err, data) {
+        // TODO: Note- currently exporting all forms, not just those marked complete 
+        Household.find().exec(function(err, data) {
             if (err) {
                 return next(err);
             }
-            console.log({'found households': data});
+            // console.log({'found households': data});
             res.json(data);
         });
     },
