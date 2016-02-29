@@ -73,7 +73,8 @@
         return service;
         //////////////////////
 
-        function updateRequiredSections(household) {
+        function updateRequiredSections() {
+            var household = $rootScope.household;
             service.meansTest = true;
             var assistanceProgramHousehold = isAssistanceHousehold(household);
             var categoricallyQualified = allStudentsCategoricallyQualify(household);

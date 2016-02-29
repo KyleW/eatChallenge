@@ -6,20 +6,15 @@
         .controller('householdIncome', householdIncome);
 
     householdIncome.$inject = [
+        '$rootScope',
         '$scope',
         '$state',
         'Household',
         'Sections'
     ];
 
-    function householdIncome ($scope, $state, Household, Sections, HouseholdIncome) {
+    function householdIncome ($rootScope, $scope, $state, Household, Sections, HouseholdIncome) {
         var vm = $scope;
-        vm.household = Household.household;
-        $scope.$watch(function() {
-            return Household.household;
-        }, function() {
-            vm.household = Household.household;
-        });
         vm.navigateToNextSection = navigateToNextSection;
 
         var work = {
@@ -207,10 +202,9 @@
 
         // TODO: duplicated with main.js. Share in a better way
         function navigateToNextSection() {
-            Household.save(vm.household).then(function() {
-                Sections.updateRequiredSections(vm.household);
-                Sections.navigateToNext();
-            });
+            Household.save();
+            Sections.updateRequiredSections();
+            Sections.navigateToNext();
         }
 
         vm.incomeCategories = [

@@ -14,41 +14,34 @@
             otherMembers: [],
             completedApplication: false
         };
-
+        
+        $rootScope.household = $rootScope.household || Object.create(Household);
+        
         var service = {};
-        service.get = get;
         service.retrieveForUser = retrieveForUser;
         service.save = save;
         service.clear = clear;
-        service.household = Object.create(Household);
 
         return service;
         //////////////////////////////////
 
-        function get() {
-            if (service.household) {
-                return service.household;
-            }
-        }
-
         function retrieveForUser(user) {
             $http.get('/household/' + user._id)
                 .then(function(response) {
-                    service.household = response.data;
+                    $rootScope.household = response.data;
                 });
         }
 
-        function save(household) {
-            household = household || service.household;
+        function save() {
             if ($rootScope.user) {
-                household.userId = $rootScope.user._id;
+                $rootScope.household.userId = $rootScope.user._id;
             }
 
             return $http.post('/household', household);
         }
 
         function clear () {
-            service.household = Object.create(Household);
+            $rootScope.household = Object.create(Household);
         }
     }
 

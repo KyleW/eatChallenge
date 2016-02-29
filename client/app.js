@@ -257,7 +257,7 @@
                     // },
                     'main': {
                         templateUrl: '../views/soFar.html',
-                        controller: 'mainController'
+                        controller: 'soFarController'
                     }
                 }
             })

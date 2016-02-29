@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+// var ChildIncomeSource = require('./childIncomeSource');
 
 var childSchema = new Schema({
     firstName: String,
@@ -15,6 +16,7 @@ var childSchema = new Schema({
         participant: Boolean,
         caseNumber: String
     },
+    // incomeSources: [ChildIncomeSource]
     incomeSources: Array
 });
 

@@ -48,7 +48,7 @@
 
             function successHandler(response) {
                 setCredentials(response.data.user);
-                Household.save(Household.household);
+                Household.save();
             }
 
             function errorHandler(err) {
