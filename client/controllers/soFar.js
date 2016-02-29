@@ -10,13 +10,14 @@
         '$interval',
         '$mdDialog',
         '$mdMedia',
+        '$rootScope',
         '$scope',
         '$state',
         'Household',
         'Sections'
     ];
 
-    function soFarController ($http, $interval, $mdDialog, $mdMedia,
+    function soFarController ($http, $interval, $mdDialog, $mdMedia, $rootScope,
                              $scope, $state, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
