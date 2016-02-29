@@ -59,6 +59,7 @@
                 if (child.earnsIncome) {
                     child.incomeSources.forEach(function(incomeSource) {
                         if (incomeSource.amount > 0) {
+                            debugger;
                             var newIncome = incomeSource.amount * frequencyMulitplier[incomeSource.frequency];
                             estimatedAnnualIncome += newIncome;
                         }

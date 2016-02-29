@@ -21,6 +21,7 @@
         service.retrieveForUser = retrieveForUser;
         service.save = save;
         service.clear = clear;
+        service.submit = submit;
 
         return service;
         //////////////////////////////////
@@ -33,11 +34,19 @@
         }
 
         function save() {
+            if (!$rootScope.user) {
+                return;
+            }
+            $rootScope.household.userId = $rootScope.user._id;
+            return $http.post('/household', $rootScope.household);
+        }
+
+        function submit() {
             if ($rootScope.user) {
                 $rootScope.household.userId = $rootScope.user._id;
             }
 
-            return $http.post('/household', household);
+            return $http.post('/household', $rootScope.household);
         }
 
         function clear () {

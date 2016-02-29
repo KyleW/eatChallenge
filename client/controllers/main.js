@@ -87,7 +87,9 @@
             trimOtherMembers($rootScope.household);
 
             $rootScope.household.completed = true;
-            navigateToNextSection();
+            Household.submit();
+            Sections.updateRequiredSections();
+            Sections.navigateToNext();
         }
 
         // Watchers
