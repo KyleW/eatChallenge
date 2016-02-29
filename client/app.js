@@ -41,7 +41,8 @@
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
         $mdThemingProvider.theme('default').primaryPalette('teal')
-                          .backgroundPalette('brown', {'default': '50'});
+                          .backgroundPalette('brown', {'default': '50'})
+                          .foregroundPalette[3] = 'rgba(0,0,0,0.67)';
     }
 
     // UI router
