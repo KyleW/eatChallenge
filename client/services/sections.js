@@ -147,7 +147,6 @@
         }
 
         function navigateToNext() {
-            console.log($rootScope.household);
             var nextSection;
             var currentState = $rootScope.currentState || $state.$current.self.name;
             var previousState = $rootScope.previousState || 'start';

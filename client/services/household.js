@@ -14,9 +14,9 @@
             otherMembers: [],
             completedApplication: false
         };
-        
-        $rootScope.household = $rootScope.household || Object.create(Household);
-        
+
+        $rootScope.household = angular.copy(Household);
+
         var service = {};
         service.retrieveForUser = retrieveForUser;
         service.save = save;

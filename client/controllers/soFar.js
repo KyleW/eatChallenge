@@ -46,22 +46,27 @@
 
         init();
 
-        var frequencyMulitplier = {
-            weekly: 52,
-            'every 2 weeks': 26,
-            'twice a month': 24,
-            monthly: 12
-        };
+        
 
-        function estimateIncome(household) {
+        function estimateIncome() {
+            var frequencyMulitplier = {
+                weekly: 52,
+                'every 2 weeks': 26,
+                'twice a month': 24,
+                monthly: 12
+            };
+
+            function getTotalforSource(source) {
+                return source.amount * frequencyMulitplier[source.frequency];
+            }
+
             var estimatedAnnualIncome = 0;
-            household.children.forEach(function(child) {
+
+            $rootScope.household.children.forEach(function(child) {
                 if (child.earnsIncome) {
                     child.incomeSources.forEach(function(incomeSource) {
                         if (incomeSource.amount > 0) {
-                            debugger;
-                            var newIncome = incomeSource.amount * frequencyMulitplier[incomeSource.frequency];
-                            estimatedAnnualIncome += newIncome;
+                            estimatedAnnualIncome += getTotalforSource(incomeSource);
                         }
                     });
                 }
@@ -72,7 +77,7 @@
 
         function countEarners(household) {
             var earnersCount = 0;
-            household.children.forEach(function(child) {
+            $rootScope.household.children.forEach(function(child) {
                 if (child.earnsIncome) {
                     earnersCount++;
                 }

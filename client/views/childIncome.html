@@ -4,7 +4,6 @@
         Sometimes children or students have their own income, like from a job, disability, or a regular payment from a family member who lives outside the house.
          <!-- If a child in your house receives money directly, please fill out this section. -->
     </P>
-    <pre>{{household | json}}</pre>
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60">
         <md-card-title>
             <md-card-title-text>
