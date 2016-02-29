@@ -4,7 +4,7 @@ $lineThickness = 2px
 $annotationWidth = 330px
 $annotationOffset = (-1 * $annotationWidth) - 10
 $headerHeight = 100px 
-
+$leftColWidth = 190px
 // Resets
 // fixes issue which breaks layout in Safari
 [flex].item {
@@ -49,7 +49,7 @@ header
   // padding 10px 20px
   margin-top -1px
   border-bottom 2px solid grey
-  // padding-left 190px
+  // padding-left $leftColWidth
   // padding-left 20px
   // padding-right 20px
   width 100%
@@ -62,9 +62,9 @@ header
   .logo
     position absolute
     top -42px
-    left 0    
-    height 190px
-    width 190px
+    left 20px    
+    height $leftColWidth
+    width $leftColWidth
 
 
   h1
@@ -81,7 +81,7 @@ header
 .leftCol
   headingBase()
   padding-left 20px
-  min-width 190px
+  min-width $leftColWidth
 
 .centerCol
   flex 14
