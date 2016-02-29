@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
     // Static files
     app.use('/public', express.static('./build'));
     app.use('/views', express.static('./client/views'));
-    app.use('/icons', express.static('./icons'));
+    app.use('/images', express.static('./images'));
 
     //Home
     app.get('/', function (req, res) {
