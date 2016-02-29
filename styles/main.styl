@@ -21,7 +21,7 @@ h3
   margin-bottom 8px
   
 body
-  padding 1px 20px
+  padding 1px 0
   
 
 html, body, header, .leftCol, .centerCol, .rightCol
@@ -50,7 +50,8 @@ header
   margin-top -1px
   border-bottom 2px solid grey
   // padding-left 190px
-  padding-right 20px
+  // padding-left 20px
+  // padding-right 20px
   width 100%
   position fixed
   z-index 100
@@ -69,6 +70,10 @@ header
   h1
     padding-top 30px
     text-align left
+
+.user-controls
+  padding-right 20px
+  padding-top 10px
 
 .mainContainer
   margin-top $headerHeight
@@ -89,6 +94,7 @@ header
 
 .rightCol
   width $annotationWidth
+  padding-right 20px
   
 // Directives
 .annotation
