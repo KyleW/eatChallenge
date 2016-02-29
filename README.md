@@ -2,6 +2,8 @@
 
 This is a prototype for the Federal application for free and reduced price meals. It's been created for the [E.A.T School Lunch UX Challenge](http://lunchux.devpost.com/)
 
+You can see the project live [here](https://eatchallenge-kylew.rhcloud.com/).
+
 ## What it does
 
 ## The Tech Stack
