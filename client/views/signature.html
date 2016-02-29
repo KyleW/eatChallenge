@@ -1,16 +1,16 @@
 <!-- Signature -->
 <form id="signature" layout="column">
-    <h2>Signature & Contact Information</h2>
-    <p layout="row">The final step is to sign and submit your application. This is to confirm that you have finished your application and that all the information is correct.</p>
-    <p>Please agree to the following:</p>
+    <h2 class="md-headline">Signature & Contact Information</h2>
+    <p class="md-body-2" layout="row">The final step is to sign and submit your application. This is to confirm that you have finished your application and that all the information is correct.</p>
+    <p class="md-body-2">Please agree to the following:</p>
     <div layout="column">
-            <p>
+            <p class="md-body-2">
                 "The person signing is furnishing true information and to advise that person that the application is being made in connection with the receipt of Federal funds;
             </p>
-            <p>
+            <p class="md-body-2">
                 School officials may verify the information on the application; and
             </p>
-            <p>
+            <p class="md-body-2">
                 Deliberate misrepresentation of the information may subject the applicant to prosecution under State and Federal statutes."
             </p>
     </div>
@@ -51,7 +51,7 @@
             <div layout="row">
                 <div flex="55" layout="column" layout-align="center start"><label>Do you have a social security number?</label></div>
                 <div yes-no-input model="member.hasSSN" flex-offset="5" flex="40"></div>
-                <div class="annotation"> United States citizenship or immigration status is not a condition of eligibility for free and reduced price meals.</div>
+                <div class="annotation md-caption"> United States citizenship or immigration status is not a condition of eligibility for free and reduced price meals.</div>
             </div>
             <div layout="row" ng-if="member.hasSSN" layout-align="center">
                 <div flex="55" layout="column" layout-align="center start"><label>

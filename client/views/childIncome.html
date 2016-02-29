@@ -1,13 +1,13 @@
 <form id="children qustionMain" layout='column'>
-    <h2>Children's Income</h2>    
-    <P>
+    <h2 class="md-headline">Children's Income</h2>    
+    <p class="md-body-2">
         Sometimes children or students have their own income, like from a job, disability, or a regular payment from a family member who lives outside the house.
          <!-- If a child in your house receives money directly, please fill out this section. -->
     </P>
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">
+                <span class="md-title">
                     Child #{{$index + 1}}
                     <span class="md-headline" ng-if="child.firstName">: {{child.firstName}} {{child.lastName}}</span>
                 </span>

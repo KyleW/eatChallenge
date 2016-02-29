@@ -1,11 +1,11 @@
 <!--Household -->
 <form id="questionMain" class="household" layout="column">
-    <h2>Other Household Members</h2>
-<!--     <p>
+    <h2 class="md-headline">Other Household Members</h2>
+<!--     <p class="md-body-2">
         Who else lives in your household? Tell us how many people live in your household who are not the infants, children, and students you told us about before. Make sure to include yourself!
     </p>
  -->    <div layout="row">
-        <div class="annotation">
+        <div class="annotation md-caption">
             <p>Please include all members in your household who are:</p>
             <ul>
                 <li>Living with you and sharing income and expenses, even if they are not related and even if they do not receive income of their own.</li>
@@ -27,7 +27,7 @@
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Household Member #{{$index + 1}}<span class="md-headline" ng-if="member.firstName">: {{member.firstName}} {{member.lastName}}</span></span>
+                <span class="md-title">Household Member #{{$index + 1}}<span class="md-headline" ng-if="member.firstName">: {{member.firstName}} {{member.lastName}}</span></span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="column">
