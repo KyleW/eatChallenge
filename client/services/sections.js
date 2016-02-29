@@ -20,7 +20,7 @@
                 state: 'children',
                 completed: false,
                 required: true,
-                showSummaryAfter: true
+                showSummaryAfter: false
             },
             {
                 label: 'Household Members',
@@ -34,7 +34,7 @@
                 state: 'childIncome',
                 completed: false,
                 required: true,
-                showSummaryAfter: true
+                showSummaryAfter: false
             },
             {
                 label: 'Household Income',

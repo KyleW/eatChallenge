@@ -72,6 +72,23 @@
                 }
             });
 
+            $rootScope.household.otherMembers.forEach(function(member) {
+                if (!member.incomeCategory) {
+                    return;
+                }
+                var incomeSource;
+                for (var key in member.incomeCategory) {
+                    // This value gets stashed in the same place
+                    incomeSource = member.incomeCategory[key];
+                    for (var k in incomeSource) {
+                        if (k !== 'showCheckboxes') {
+                            var source = incomeSource[k];
+                            estimatedAnnualIncome += getTotalforSource(source);
+                        }
+                    }
+                }
+            });
+
             return Math.round(estimatedAnnualIncome);
         }
 
@@ -79,6 +96,12 @@
             var earnersCount = 0;
             $rootScope.household.children.forEach(function(child) {
                 if (child.earnsIncome) {
+                    earnersCount++;
+                }
+            });
+
+            $rootScope.household.otherMembers.forEach(function(member) {
+                if (member.incomeCategory && Object.keys(member.incomeCategory) > 0) {
                     earnersCount++;
                 }
             });

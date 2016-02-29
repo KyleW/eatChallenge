@@ -23,14 +23,14 @@
             question: 'earn money through work',
             sources: [
                 {
-                    vaule:'work',
+                    value:'work',
                     checkboxLabel: 'Work outside the home in a non-military capacity ',
                     shortLabel: 'Earnings from work',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     annotation: 'Please report gross income. This is the amount of income earned before any money is taken out for taxes or deductions. Include salary, wages, and cash bonuses.'
                 },
                 {
-                    vaule:'selfEmployed',
+                    value:'selfEmployed',
                     shortLabel: 'Earnings from self employment',
                     checkboxLabel: 'Self-employed',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
@@ -38,7 +38,7 @@
 
                 },
                 {
-                    vaule:'onStrike',
+                    value:'onStrike',
                     checkboxLabel: 'On strike',
                     shortLabel: 'Strike Benefits',
                     frequency: ['weekly', 'every 2 weeks', '2x month', 'monthly'],
@@ -46,7 +46,7 @@
                 },
                 {
                     // TODO: add space for housing allowance per doc
-                    vaule:'military',
+                    value:'military',
                     checkboxLabel: 'In the U.S. military',
                     shortLabel: 'Basic pay and cash bonuses',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
@@ -61,35 +61,35 @@
             question: 'receive any public assistance benefits',
             sources:[
                 {
-                    vaule:'unemployment',
+                    value:'unemployment',
                     checkboxLabel: 'Unemployment benefits',
                     shortLabel: 'Unemployment benefits',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule:'workersComp',
+                    value:'workersComp',
                     checkboxLabel: 'Worker’s compensation',
                     shortLabel: 'Worker’s compensation',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule:'ssi',
+                    value:'ssi',
                     checkboxLabel: 'Supplemental Security Income (SSI)',
                     shortLabel: 'Supplemental Security Income (SSI)',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule:'cashAssistance',
+                    value:'cashAssistance',
                     checkboxLabel: 'Cash assistance from State or local government',
                     shortLabel: 'Cash assistance',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     annotation: 'This could include TANF or General Assistance money.'
                 },
                 {
-                    vaule:'veteransBenefits',
+                    value:'veteransBenefits',
                     checkboxLabel: 'Veteran’s benefits',
                     shortLabel: 'Veteran’s benefits',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
@@ -104,7 +104,7 @@
             question: 'receive alimony payments',
             sources:[
                 {
-                    vaule: 'alimony',
+                    value: 'alimony',
                     checkboxLabel: 'alimony payments',
                     shortLabel: 'Alimony payment',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
@@ -119,7 +119,7 @@
             question: 'receive any child support',
             sources: [
                 {
-                    vaule: 'childSupport',
+                    value: 'childSupport',
                     checkboxLabel: 'any child support',
                     shortLabel: 'Child support payment',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
@@ -134,14 +134,14 @@
             question: 'receive any pension or retirement money',
             sources: [
                 {
-                    vaule: 'socialSecurity',
+                    value: 'socialSecurity',
                     checkboxLabel: 'Social Security',
                     shortLabel: 'Social security',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     annotation: 'Please include railroad retirement and black lung benefits'
                 },
                 {
-                    vaule: 'privatePension',
+                    value: 'privatePension',
                     checkboxLabel: 'Private pensions or disability',
                     shortLabel: 'Private pensions or disability',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
@@ -156,42 +156,42 @@
             question: 'recieve money through any other source',
             sources: [
                 {
-                    vaule: 'trusts',
+                    value: 'trusts',
                     checkboxLabel: 'Income from trusts or estates',
                     shortLabel: 'Income from trusts or estates',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule: 'annuities',
+                    value: 'annuities',
                     checkboxLabel: 'Annuities',
                     shortLabel: 'Income from annuities',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule: 'investment',
+                    value: 'investment',
                     checkboxLabel: 'Investment income',
                     shortLabel: 'Investment income',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule: 'interest',
+                    value: 'interest',
                     checkboxLabel: 'Earned interest',
                     shortLabel: 'Earned interest',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule: 'rentalIncome',
+                    value: 'rentalIncome',
                     checkboxLabel: 'Rental income',
                     shortLabel: 'Rental income',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
                     // annotation: ''
                 },
                 {
-                    vaule: 'otherCash',
+                    value: 'otherCash',
                     checkboxLabel: 'Regular cash payments from outside household',
                     shortLabel: 'Regular cash payments from outside household',
                     frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
