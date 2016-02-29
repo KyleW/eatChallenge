@@ -8,9 +8,9 @@
     function householdService($http, $rootScope) {
         // Todo: consider moving to server??
         var Household =  {
-            childCount: 0,
+            childCount: null,
             children: [],
-            otherMembersCount: 0,
+            otherMembersCount: null,
             otherMembers: [],
             completedApplication: false
         };
