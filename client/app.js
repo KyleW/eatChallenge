@@ -40,8 +40,7 @@
     //Color themes for buttons
     materialDesignThemer.$inject = ['$mdThemingProvider'];
     function materialDesignThemer($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-                          .primaryPalette('teal')
+        $mdThemingProvider.theme('default').primaryPalette('teal')
                           .backgroundPalette('brown', {'default': '50'});
     }
 

@@ -24,14 +24,14 @@
             </md-card-title-text>
         </md-card-title> -->
         <md-card-content>
-            <div layout="row">
-                <md-input-container flex="65">
+            <div layout="row" layout-align="space-between center">
+                <md-input-container flex="55">
                     <label>Electronic Signature</label>
                     <input ng-model="household.signature"></md-input-container>
-                <!-- TODO: Autofill? Datepicker? -->
-                <md-input-container flex="30" flex-offset="5" >
+                <md-datepicker flex="40" flex-offset="5" ng-model="household.signedOn" md-placeholder="Today's Date"></md-datepicker>
+                <!-- <md-input-container flex="30" flex-offset="5" >
                     <label>Today's Date</label>
-                    <input ng-model="household.signedon"></md-input-container>
+                    <input ng-model="household.signedOn"></md-input-container> -->
             </div>
             <div layout="row">
                 <md-input-container flex="100">
