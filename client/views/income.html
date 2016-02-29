@@ -28,9 +28,9 @@
                 <label>Enter Amount</label>
                 <input ng-model="incomeSource.amount">
             </md-input-container>
-            <md-input-container flex="45" offset="10" ng-if="incomeSource.amount > 0">
-                <label>How often?</label>
-                <md-select ng-model="incomeSource.frequency">
+            <md-input-container flex="45" offset="10">
+                <label ng-if="incomeSource.amount > 0">How often?</label>
+                <md-select ng-model="incomeSource.frequency" ng-if="incomeSource.amount > 0">
                     <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
                 </md-select>
             </md-input-container>

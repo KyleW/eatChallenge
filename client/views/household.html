@@ -31,17 +31,20 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="column">
-
-        <!-- Household names -->
+            <!-- Household names -->
             <div flex="55"><label>Enter the adult's name:</label></div>
             <div layout="row">
-                <md-input-container flex="3">
+                <md-input-container flex="40">
                     <label>First Name</label>
-                    <input ng-model="member.firstName">
+                    <input ng-model="member.firstName" required>
                 </md-input-container>
-                <md-input-container flex-offset="5" flex="3">
+                <md-input-container flex-offset="5" flex="10">
+                    <label>Middle Initial</label>
+                    <input ng-model="member.middleInitial" required>
+                </md-input-container>
+                <md-input-container flex-offset="5" flex="40">
                     <label>Last Name</label>
-                    <input ng-model="member.lastName">
+                    <input ng-model="member.lastName" required>
                 </md-input-container>
             </div>
         </md-card-content>
