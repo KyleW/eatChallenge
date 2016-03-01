@@ -10,7 +10,17 @@ var householdSchema = new Schema({
     otherMembersCount: Number,
     otherMembers: [HouseholdMember],
     completed: {type: Boolean, default: false},
-    competedSections: Object
+    competedSections: Object,
+    signature: String,
+    signedOn: Date,
+    streetAddress: String,
+    city: String,
+    state: String,
+    zip: String,
+    phone: String,
+    email: String,
+    hasSSN: Boolean,
+    last4ssn: String
 });
 
 module.exports = mongoose.model('household', householdSchema);
