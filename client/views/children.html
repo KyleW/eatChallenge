@@ -4,7 +4,8 @@
 <!--     <p class="section-description">
         In this section, we’ll ask you for some information about the infants, children, and students who live in your house. Make sure to include all of them. It’s OK if they aren’t all your biological children or even related to you.
     </p>
- -->    <div layout="row">
+-->    
+    <div layout="row">
         <div class="annotation md-caption">
             <p>Include children who are supported with the household's income even if they are not related to you.</p>
             <p>School students include anyone attending school through grade 12 regardless of their age.</p>
@@ -17,8 +18,12 @@
             <input name="childCount" ng-model="household.childCount"></input>
         </md-input-container>
     </div>
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
+        Please enter a number.
+    </div>
 
-    <div layout="row" class="warn md-body-2" ng-if="showErrors && !childrenForm.childCount.$valid">Please enter a number.</div>
+
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && !childrenForm.childCount.$valid">Please enter a number.</div>
 
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5">
         <md-card-title>
@@ -56,8 +61,8 @@
                 </md-input-container>
             </div>
             
-            <div layout="row" class="warn md-body-2" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
-                Please include a first name, last name and middle initial.
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
+                Please include a first name, last name, and middle initial.
             </div>
         
             <!-- Student Status -->
@@ -66,7 +71,7 @@
                 <div yes-no-input model="child.enrolled" flex-offset="5" flex="40"></div>
             </div>
             
-            <div layout="row" class="warn md-body-2" ng-if="showErrors && (child.enrolled === undefined)">
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && (child.enrolled === undefined)">
                 You must indicate if the child is enrolled in school.
             </div>
 
@@ -105,10 +110,10 @@
                         <input name="caseNumber" ng-model="child.assistanceProgram.caseNumber" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                         </md-input-container>
                     </div>   
-                    <div layout="row" class="warn md-body-2" ng-if="showErrors && (!childrenForm.programName.$valid)">
+                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.programName.$valid)">
                         Please select a program.
                     </div>
-                    <div layout="row" class="warn md-body-2" ng-if="showErrors && (!childrenForm.caseNumber.$valid)">
+                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.caseNumber.$valid)">
                         Please enter a case number.
                     </div>                 
                 </div>
