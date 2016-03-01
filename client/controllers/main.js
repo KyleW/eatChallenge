@@ -116,7 +116,7 @@
         }
 
         function goBack() {
-            Household.save();
+            Household.save()
             Sections.updateRequiredSections();
             Sections.goBack();
         }
@@ -179,7 +179,14 @@
             trimChildren($rootScope.household);
             trimOtherMembers($rootScope.household);
             $rootScope.household.completed = true;
-            navigateToNextSection();
+            if (isInvalidForm()) {
+                // open confirmation modal
+                showConfirm().then(moveAheadHandler,fixItHandler);
+            } else {
+                Household.submit();
+                Sections.updateRequiredSections();
+                Sections.navigateToNext();
+            }
         }
 
         // Watchers

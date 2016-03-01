@@ -241,7 +241,7 @@
         }
 
         function moveAheadHandler() {
-            Household.save();
+            Household.save()
             Sections.updateRequiredSections();
             Sections.navigateToNext();
         }
@@ -256,7 +256,7 @@
         }
         vm.goBack = goBack;
         function goBack() {
-            Household.save();
+            Household.save()
             Sections.updateRequiredSections();
             Sections.goBack();
         }

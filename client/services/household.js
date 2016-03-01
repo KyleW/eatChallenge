@@ -34,10 +34,21 @@
         }
 
         function save() {
-            if ($rootScope.user) {
-                $rootScope.household.userId = $rootScope.user._id;
+            // Only save on the last page or when 
+            // there's a signed in user
+            if (!$rootScope.user) {
+                console.log('did not need to save')
+                return;
             }
-            return $http.post('/household', $rootScope.household);
+            $rootScope.household.userId = $rootScope.user._id;
+            console.log('before')
+            console.log($rootScope.household);
+            return $http.post('/household', $rootScope.household)
+                    .then(function(response) {
+                        console.log('coming back');
+                        console.log(response.data);
+                        $rootScope.household = response.data;
+                    });
         }
 
         function submit() {
