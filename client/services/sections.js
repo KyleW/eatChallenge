@@ -98,6 +98,7 @@
                 indexedSections['childIncome'].required = false;
                 indexedSections['household'].required = false;
                 indexedSections['householdIncome'].required = false;
+                indexedSections['soFar-2'].required = false;
                 return;
             }
 
@@ -184,9 +185,11 @@
                 var currentIndex = _.findIndex(sections, function(section) {
                     return section.state === currentState;
                 });
-                console.log(currentIndex);
                 previousState = sections[currentIndex - 1].state;
-                console.log(previousState);
+                while (indexedSections[previousState].required === false) {
+                    currentIndex = currentIndex - 1;
+                    previousState = sections[currentIndex - 1].state;
+                }
             }
 
             $state.go(previousState);
