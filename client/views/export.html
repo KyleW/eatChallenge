@@ -3,6 +3,7 @@
         <img class="hero" src="/images/food-vegetables-meal-kitchen.jpg">
     </div>
     <h2 class="md-headline">Export Forms</h2>
+    <pre>{{completedApplications | json}}</completedApplications>
     <p class="md-body-2">Click below to export forms as a csv:</p>
     <div layout="row" layout-align="center" layout-padding>
         <md-button class="md-primary md-raised" md-no-ink ng-csv="completedApplications" filename="school_lunch_applications.csv"> Export Data</md-button>

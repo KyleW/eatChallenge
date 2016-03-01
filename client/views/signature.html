@@ -37,7 +37,7 @@
                     <input required></md-input-container>
                 <md-input-container flex="30" flex-offset="5">
                     <label>Zipcode</label >
-                    <input required></md-input-container>
+                    <input required ng-minlength="5"></md-input-container>
             </div>
             <div layout="row">
                 <md-input-container flex="45">
@@ -59,7 +59,7 @@
                 </label></div>
                 <md-input-container flex-offset="5" flex="40">
                     <label>Enter Last 4 Digits of SSN</label>
-                    <input ng-model="member.last4ssn" required>
+                    <input ng-model="member.last4ssn" required ng-maxlength="4" ng-minlength="4">
                 </md-input-container>
             </div>
             <div layout="row" class="warn md-subhead" ng-if="showErrors && !form.$valid">
