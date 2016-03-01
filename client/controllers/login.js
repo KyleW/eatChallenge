@@ -13,22 +13,23 @@
         //////////////////////
 
         function submit() {
-            // vm.disabled = true;
 
             auth
             .login(user.email, user.password)
             .then(successHandler, errorHandler);
 
             function successHandler(response) {
-                // vm.disabled = false;
+                console.log('calls success');
+                auth.setCredentials(response.data.user);
+                Household.retrieveForUser(response.data.user);
                 vm.loginForm = {};
                 vm.message = 'successfully logged in';
-                $state.go('soFar');
+                $state.go('children');
             }
 
-            function errorHandler(response) {
-                vm.message = 'Something went wrong. Please try again';
-                // vm.disabled = false;
+            function errorHandler() {
+                auth.clearCredentials();
+                vm.message = 'Please check your username and password and try again.';
             }
 
         }

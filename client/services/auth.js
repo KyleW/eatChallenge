@@ -17,6 +17,8 @@
         service.login = login;
         service.logout = logout;
         service.init = init;
+        service.setCredentials = setCredentials;
+        service.clearCredentials = clearCredentials;
 
         return service;
         ///////////////////////////
@@ -62,19 +64,7 @@
                 password: password
             };
 
-            return $http
-                .post('/user/login', data)
-                .then(successHandler, errorHandler);
-
-            function successHandler(response) {
-                setCredentials(response.data.user);
-                Household.retrieveForUser(response.data.user);
-            }
-
-            function errorHandler(response, err) {
-                console.log(err);
-                clearCredentials();
-            }
+            return $http.post('/user/login', data);
         }
 
         function logout() {

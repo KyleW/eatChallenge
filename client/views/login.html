@@ -2,7 +2,6 @@
 <div>
     <h2 class="md-headline">Log In</h2>
     <p class="md-body-2"> Log in to continue your application from where you left off:</p>
-    <div class="md-accent">{{message}}</div>
     <form name="loginForm" novalidate>
         <md-card>
             <md-card-content>
@@ -28,6 +27,7 @@
                             ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                     </md-input-container>            
                 </div>
+                <div layout="row" class="warn" ng-if="message">{{message}}</div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
                <md-button ng-click="submit()" type="submit" ng-disabled="!loginForm.$valid">Login</md-button>
