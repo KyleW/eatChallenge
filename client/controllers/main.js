@@ -90,8 +90,10 @@
             Sections.goBack();
         }
 
+        var notShown = true;
         function navigateToNextSection() {
-            if ($rootScope.currentState === 'children') {
+            if (($rootScope.currentState === 'children') && notShown) {
+                notShown = false;
                 // validate form before moving on;
                 if (!vm.childrenForm.$vaild) {
                     // open confirmation modal

@@ -1,8 +1,10 @@
 #eatChallenge
 
-This is a prototype application for Free and Reduced Price School Meals. It was created for the (E.A.T School Lunch UX Challenge)[http://lunchux.devpost.com/] by (Kyle Warneck)[https://www.linkedin.com/in/kylewarneck] and (Anne Paprocki)[https://www.linkedin.com/in/anne-paprocki-b88aa04]. It is designed to improve the user experience, efficiency, and accuracy of the national Free and Reduced Price School Meals program application. 
+This is a prototype application for Free and Reduced Price School Meals. It was created for the [E.A.T School Lunch UX Challenge](http://lunchux.devpost.com/) by [Kyle Warneck](https://www.linkedin.com/in/kylewarneck) and [Anne Paprocki](https://www.linkedin.com/in/anne-paprocki-b88aa04). It is designed to improve the user experience, efficiency, and accuracy of the national Free and Reduced Price School Meals program application. 
 
 You can see the project live at [https://eatchallenge-kylew.rhcloud.com/](https://eatchallenge-kylew.rhcloud.com/).
+
+You can see a demo [here](https://youtu.be/JjCr2IgMPFs).
 
 ##Our User Stories 
 
@@ -28,6 +30,10 @@ Following the judging period, we welcome contributions. While this is just a pro
 The content of this particular form is focussed on the Federal Application for Free and Reduced Price School Meals, but we would love to see this work repurposed for other official forms or genericized into a form system. Use this as a starting point and contribute back your creations.
 
 Contributions to this project must follow John Papa's [AngularJs Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md). JSCS and JSHint configuration files are including in the base of the project. Please be sure to lint your code before submitting. Changes to the UI should maintain the apps flat design. Avoid popups, modals, tooltips, etc. that break the dimensionality of the application.
+
+## User Testing
+
+To inform our process, we conducted user testing on an early version of the prototype application. We collected feedback with a [Google Form](http://goo.gl/forms/b3aB1mFXaN). Ultimately, we received 11 user test forms and modified our prototype application based on their suggestions. 
 
 ## The Tech Stack
 The application was built using the MEAN stack. AngularJS on the front end. Express and NodeJS on the backend with a MongoDb database.

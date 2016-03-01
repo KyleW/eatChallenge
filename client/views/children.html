@@ -18,7 +18,7 @@
             <input name="childCount" ng-model="household.childCount"></input>
         </md-input-container>
     </div>
-    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && !(household.childCount > 0)">
         Please enter a number.
     </div>
 
