@@ -85,6 +85,15 @@
         function navigateToNextSection() {
             Household.save();
             Sections.updateRequiredSections();
+
+            // validate form before moving on;
+            if (!vm.childrenForm.$vaild) {
+                // open confirmation
+                if(!confirmation) {
+                    
+                    return;
+                }
+            }
             Sections.navigateToNext();
         }
 
