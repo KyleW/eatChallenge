@@ -212,10 +212,10 @@
             .state('signup', {
                 url: '/signup',
                 views:{
-                    'user-controls': {
-                        templateUrl: '../views/user-controls.html',
-                        controller: 'userControlsController'
-                    },
+                    // 'user-controls': {
+                    //     templateUrl: '../views/user-controls.html',
+                    //     controller: 'userControlsController'
+                    // },
                     // 'side-nav': {
                     //     templateUrl: '../views/sideNav.html',
                     //     controller: 'sideNavController'

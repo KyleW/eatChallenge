@@ -7,7 +7,6 @@
     signupController.$inject = ['$scope', 'auth', 'Sections'];
 
     function signupController($scope, auth, Sections) {
-        console.log(auth.getUserStatus());
         var vm = $scope;
         var user = {};
         vm.submit = submit;
