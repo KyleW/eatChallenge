@@ -34,10 +34,9 @@
         }
 
         function save() {
-            if (!$rootScope.user) {
-                return;
+            if ($rootScope.user) {
+                $rootScope.household.userId = $rootScope.user._id;
             }
-            $rootScope.household.userId = $rootScope.user._id;
             return $http.post('/household', $rootScope.household);
         }
 

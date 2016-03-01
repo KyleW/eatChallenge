@@ -17,7 +17,16 @@ var childSchema = new Schema({
         caseNumber: String
     },
     // incomeSources: [ChildIncomeSource]
-    incomeSources: Array
+    incomeSources: Array,
+    ethnicity: String,
+    race: {
+        americanIndian: Boolean,
+        asian: Boolean,
+        black: Boolean,
+        pacificIslander: Boolean,
+        white: Boolean
+    }
+
 });
 
 module.exports = childSchema;

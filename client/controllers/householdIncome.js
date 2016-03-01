@@ -261,7 +261,6 @@
             Sections.goBack();
         }
 
-
         vm.incomeCategories = [
                                 work,
                                 publicAssistance,
