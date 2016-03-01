@@ -21,6 +21,7 @@
         for (var i = 0; i < applications.length; i++) {
             application = applications[i];
             normalizedAppliation = {};
+            
             // mapping data to normalized fields
             normalizedAppliation.application_id = application._id;
             normalizedAppliation.user_id = application.userId;
