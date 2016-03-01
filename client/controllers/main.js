@@ -7,7 +7,6 @@
 
     mainController.$inject = [
         '$http',
-        '$interval',
         '$mdDialog',
         '$mdMedia',
         '$rootScope',
@@ -18,7 +17,7 @@
         'Sections'
     ];
 
-    function mainController ($http, $interval, $mdDialog, $mdMedia, $rootScope,
+    function mainController ($http, $mdDialog, $mdMedia, $rootScope,
                              $scope, $state, $timeout, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
@@ -67,7 +66,7 @@
                 $http.get('/child').then(function(response) {
                     var newChild = response.data;
                     newChild.incomeSources =  Object.keys(vm.childIncomeSources).map(function(incomeSource) {
-                        return { type: incomeSource, amount: null, frequency: null};
+                        return {type: incomeSource, amount: null, frequency: null};
                     });
                     $rootScope.household.children.push(newChild);
                     // Recurse if necessary
@@ -126,7 +125,21 @@
         function isInvalidForm() {
             var child;
 
-            if (vm.form && (!vm.form.$valid || vm.form.$pristine)) {
+            if ($rootScope.currentState === 'childIncome') {
+                for (var j = 0; j < $rootScope.household.children.length; j++) {
+                    child = $rootScope.household.children[j];
+                    if (child.earnsIncome === undefined) {
+                        return true;
+                    }
+                    if (child.earnsIncome === true && !vm.form.$valid) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            if (vm.form && (!vm.form.$valid)) {
                 return true;
             }
 
@@ -137,17 +150,6 @@
                         return true;
                     }
                 }
-
-            }
-
-            if ($rootScope.currentState === 'childIncome') {
-                for (var j = 0; j < $rootScope.household.children.length; j++) {
-                    child = $rootScope.household.children[j];
-                    if (child.earnsIncome === undefined) {
-                        return true;
-                    }
-                }
-
             }
 
             return false;

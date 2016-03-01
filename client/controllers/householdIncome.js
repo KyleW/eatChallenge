@@ -6,6 +6,8 @@
         .controller('householdIncome', householdIncome);
 
     householdIncome.$inject = [
+        '$mdDialog',
+        '$mdMedia',
         '$rootScope',
         '$scope',
         '$state',
@@ -13,8 +15,9 @@
         'Sections'
     ];
 
-    function householdIncome ($rootScope, $scope, $state, Household, Sections, HouseholdIncome) {
+    function householdIncome ($mdDialog, $mdMedia, $rootScope, $scope, $state, Household, Sections, HouseholdIncome) {
         var vm = $scope;
+        vm.numberRegex =  '^[1-9][0-9]*$';
         vm.navigateToNextSection = navigateToNextSection;
 
         var work = {
@@ -200,11 +203,56 @@
             ]
         };
 
+        function showConfirm(ev) {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.confirm()
+                  .title('Ready to go on?')
+                  .textContent('It looks like you have some errors or missing information in this section. Do you want to fix it now?')
+                  .ariaLabel('Ready to go on?')
+                  .targetEvent(ev)
+                  .ok('Move Ahead Anyway')
+                  .cancel('Go Back and Fix It Now');
+            return $mdDialog.show(confirm);
+        }
+
         // TODO: duplicated with main.js. Share in a better way
-        function navigateToNextSection() {
+        function isInvalidForm() {
+            var member;
+
+            if (vm.form && (!vm.form.$valid)) {
+                return true;
+            }
+
+            for (var i = 0; i < $rootScope.household.otherMembers.length ; i++) {
+                member = $rootScope.household.otherMembers[i];
+                for (var key in member.incomeCategory) {
+                    if (member.incomeCategory[key].showCheckboxes === undefined) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        function fixItHandler() {
+            vm.showErrors = true;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+
+        function moveAheadHandler() {
             Household.save();
             Sections.updateRequiredSections();
             Sections.navigateToNext();
+        }
+
+        function navigateToNextSection() {
+            if (isInvalidForm()) {
+                // open confirmation modal
+                showConfirm().then(moveAheadHandler,fixItHandler);
+            } else {
+                moveAheadHandler();
+            }
         }
 
         vm.incomeCategories = [

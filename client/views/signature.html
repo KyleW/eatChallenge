@@ -1,5 +1,5 @@
 <!-- Signature -->
-<form id="signature" layout="column">
+<form name="form" id="signature" layout="column">
     <h2 class="md-headline">Signature & Contact Information</h2>
     <p class="md-body-2" layout="row">The final step is to sign and submit your application. This is to confirm that you have finished your application and that all the information is correct.</p>
     <p class="md-body-2">Please agree to the following:</p>
@@ -25,19 +25,19 @@
             <div layout="row">
                 <md-input-container flex="100">
                     <label>Street Address</label>
-                    <input>
+                    <input required>
                 </md-input-container>
             </div>
             <div layout="row">
                 <md-input-container flex="50">
                     <label>City</label>
-                    <input></md-input-container>
+                    <input required></md-input-container>
                 <md-input-container flex="10" flex-offset="5">
                     <label>State</label>
-                    <input></md-input-container>
+                    <input required></md-input-container>
                 <md-input-container flex="30" flex-offset="5">
                     <label>Zipcode</label >
-                    <input></md-input-container>
+                    <input required></md-input-container>
             </div>
             <div layout="row">
                 <md-input-container flex="45">
@@ -59,8 +59,11 @@
                 </label></div>
                 <md-input-container flex-offset="5" flex="40">
                     <label>Enter Last 4 Digits of SSN</label>
-                    <input ng-model="member.last4ssn">
+                    <input ng-model="member.last4ssn" required>
                 </md-input-container>
+            </div>
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && !form.$valid">
+                Please include a response for all required fields.
             </div>
         </md-card-content>
     </md-card>

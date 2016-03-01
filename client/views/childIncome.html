@@ -37,7 +37,12 @@
                             <div flex="40" offset="5" layout="row" layout-align="center start">
                                 <md-input-container flex="45">
                                     <label>Enter Amount</label>
-                                    <input ng-model="incomeSource.amount" name="amount" ng-pattern="numberRegex"></md-input-container>
+                                    <input 
+                                        ng-model="incomeSource.amount"
+                                        ng-pattern="numberRegex"
+                                        name="amount"
+                                        ></md-input-container>
+                                        <!-- required -->
                                 <md-input-container flex="45" offset="10">
                                     <label ng-if="incomeSource.amount >0">How often?</label>
                                     <md-select 
