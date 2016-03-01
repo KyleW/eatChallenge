@@ -46,8 +46,6 @@
 
         init();
 
-        
-
         function estimateIncome() {
             var frequencyMulitplier = {
                 weekly: 52,
@@ -83,12 +81,12 @@
                     for (var k in incomeSource) {
                         if (k !== 'showCheckboxes') {
                             var source = incomeSource[k];
+
                             estimatedAnnualIncome += getTotalforSource(source);
                         }
                     }
                 }
             });
-
             return Math.round(estimatedAnnualIncome);
         }
 
@@ -101,7 +99,7 @@
             });
 
             $rootScope.household.otherMembers.forEach(function(member) {
-                if (member.incomeCategory && Object.keys(member.incomeCategory) > 0) {
+                if (member.incomeCategory && Object.keys(member.incomeCategory).length > 0) {
                     earnersCount++;
                 }
             });
