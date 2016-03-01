@@ -78,7 +78,7 @@
                   .title('Ready to go on?')
                   .textContent('It looks like you have some errors or missing information in this section. Do you want to fix it now?')
                   .ariaLabel('Lucky day')
-                  // .targetEvent(ev)
+                  .targetEvent(ev)
                   .ok('Move Ahead Anyway')
                   .cancel('Go Back and Fix It Now');
             return $mdDialog.show(confirm);
@@ -90,37 +90,39 @@
             Sections.goBack();
         }
 
-        var notShown = true;
+        //Form Validation
+        function isInvalidForm() {
+            if ($rootScope.currentState === 'children' && !vm.childrenForm.$valid) {
+                return true;
+            }
+
+            return false;
+        }
+
+        function fixItHandler() {
+            vm.showErrors = true;
+        }
+
+        function moveAheadHandler() {
+            Household.save();
+            Sections.updateRequiredSections();
+            Sections.navigateToNext();
+        }
+
         function navigateToNextSection() {
-            if (($rootScope.currentState === 'children') && notShown) {
-                notShown = false;
-                // validate form before moving on;
-                if (!vm.childrenForm.$vaild) {
-                    // open confirmation modal
-                    showConfirm()
-                    .then(function() {
-                        Household.save();
-                        Sections.updateRequiredSections();
-                        Sections.navigateToNext();
-                    },function() {
-                        vm.showErrors = true;
-                    });
-                }
+            if (isInvalidForm()) {
+                // open confirmation modal
+                showConfirm().then(moveAheadHandler,fixItHandler);
             } else {
-                Household.save();
-                Sections.updateRequiredSections();
-                Sections.navigateToNext();
+                moveAheadHandler();
             }
         }
 
         function submitApplication() {
             trimChildren($rootScope.household);
             trimOtherMembers($rootScope.household);
-
             $rootScope.household.completed = true;
-            Household.submit();
-            Sections.updateRequiredSections();
-            Sections.navigateToNext();
+            navigateToNextSection();
         }
 
         // Watchers
