@@ -45,17 +45,7 @@
 
         function signup(email, password) {
             return $http
-                .post('/user/signup', {username: email, password: password})
-                .then(successHandler, errorHandler);
-
-            function successHandler(response) {
-                setCredentials(response.data.user);
-                Household.save();
-            }
-
-            function errorHandler(err) {
-                console.log(err);
-            }
+                .post('/user/signup', {username: email, password: password});
         }
 
         function login(email, password) {

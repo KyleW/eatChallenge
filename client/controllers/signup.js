@@ -4,9 +4,9 @@
     angular
       .module('eatChallengeApp')
       .controller('signupController', signupController);
-    signupController.$inject = ['$scope', 'auth', 'Sections'];
+    signupController.$inject = ['$scope', 'auth', 'Household', 'Sections'];
 
-    function signupController($scope, auth, Sections) {
+    function signupController($scope, auth, Household, Sections) {
         var vm = $scope;
         var user = {};
         vm.submit = submit;
@@ -14,26 +14,20 @@
 
         function submit() {
             vm.error = false;
-            // TODO: add loading icon to UI when disabled === true
-            vm.disabled = true;
-
             auth.signup(user.email, user.password)
-            .then(successHandler, errorHandler);
+                .then(successHandler, errorHandler);
 
-            function successHandler() {
-                vm.disabled = false;
+            function successHandler(response) {
+                auth.setCredentials(response.data.user);
+                Household.save();
                 vm.signupForm = {}; //Reset form
                 vm.message = 'successfully created an account';
                 Sections.goBack();
             }
 
             function errorHandler(err) {
-                console.log(err);
                 vm.error = true;
-                vm.message = 'Something went wrong. Please try again';
-                vm.disabled = false;
-                // vm.signupForm = {}
-
+                vm.message = 'There\'s already an account associated with this email. Please log in or try again with a different address.';
             }
         }
     }

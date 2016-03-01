@@ -2,7 +2,7 @@
 <div>
     
     <p class="md-body-2">Create an account so that we can save the progress of your application:</p>
-    <div class="md-accent">{{message}}</div>
+    
     <form novalidate name="signupForm">
         <md-card>
             <md-card-title>
@@ -33,7 +33,9 @@
                 <div flex="70" layout="row" class="warn" ng-if="(user.password !== confirmPassword) && signupForm.password.$dirty && signupForm.confirmPassword.$dirty">
                     Your passwords don't match.
                 </div>
-                
+                <div flex="70" layout="row" class="warn" ng-if="message">
+                    {{message}}
+                </div>
             </md-card-content>
             <div class="md-actions" layout="row" layout-align="end">
                <md-button ng-click="submit()" ng-disabled="!signupForm.$valid || (user.password !== confirmPassword)">Submit</md-button>
