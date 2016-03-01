@@ -13,12 +13,13 @@
         '$rootScope',
         '$scope',
         '$state',
+        '$timeout',
         'Household',
         'Sections'
     ];
 
     function mainController ($http, $interval, $mdDialog, $mdMedia, $rootScope,
-                             $scope, $state, Household, Sections) {
+                             $scope, $state, $timeout, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
         vm.schoolDistrict = 'Oakland Unified School District';
@@ -27,7 +28,12 @@
         vm.goBack = goBack;
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
+        vm.showErrors = false;
         /////////////////////////////////////
+
+        $timeout(function() {
+            vm.showErrors = true;
+        }, 7000)
 
         //New children and household members are created
         //by calling the server to make use of mongoose models
