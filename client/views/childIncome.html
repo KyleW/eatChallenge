@@ -1,9 +1,8 @@
 <form name="form" layout='column'>
-    <h2 class="md-headline">Children's Income</h2>    
+    <h2 class="md-headline">Children's Income</h2>
     <p class="md-body-2">
         Sometimes children or students have their own income, like from a job, disability, or a regular payment from a family member who lives outside the house.
-         <!-- If a child in your house receives money directly, please fill out this section. -->
-    </P>
+        <!-- If a child in your house receives money directly, please fill out this section. --> </P>
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="60">
         <md-card-title>
             <md-card-title-text>
@@ -14,7 +13,57 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content>
-            <div member="child" income-questions></div>
+            <div class="income" layout="column">
+                
+                <div layout="row">
+                    <div flex="55" layout="column" layout-align="center">
+                        <label>
+                            Does <span ng-if="child.firstName">{{child.firstName}} {{child.lastName}}</span><span ng-if="!child.firstName">this person</span> have his or her own source of income?
+                        </label>
+                    </div>
+                    <div yes-no-input model="child.earnsIncome" flex-offset="5" flex="40"></div>
+                </div>
+                
+                <div layout="row" class="warn md-subhead" ng-if="showErrors && (child.earnsIncome === undefined)">Please indicate if the child has a source of income.</div>
+
+                <div ng-if="child.earnsIncome" class="child-instructions md-body-2">Please indicate how much<span ng-if="child.firstName"> {{child.firstName}} {{child.lastName}} </span><span ng-if="!child.firstName"> this person </span>receives from each of these income sources:
+                </div>
+                <div ng-repeat="incomeSource in child.incomeSources" layout="column" ng-if="child.earnsIncome">
+                    <ng-form name="innerForm">
+                        <div layout="row">
+                            <div flex="55" layout="column" layout-align="center start">
+                                <label>{{childIncomeSources[incomeSource.type].label}}</label>
+                            </div>
+                            <div flex="40" offset="5" layout="row" layout-align="center start">
+                                <md-input-container flex="45">
+                                    <label>Enter Amount</label>
+                                    <input ng-model="incomeSource.amount" name="amount" ng-pattern="numberRegex"></md-input-container>
+                                <md-input-container flex="45" offset="10">
+                                    <label ng-if="incomeSource.amount >0">How often?</label>
+                                    <md-select 
+                                        ng-model="incomeSource.frequency" 
+                                        ng-if="incomeSource.amount > 0" 
+                                        required
+                                        name="frequency"
+                                    >
+                                        <md-option ng-repeat="time in childIncomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div class="annotation md-caption">{{childIncomeSources[incomeSource.type].annotation}}</div>                        
+                        </div>
+                        
+                        <div layout="row" class="warn md-subhead" ng-if="showErrors && !innerForm.amount.$valid">
+                            Income amounts must be only numbers without punctuation and must be greater than zero.
+                        </div>
+                        
+                        <div layout="row" class="warn md-subhead" ng-if="showErrors && !$innerform.frequency.$valid && incomeSource.amount > 0">
+                            Please tell us how often the child receives this amount.
+                        </div>
+
+                    </ng-form>
+                </div>
+            </div>
         </md-card-content>
     </md-card>
     <div class="actions" layout="row" layout-align="center">

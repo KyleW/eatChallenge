@@ -3,27 +3,25 @@
         <div flex="55" layout="column" layout-align="center">
             <label>
                 Does
-                <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
-                <span ng-if="!member.firstName">this person</span>
+                <span ng-if="child.firstName">{{child.firstName}} {{child.lastName}}</span>
+                <span ng-if="!child.firstName">this person</span>
                 have his or her own source of income?
             </label>
         </div>
-        <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
+        <div yes-no-input model="child.earnsIncome" flex-offset="5" flex="40"></div>
     </div>
-    <div layout="row" class="warn md-subhead" ng-if="showErrors && (member.earnsIncome === undefined)">
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && (child.earnsIncome === undefined)">
         Please indicate if the child has a source of income.
     </div>
 
-
-    <!-- <h3 ng-if="member.earnsIncome">Income Sources</h3> -->
-    <div ng-if="member.earnsIncome" layout="row" class="child-instructions">
+    <div ng-if="child.earnsIncome" layout="row" class="child-instructions">
         Please indicate how much&nbsp
-        <span ng-if="member.firstName">{{member.firstName}} {{member.lastName}}</span>
-        <span ng-if="!member.firstName">this person</span>
+        <span ng-if="child.firstName">{{child.firstName}} {{child.lastName}}</span>
+        <span ng-if="!child.firstName">this person</span>
         &nbspreceives from each of these income sources:
     </div>
 
-    <div ng-repeat="incomeSource in member.incomeSources" layout="row" ng-if="member.earnsIncome">
+    <div ng-repeat="incomeSource in child.incomeSources" layout="row" ng-if="child.earnsIncome">
         <div flex="55" layout="column" layout-align="center start">
             <label>{{incomeSources[incomeSource.type].label}}</label>
         </div>

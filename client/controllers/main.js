@@ -29,6 +29,35 @@
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
         vm.showErrors = false;
+        vm.numberRegex =  '^[1-9][0-9]*$';
+        vm.childIncomeSources = {
+            work: {
+                vaule:'work',
+                label: 'Earnings from work:',
+                frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
+                annotation: 'A child has a job where they earn salary or wages. Please report gross income. This is the amount of income earned before any money is taken out for taxes or deductions. Include salary, wages, and cash bonuses.',
+            },
+            socialSecurity: {
+                vaule:'socialSecurity',
+                label: 'Social Security Disability Payments or Survivor’s Benefits:',
+                frequency: ['monthly'],
+                // annotation: 'A child is blind or disabled and receives Social Security benefits.',
+                // ' A parent is disabled, retired, or deceased, and their child receives social security benefits',
+
+            },
+            otherPerson: {
+                vaule:'otherPerson',
+                label: 'Income from persons outside the household:',
+                frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
+                annotation: 'A friend or extended family member regularly gives a child spending money.',
+            },
+            otherSource: {
+                vaule:'otherSource',
+                label: 'Income from any other source:',
+                frequency: ['weekly', 'every 2 weeks', 'twice a month', 'monthly'],
+                annotation: 'A child receives income from a private pension fund, annuity, or trust.',
+            }
+        };
         /////////////////////////////////////
 
         //New children and household members are created
@@ -37,6 +66,9 @@
             if (newVal > $rootScope.household.children.length) {
                 $http.get('/child').then(function(response) {
                     var newChild = response.data;
+                    newChild.incomeSources =  Object.keys(vm.childIncomeSources).map(function(incomeSource) {
+                        return { type: incomeSource, amount: null, frequency: null};
+                    });
                     $rootScope.household.children.push(newChild);
                     // Recurse if necessary
                     addChild(newVal);
@@ -92,12 +124,13 @@
 
         //Form Validation
         function isInvalidForm() {
+            var child;
+
             if (vm.form && (!vm.form.$valid || vm.form.$pristine)) {
                 return true;
             }
 
             if ($rootScope.currentState === 'children') {
-                var child;
                 for (var i = 0; i < $rootScope.household.children.length; i++) {
                     child = $rootScope.household.children[i];
                     if (child.enrolled === undefined) {
@@ -108,9 +141,8 @@
             }
 
             if ($rootScope.currentState === 'childIncome') {
-                var child;
-                for (var i = 0; i < $rootScope.household.children.length; i++) {
-                    child = $rootScope.household.children[i];
+                for (var j = 0; j < $rootScope.household.children.length; j++) {
+                    child = $rootScope.household.children[j];
                     if (child.earnsIncome === undefined) {
                         return true;
                     }
