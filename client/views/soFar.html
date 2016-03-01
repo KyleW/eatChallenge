@@ -1,34 +1,34 @@
 <div class="so-far" layout='column'>
-    <h2 class="md-title">Here's what you've entered so far:</h2>
+    <h2 class="md-headline">Here's what you've entered so far:</h2>
     <div layout="column">
-        <div class="summary-section md-title">
+        <div class="summary-section md-body-2">
             You've indicated that there <span ng-if="household.children.length !== 1">are</span><span ng-if="household.children.length === 1">is</span> <b>{{household.children.length}} {{childrenLabel}}</b>
             <span ng-if="household.otherMembers.length >
                 0">and <b>{{household.otherMembers.length}} {{adultsLabel}}</b>
             </span>in your household<span ng-if="household.otherMembers.length > 0"> for a <b>total of {{household.children.length + household.otherMembers.length}}</b> <span ng-if="(household.otherMembers.length + household.children.length) > 0">people</span><span ng-if="(household.otherMembers.length + household.children.length) === 0">person</span> including yourself</span>.
         </div>
 
-        <div class="summary-section md-title" layout="column" ng-if="household.children.length > 0">
+        <div class="summary-section md-body-2" layout="column" ng-if="household.children.length > 0">
             <h4>Children:</h4>
             <ul>
                 <li ng-repeat="child in household.children">{{child.firstName}} {{child.lastName}}</li>
             </ul>
         </div>
         
-        <div class="summary-section md-title" layout="column" ng-if="household.otherMembers.length >0">
+        <div class="summary-section md-body-2" layout="column" ng-if="household.otherMembers.length >0">
             <h4>Adults:</h4>
             <ul>
                 <li ng-repeat="member in household.otherMembers">{{member.firstName}} {{member.lastName}}</li>
             </ul>
         </div>
 
-        <div class="summary-section md-title means-testing-notification" ng-if="!meansTest"><b>
+        <div class="summary-section md-body-2 means-testing-notification" ng-if="!meansTest"><b>
             Good news! Based on your responses so far, we don't need to ask you about the adults in your household or your household income. We'll skip those sections for you.
         </b></div>
 
-        <div class="summary-section md-title income" ng-if="incomeEarnersCount > 0">You've identified <b>{{incomeEarnersCount}} <span ng-if="incomeEarnersCount > 0">people</span><span ng-if="incomeEarnersCount < 2">person</span> with income</b> in the household. We estimate that they earn a <b>total of about {{incomeEstimate | currency : $ : 0}} per year</b>.</div>
+        <div class="summary-section md-body-2 income" ng-if="incomeEarnersCount > 0">You've identified <b>{{incomeEarnersCount}} <span ng-if="incomeEarnersCount > 0">people</span><span ng-if="incomeEarnersCount < 2">person</span> with income</b> in the household. We estimate that they earn a <b>total of about {{incomeEstimate | currency : $ : 0}} per year</b>.</div>
 
-        <div class="summary-section md-title">If this looks correct, you're ready to go on! If not, please go back and make changes.</div>
+        <div class="summary-section md-body-2">If this looks correct, you're ready to go on! If not, please go back and make changes.</div>
         
     </div>
     <div class="actions" layout="row" layout-align="center">

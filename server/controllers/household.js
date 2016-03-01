@@ -4,16 +4,21 @@ module.exports = {
     save: function(req, res, next) {
         if (req.body._id) {
             // update an existing document
-            var toSave = Object.create(req.body);
-            delete toSave._id;
-
-            Household.findByIdAndUpdate(req.body._id, toSave, function (err, household) {
+            Household.findById(req.body._id, function(err, household) {
                 if (err) {
-                    // console.error(err);
                     return res.send(err);
                 }
-                // console.log('successfully updated ' , household);
-                return res.json(household);
+
+                for (var k in req.body) {
+                    household[k] = req.body[k];
+                }
+
+                household.save(function(err) {
+                    if (err) {
+                       return res.send(err);
+                    }
+                    res.json(household);
+                });
             });
         } else {
             // Create a new document

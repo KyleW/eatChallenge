@@ -37,16 +37,11 @@
             // Only save on the last page or when 
             // there's a signed in user
             if (!$rootScope.user) {
-                console.log('did not need to save')
                 return;
             }
             $rootScope.household.userId = $rootScope.user._id;
-            console.log('before')
-            console.log($rootScope.household);
             return $http.post('/household', $rootScope.household)
                     .then(function(response) {
-                        console.log('coming back');
-                        console.log(response.data);
                         $rootScope.household = response.data;
                     });
         }

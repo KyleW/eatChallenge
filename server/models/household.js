@@ -5,9 +5,9 @@ var HouseholdMember = require('./household_member');
 
 var householdSchema = new Schema({
     userId: String,
-    childCount: Number,
+    childCount: String,
     children: [Child],
-    otherMembersCount: Number,
+    otherMembersCount: String,
     otherMembers: [HouseholdMember],
     completed: {type: Boolean, default: false},
     competedSections: Object,
