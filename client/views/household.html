@@ -1,10 +1,7 @@
 <!--Household -->
-<form id="questionMain" class="household" layout="column">
+<form name="form" class="household" layout="column" novalidate>
     <h2 class="md-headline">Other Household Members</h2>
-<!--     <p class="md-body-2">
-        Who else lives in your household? Tell us how many people live in your household who are not the infants, children, and students you told us about before. Make sure to include yourself!
-    </p>
- -->    <div layout="row">
+    <div layout="row">
         <div class="annotation md-caption">
             <p>Please include all members in your household who are:</p>
             <ul>
@@ -21,8 +18,12 @@
         </div>
         <md-input-container flex-offset="5" flex="40">
             <label>Enter Number of Other Household Members</label>
-            <input ng-model="household.otherMembersCount" ng-value="" required></input>
+            <input name="otherMembersCount" ng-model="household.otherMembersCount" ng-value="" required></input>
         </md-input-container>
+    </div>
+
+    <div layout="row" class="warn md-subhead" layout-align="baseline end" ng-if="showErrors && !(household.otherMembersCount > 0)">
+        Please enter a number.
     </div>
     <md-card ng-repeat="member in household.otherMembers | limitTo: household.otherMembersCount" class="stdCard" flex="70">
         <md-card-title>
@@ -36,17 +37,21 @@
             <div layout="row">
                 <md-input-container flex="40">
                     <label>First Name</label>
-                    <input ng-model="member.firstName" required>
+                    <input ng-model="member.firstName" name="firstName" required>
                 </md-input-container>
                 <md-input-container flex-offset="5" flex="10">
                     <label>Middle Initial</label>
-                    <input ng-model="member.middleInitial" required>
+                    <input ng-model="member.middleInitial" name="middleInitial" required>
                 </md-input-container>
                 <md-input-container flex-offset="5" flex="40">
                     <label>Last Name</label>
-                    <input ng-model="member.lastName" required>
+                    <input ng-model="member.lastName" name="lastName" required>
                 </md-input-container>
             </div>
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.firstName.$valid || !form.middleInitial.$valid || !form.lastName.$valid )">
+                Please include a first name, last name, and middle initial.
+            </div>
+
         </md-card-content>
     </md-card>
     <div class="actions" layout="row" layout-align="center">

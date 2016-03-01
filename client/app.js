@@ -251,10 +251,10 @@
                         templateUrl: '../views/user-controls.html',
                         controller: 'userControlsController'
                     },
-                    'side-nav': {
-                        templateUrl: '../views/sideNav.html',
-                        controller: 'sideNavController'
-                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
                     'main': {
                         templateUrl: '../views/soFar.html',
                         controller: 'soFarController'

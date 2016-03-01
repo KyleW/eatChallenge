@@ -72,12 +72,12 @@
             return household;
         }
 
-        function showConfirm() {
+        function showConfirm(ev) {
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.confirm()
                   .title('Ready to go on?')
                   .textContent('It looks like you have some errors or missing information in this section. Do you want to fix it now?')
-                  .ariaLabel('Lucky day')
+                  .ariaLabel('Ready to go on?')
                   .targetEvent(ev)
                   .ok('Move Ahead Anyway')
                   .cancel('Go Back and Fix It Now');
@@ -92,8 +92,30 @@
 
         //Form Validation
         function isInvalidForm() {
-            if ($rootScope.currentState === 'children' && !vm.childrenForm.$valid) {
+            if (vm.form && (!vm.form.$valid || vm.form.$pristine)) {
                 return true;
+            }
+
+            if ($rootScope.currentState === 'children') {
+                var child;
+                for (var i = 0; i < $rootScope.household.children.length; i++) {
+                    child = $rootScope.household.children[i];
+                    if (child.enrolled === undefined) {
+                        return true;
+                    }
+                }
+
+            }
+
+            if ($rootScope.currentState === 'childIncome') {
+                var child;
+                for (var i = 0; i < $rootScope.household.children.length; i++) {
+                    child = $rootScope.household.children[i];
+                    if (child.earnsIncome === undefined) {
+                        return true;
+                    }
+                }
+
             }
 
             return false;
@@ -101,6 +123,7 @@
 
         function fixItHandler() {
             vm.showErrors = true;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
         }
 
         function moveAheadHandler() {

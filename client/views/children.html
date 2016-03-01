@@ -1,10 +1,6 @@
 <!-- children -->
-<form class="children" layout='column' name="childrenForm" novalidate>
+<form class="children" layout='column' name="form" novalidate>
     <h2 class="md-headline">Children</h2>
-<!--     <p class="section-description">
-        In this section, we’ll ask you for some information about the infants, children, and students who live in your house. Make sure to include all of them. It’s OK if they aren’t all your biological children or even related to you.
-    </p>
--->    
     <div layout="row">
         <div class="annotation md-caption">
             <p>Include children who are supported with the household's income even if they are not related to you.</p>
@@ -21,10 +17,6 @@
     <div layout="row" class="warn md-subhead" ng-if="showErrors && !(household.childCount > 0)">
         Please enter a number.
     </div>
-
-
-    <div layout="row" class="warn md-subhead" ng-if="showErrors && !childrenForm.childCount.$valid">Please enter a number.</div>
-
     <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5">
         <md-card-title>
             <md-card-title-text>
@@ -42,7 +34,7 @@
                     <input
                         ng-model="child.firstName" 
                         required 
-                        ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 100 } }"
+                        ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }"
                         name="firstName"
                     >
                 </md-input-container>
@@ -51,17 +43,17 @@
                     <input
                         ng-model="child.middleInitial" 
                         required
-                        ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 100 } }"
+                        ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }"
                         name="middleInitial"
                     >
                 </md-input-container>
                 <md-input-container flex-offset="5" flex="40">
                     <label>Last Name</label>
-                    <input ng-model="child.lastName" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 100 } }" name="lastName">
+                    <input ng-model="child.lastName" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }" name="lastName">
                 </md-input-container>
             </div>
             
-            <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.firstName.$valid || !form.middleInitial.$valid || !form.lastName.$valid )">
                 Please include a first name, last name, and middle initial.
             </div>
         
@@ -72,7 +64,7 @@
             </div>
             
             <div layout="row" class="warn md-subhead" ng-if="showErrors && (child.enrolled === undefined)">
-                You must indicate if the child is enrolled in school.
+                Please indicate if the child is enrolled in school.
             </div>
 
             <!-- Special Status -->
@@ -110,10 +102,10 @@
                         <input name="caseNumber" ng-model="child.assistanceProgram.caseNumber" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                         </md-input-container>
                     </div>   
-                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.programName.$valid)">
+                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.programName.$valid)">
                         Please select a program.
                     </div>
-                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.caseNumber.$valid)">
+                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.caseNumber.$valid)">
                         Please enter a case number.
                     </div>                 
                 </div>

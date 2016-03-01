@@ -10,6 +10,10 @@
         </div>
         <div yes-no-input model="member.earnsIncome" flex-offset="5" flex="40"></div>
     </div>
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && (member.earnsIncome === undefined)">
+        Please indicate if the child has a source of income.
+    </div>
+
 
     <!-- <h3 ng-if="member.earnsIncome">Income Sources</h3> -->
     <div ng-if="member.earnsIncome" layout="row" class="child-instructions">
@@ -30,11 +34,17 @@
             </md-input-container>
             <md-input-container flex="45" offset="10">
                 <label ng-if="incomeSource.amount > 0">How often?</label>
-                <md-select ng-model="incomeSource.frequency" ng-if="incomeSource.amount > 0">
+                <md-select ng-model="incomeSource.frequency" ng-if="incomeSource.amount > 0" required>
                     <md-option ng-repeat="time in incomeSources[incomeSource.type].frequency" value="{{time}}">{{time}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
         <div class="annotation md-caption">{{incomeSources[incomeSource.type].annotation}}</div>
+        <div layout="row" class="warn md-subhead" ng-if="showErrors && ({{incomeSource.amount}} && !({{incomeSource.amount}} > 0))">
+           Amounts must be only numbers, with no punctuation and must be greater than zero.
+        </div>
+        <div layout="row" class="warn md-subhead" ng-if="showErrors && (incomeSource.amount > 0 && incomeSource.frequency === undefined)">
+           Please tell us how often the child receives this amount.
+        </div>
     </div>
 </div>
