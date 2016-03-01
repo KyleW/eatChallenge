@@ -254,6 +254,13 @@
                 moveAheadHandler();
             }
         }
+        vm.goBack = goBack;
+        function goBack() {
+            Household.save();
+            Sections.updateRequiredSections();
+            Sections.goBack();
+        }
+
 
         vm.incomeCategories = [
                                 work,

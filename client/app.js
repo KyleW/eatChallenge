@@ -261,6 +261,24 @@
                     }
                 }
             })
+            .state('soFar-2', {
+                url: '/so-far-2',
+                views:{
+                    'user-controls': {
+                        templateUrl: '../views/user-controls.html',
+                        controller: 'userControlsController'
+                    },
+                    // 'side-nav': {
+                    //     templateUrl: '../views/sideNav.html',
+                    //     controller: 'sideNavController'
+                    // },
+                    'main': {
+                        templateUrl: '../views/soFar.html',
+                        controller: 'soFarController'
+                    }
+                }
+            })
+
             .state('saveAndExit', {
                 url: '/save-and-exit',
                 views:{

@@ -27,7 +27,14 @@
                 state: 'household',
                 completed: false,
                 required: true,
-                showSummaryAfter: true
+                showSummaryAfter: false
+            },
+            {
+                label: 'What You\'ve Entered So Far',
+                state: 'soFar',
+                completed: false,
+                required: true,
+                showSummaryAfter: false
             },
             {
                 label: 'Children\'s Income',
@@ -41,7 +48,14 @@
                 state: 'householdIncome',
                 completed: false,
                 required: true,
-                showSummaryAfter: true
+                showSummaryAfter: false
+            },
+            {
+                label: 'Summary',
+                state: 'soFar-2',
+                completed: false,
+                required: true,
+                showSummaryAfter: false
             },
             {
                 label: 'Disclosure',
@@ -150,29 +164,31 @@
             var nextSection;
             var currentState = $rootScope.currentState || $state.$current.self.name;
             var previousState = $rootScope.previousState || 'start';
-            // If on the summary page go to the next form page
-            if (currentState === 'soFar') {
-                if (previousState) {
-                    nextSection  = findNext(previousState);
-                } else {
-                    // This happens if you refresh the page on the so far screen.
-                    // Come up with something better? stash in url?
-                    nextSection = 'start';
-                }
-            } else if (indexedSections[currentState].showSummaryAfter) {
-                // if on a form page, go to summary page
-                nextSection = 'soFar';
-            } else {
-                // If you're on some other page like start or signature
-                // Move ahead as normal
-                nextSection  = findNext(currentState);
-            }
+                    
+            // If you're on some other page like start or signature
+            // Move ahead as normal
+            nextSection  = findNext(currentState);
+
 
             $state.go(nextSection);
         }
 
         function goBack() {
-            var previousState = $rootScope.previousState || 'start';
+            var previousState = 'start';
+            var currentState = $rootScope.currentState;
+            var outOfFlowStates = ['login', 'signup'];
+
+            if (outOfFlowStates.indexOf(currentState) !== -1) {
+                previousState = $rootScope.previousState || 'start';
+            } else {
+                var currentIndex = _.findIndex(sections, function(section) {
+                    return section.state === currentState;
+                });
+                console.log(currentIndex);
+                previousState = sections[currentIndex - 1].state;
+                console.log(previousState);
+            }
+
             $state.go(previousState);
         }
 
