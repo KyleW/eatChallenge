@@ -116,6 +116,8 @@
         }
 
         function goBack() {
+            trimChildren($rootScope.household);
+            trimOtherMembers($rootScope.household);
             Household.save()
             Sections.updateRequiredSections();
             Sections.goBack();
@@ -167,6 +169,8 @@
         }
 
         function navigateToNextSection() {
+            trimChildren($rootScope.household);
+            trimOtherMembers($rootScope.household);
             if (isInvalidForm()) {
                 // open confirmation modal
                 showConfirm().then(moveAheadHandler,fixItHandler);

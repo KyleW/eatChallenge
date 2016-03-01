@@ -102,13 +102,13 @@
                         <input name="caseNumber" ng-model="child.assistanceProgram.caseNumber" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                         </md-input-container>
                     </div>   
-                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.programName.$valid)">
-                        Please select a program.
-                    </div>
-                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.caseNumber.$valid)">
-                        Please enter a case number.
-                    </div>                 
                 </div>
+                <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.programName.$valid)">
+                    Please select a program.
+                </div>
+                <div layout="row" class="warn md-subhead" ng-if="showErrors && (!form.caseNumber.$valid)">
+                    Please enter a case number.
+                </div>                 
                 </div>
             </div>
 
