@@ -1,10 +1,11 @@
 <!-- children -->
-<form id="questionMain" class="children" layout='column' name="childrenForm" novalidate>
+<form class="children" layout='column' name="childrenForm" novalidate>
     <h2 class="md-headline">Children</h2>
 <!--     <p class="section-description">
         In this section, we’ll ask you for some information about the infants, children, and students who live in your house. Make sure to include all of them. It’s OK if they aren’t all your biological children or even related to you.
     </p>
- -->    <div layout="row">
+-->    
+    <div layout="row">
         <div class="annotation md-caption">
             <p>Include children who are supported with the household's income even if they are not related to you.</p>
             <p>School students include anyone attending school through grade 12 regardless of their age.</p>
@@ -14,10 +15,17 @@
         </div>
         <md-input-container flex-offset="5" flex="40">
             <label>Enter Number of Children</label>
-            <input ng-model="household.childCount"></input>
+            <input name="childCount" ng-model="household.childCount"></input>
         </md-input-container>
     </div>
-    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5" ng-blur="updateCompleted()">
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
+        Please enter a number.
+    </div>
+
+
+    <div layout="row" class="warn md-subhead" ng-if="showErrors && !childrenForm.childCount.$valid">Please enter a number.</div>
+
+    <md-card ng-repeat="child in household.children | limitTo: household.childCount" class="stdCard" flex="70" layout-padding="5">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-title">Child #{{$index + 1}}
@@ -31,16 +39,30 @@
             <div layout="row">
                 <md-input-container flex="40">
                     <label>First Name</label>
-                    <input ng-model="child.firstName" required>
+                    <input
+                        ng-model="child.firstName" 
+                        required 
+                        ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 100 } }"
+                        name="firstName"
+                    >
                 </md-input-container>
                 <md-input-container flex-offset="5" flex="10">
                     <label>Middle Initial</label>
-                    <input ng-model="child.middleInitial">
+                    <input
+                        ng-model="child.middleInitial" 
+                        required
+                        ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 100 } }"
+                        name="middleInitial"
+                    >
                 </md-input-container>
                 <md-input-container flex-offset="5" flex="40">
                     <label>Last Name</label>
-                    <input ng-model="child.lastName" required>
+                    <input ng-model="child.lastName" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 100 } }" name="lastName">
                 </md-input-container>
+            </div>
+            
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.firstName.$valid || !childrenForm.middleInitial.$valid || !childrenForm.lastName.$valid )">
+                Please include a first name, last name, and middle initial.
             </div>
         
             <!-- Student Status -->
@@ -49,11 +71,15 @@
                 <div yes-no-input model="child.enrolled" flex-offset="5" flex="40"></div>
             </div>
             
+            <div layout="row" class="warn md-subhead" ng-if="showErrors && (child.enrolled === undefined)">
+                You must indicate if the child is enrolled in school.
+            </div>
+
             <!-- Special Status -->
             <div layout="column">
+                
                 <div flex="55"><label>Check all that apply for this child:</label></div>
                 <div layout="column" flex-offset="60" class="child_checkbox_container">
-                    
                     <md-checkbox md-no-ink ng-model="child.specialStatus.fosterChild" class="md-primary" flex-offset="0">Foster Child</md-checkbox>
                     <md-checkbox md-no-ink ng-model="child.specialStatus.homelessMigrantRunaway" class="md-primary" flex-offset="0">Homeless, Migrant, Runaway</md-checkbox>
                     <md-checkbox md-no-ink ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
@@ -62,6 +88,7 @@
                         <md-checkbox md-no-ink ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant (SNAP, TANF, or FDPIR)</md-checkbox>
                     </div>
                 </div>
+
                 <div ng-if="child.assistanceProgram.Participant" layout="row">
                     <div class="annotation md-caption">
                         Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number.
@@ -72,7 +99,7 @@
                         </div>
                         <md-input-container flex="30">
                             <label>Select Program</label>
-                            <md-select ng-model="child.assistanceProgram.programName">
+                            <md-select name="programName" ng-model="child.assistanceProgram.programName" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                                 <md-option value="SNAP">SNAP</md-option>
                                 <md-option value="TANF">TANF</md-option>
                                 <md-option value="FDPIR">FDPIR</md-option>
@@ -80,26 +107,19 @@
                         </md-input-container>
                         <md-input-container flex="40" flex-offset="10">
                             <label>Case Number</label>
-                        <input ng-model="child.assistanceProgram.caseNumber">
+                        <input name="caseNumber" ng-model="child.assistanceProgram.caseNumber" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 300, blur: 0 } }">
                         </md-input-container>
+                    </div>   
+                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.programName.$valid)">
+                        Please select a program.
                     </div>
-                    
+                    <div layout="row" class="warn md-subhead" ng-if="showErrors && (!childrenForm.caseNumber.$valid)">
+                        Please enter a case number.
+                    </div>                 
                 </div>
-   <!--                  <md-input-container>
-                        <label>Program Name</label>
-                        <md-select ng-model="child.assistanceProgram.programName">
-                            <md-option value="SNAP">SNAP</md-option>
-                            <md-option value="TANF">TANF</md-option>
-                            <md-option value="FDPIR">FDPIR</md-option>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container flex-offset="10px">
-                        <label>Case Number</label>
-                        <input ng-model="child.assistanceProgram.caseNumber">
-                    </md-input-container> -->
                 </div>
             </div>
-            <!-- <md-divider></md-divider> -->
+
             <!-- Race/Ethnicity -->
             <div layout="column" class="race_ethnicity_instructions">
                 <h4 class="race_ethnicity_title">Race/Ethnicity<h4>
@@ -131,5 +151,5 @@
         <md-button md-no-ink class="md-raised " ng-click="goBack()">Go Back</md-button>
         <md-button md-no-ink class="md-raised md-primary" ng-click="navigateToNextSection()">Next Section</md-button>
     </div>
-    </form>
+</form>
     

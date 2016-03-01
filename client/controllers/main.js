@@ -13,12 +13,13 @@
         '$rootScope',
         '$scope',
         '$state',
+        '$timeout',
         'Household',
         'Sections'
     ];
 
     function mainController ($http, $interval, $mdDialog, $mdMedia, $rootScope,
-                             $scope, $state, Household, Sections) {
+                             $scope, $state, $timeout, Household, Sections) {
         /* jshint validthis: true */
         var vm = $scope;
         vm.schoolDistrict = 'Oakland Unified School District';
@@ -27,6 +28,7 @@
         vm.goBack = goBack;
         vm.navigateToNextSection = navigateToNextSection;
         vm.submitApplication = submitApplication;
+        vm.showErrors = false;
         /////////////////////////////////////
 
         //New children and household members are created
@@ -70,6 +72,18 @@
             return household;
         }
 
+        function showConfirm() {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.confirm()
+                  .title('Ready to go on?')
+                  .textContent('It looks like you have some errors or missing information in this section. Do you want to fix it now?')
+                  .ariaLabel('Lucky day')
+                  // .targetEvent(ev)
+                  .ok('Move Ahead Anyway')
+                  .cancel('Go Back and Fix It Now');
+            return $mdDialog.show(confirm);
+        }
+
         function goBack() {
             Household.save();
             Sections.updateRequiredSections();
@@ -77,9 +91,24 @@
         }
 
         function navigateToNextSection() {
-            Household.save();
-            Sections.updateRequiredSections();
-            Sections.navigateToNext();
+            if ($rootScope.currentState === 'children') {
+                // validate form before moving on;
+                if (!vm.childrenForm.$vaild) {
+                    // open confirmation modal
+                    showConfirm()
+                    .then(function() {
+                        Household.save();
+                        Sections.updateRequiredSections();
+                        Sections.navigateToNext();
+                    },function() {
+                        vm.showErrors = true;
+                    });
+                }
+            } else {
+                Household.save();
+                Sections.updateRequiredSections();
+                Sections.navigateToNext();
+            }
         }
 
         function submitApplication() {
