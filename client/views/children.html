@@ -77,11 +77,11 @@
                     <md-checkbox md-no-ink ng-model="child.specialStatus.headStartParticipant" class="md-primary" flex-offset="0">Head Start Participant</md-checkbox>
                     <div>
                         <div class="annotation md-caption">If the child participates in any of the listed programs, they may be eligible for free and reduced price school meals.</div>
-                        <md-checkbox md-no-ink ng-model="child.assistanceProgram.Participant" class="md-primary" flex-offset="0">Assistance Program Participant (SNAP, TANF, or FDPIR)</md-checkbox>
+                        <md-checkbox md-no-ink ng-model="child.assistanceProgram.participant" class="md-primary" flex-offset="0">Assistance Program Participant (SNAP, TANF, or FDPIR)</md-checkbox>
                     </div>
                 </div>
 
-                <div ng-if="child.assistanceProgram.Participant" layout="row">
+                <div ng-if="child.assistanceProgram.participant" layout="row">
                     <div class="annotation md-caption">
                         Please pick a case number for one of the programs and enter it. You do not need to enter more than one case number.
                     </div>
